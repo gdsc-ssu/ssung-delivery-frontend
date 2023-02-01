@@ -1,0 +1,19 @@
+{
+  "name": "ssung-delivery-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "preinstall": "pnpm dlx only-allow pnpm"
+  },
+  "engines": {"node": ">16.14.2", "pnpm": ">=7.9.0"},
+  "workspaces": ["packages/*"],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@7.9.0", 
+  "devDependencies": {
+    "pnpm": "^7.9.0"
+  }
+}
