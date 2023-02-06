@@ -8,10 +8,13 @@
     "preinstall": "pnpm dlx only-allow pnpm",
     "start": "pnpm --stream -r start",
     "start:dev": "pnpm --stream -r run start:dev",
+    "start:user": "pnpm --filter user-client run start:dev",
+    "start:shipper": "pnpm --filter shipper-client run start:dev",
+    "start:sender": "pnpm --filter sender-client run start:dev",
     "clean": "rm -rf .parcel-cache && pnpm -r run clean"
   },
   "engines": {
-    "node": ">16.14.2", 
+    "node": ">16.14.2",
     "pnpm": ">=7.9.0"
   },
   "workspaces": [
@@ -20,7 +23,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@7.9.0", 
+  "packageManager": "pnpm@7.9.0",
   "devDependencies": {
     "pnpm": "^7.9.0"
   }
