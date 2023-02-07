@@ -5,8 +5,12 @@ import SearchBar from './App.searchBar'
 import Shipping from './App.shipping'
 import '../styles/global.css'
 import { BodyContainer, Spacer } from '../component/Layout'
+import { useCallback, useState } from 'react'
 
 function App() {
+  const [searchID, setSearchID] = useState<string>()
+  const onSearchShipping = useCallback(() => {}, [])
+
   return (
     <BodyContainer>
       <Spacer height="3rem" />
@@ -17,7 +21,11 @@ function App() {
 
       {/* 검색 키워드 value */}
       {/* 검색 트리거 함수 */}
-      <SearchBar />
+      <SearchBar
+        searchID={searchID}
+        setSearchID={setSearchID}
+        onSearch={onSearchShipping}
+      />
       <Spacer height="3rem" />
 
       <Shipping />
