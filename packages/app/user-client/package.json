@@ -13,7 +13,8 @@
     "@emotion/styled": "^11.10.5",
     "@ssung-delivery-frontend/common": "workspace:^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
