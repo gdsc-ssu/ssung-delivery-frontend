@@ -11,7 +11,6 @@ export interface ShipData {
   id: string
   keywords: string[]
   product: string
-  status: string
   progress: string
   history: ShipHistoryType[]
 }
