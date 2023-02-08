@@ -1,6 +1,8 @@
+import styled from '@emotion/styled'
 import { memo } from 'react'
 import Card from '../component/Card'
 import { Flex, Spacer } from '../component/Layout'
+import Progress from '../component/ProgressBar'
 import { SubTitle, Text } from '../component/Text'
 
 const Shipping = () => {
@@ -14,12 +16,62 @@ const Shipping = () => {
       <Flex justifyContent={'space-between'}>
         <div>
           <Card />
-          {/* <Text>안녕하세요</Text> */}
         </div>
-        <div>배송 현재 진행 바</div>
+
+        {/* 컴포넌트 분리 예정 */}
+        <ShipHistoryContainer>
+          <div style={{ position: 'sticky', top: 0 }}>
+            <Progress progress="80%" orient="vertical" />
+          </div>
+
+          <Flex
+            flexDirection={'column'}
+            gap={'1rem'}
+            style={{ marginLeft: '1rem' }}
+          >
+            <Flex flexDirection={'column'} gap={'0.25rem'}>
+              <Text>수거완료</Text>
+              <Text size="sm" gray>
+                2023-02-08
+              </Text>
+            </Flex>
+            <Flex flexDirection={'column'} gap={'0.25rem'}>
+              <Text>옥천 HUB</Text>
+              <Text size="sm" gray>
+                2023-02-08
+              </Text>
+            </Flex>
+            <Flex flexDirection={'column'} gap={'0.25rem'}>
+              <Text>옥천 HUB</Text>
+              <Text size="sm" gray>
+                2023-02-08
+              </Text>
+            </Flex>
+            <Flex flexDirection={'column'} gap={'0.25rem'}>
+              <Text>옥천 HUB</Text>
+              <Text size="sm" gray>
+                2023-02-08
+              </Text>
+            </Flex>
+            <Flex flexDirection={'column'} gap={'0.25rem'}>
+              <Text>옥천 HUB</Text>
+              <Text size="sm" gray>
+                2023-02-08
+              </Text>
+            </Flex>
+          </Flex>
+        </ShipHistoryContainer>
       </Flex>
     </div>
   )
 }
 
 export default memo(Shipping)
+
+const ShipHistoryContainer = styled.div`
+  padding: 14px;
+  width: 140px;
+  height: 140px;
+  overflow: scroll;
+  position: relative;
+`
