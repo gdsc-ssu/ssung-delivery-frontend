@@ -1,22 +1,47 @@
 import styled from '@emotion/styled'
-import { useEffect, useRef } from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
 
-const Camera = () => {
+interface CameraProps {
+  onClose: Dispatch<SetStateAction<boolean>>
+}
+
+const Camera = (props: CameraProps) => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (!isCameraAccessOk()) return
-    let stream
-    ;(() => {
-      stream = startVideo()
+    let stream: MediaStream
+    ;(async () => {
+      try {
+        stream = await startVideo()
+      } catch {
+        alert('카메라 권한을 허용해주세요!')
+        console.error('No Camera Permission')
+        props.onClose(false)
+      }
     })()
-  })
 
-  const isCameraAccessOk = () => {
-    if (navigator.mediaDevices.getUserMedia === undefined) {
-      return console.error('getUserMedia is not implemented in this browser')
+    return () => {
+      if (stream) {
+        stopStream(stream)
+      }
     }
-    return true
+  }, [])
+
+  const stopStream = (stream: MediaStream) => {
+    if (stream) {
+      if (stream.getVideoTracks && stream.getAudioTracks) {
+        stream.getVideoTracks().map((track) => {
+          stream.removeTrack(track)
+          track.stop()
+        })
+        stream.getAudioTracks().map((track) => {
+          stream.removeTrack(track)
+          track.stop()
+        })
+      } else {
+        ;(stream as unknown as MediaStreamTrack).stop()
+      }
+    }
   }
 
   const startVideo = async () => {

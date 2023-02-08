@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import { Dispatch, memo, SetStateAction, useState } from 'react'
 import Camera from '../component/Camera'
 import { ComponentContainer, Flex } from '../component/Layout'
@@ -15,11 +16,15 @@ const SearchBar = (props: SearchBarProps) => {
     <ComponentContainer>
       <Flex alignItems={'center'} justifyContent={'center'} gap={'1rem'}>
         <input />
-        {cam && <Camera />}
-        <button onClick={() => setCam(!cam)}>카메라</button>
+        {cam && <Camera onClose={setCam} />}
+        <CameraButton onClick={() => setCam(!cam)}>카메라</CameraButton>
       </Flex>
     </ComponentContainer>
   )
 }
 
 export default memo(SearchBar)
+
+const CameraButton = styled.button`
+  z-index: 2;
+`
