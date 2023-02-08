@@ -2,13 +2,23 @@ import styled from '@emotion/styled'
 
 interface ProgressProps {
   progress: string
+  orient?: 'horizon' | 'vertical'
 }
 
-const Progress = (props: ProgressProps) => {
+const Progress = ({ progress, orient = 'horizon' }: ProgressProps) => {
   return (
-    <div>
+    <div
+      style={
+        orient === 'vertical'
+          ? {
+              transformOrigin: '0 0',
+              transform: 'rotate(90deg)',
+            }
+          : {}
+      }
+    >
       <BackgroundBar />
-      <ProgressBar width={props.progress} />
+      <ProgressBar width={progress} />
     </div>
   )
 }
