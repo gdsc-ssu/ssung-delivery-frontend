@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import Header from './App.header'
 import Recent from './App.recent'
 import SearchBar from './App.searchBar'
