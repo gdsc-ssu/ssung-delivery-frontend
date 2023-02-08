@@ -19,7 +19,7 @@ const Recent = () => {
         }}
       >
         {SHIP_MOCK_DATA.map((info) => (
-          <Card icon="/profile.svg" shipInfo={info} />
+          <Card icon="/profile.svg" shipInfo={info} key={info.id} />
         ))}
       </Flex>
     </div>
