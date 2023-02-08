@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { memo } from 'react'
 import Card from '../component/Card'
-import { Flex, Spacer } from '../component/Layout'
+import { ComponentContainer, Flex, Spacer } from '../component/Layout'
 import Progress from '../component/ProgressBar'
 import { SubTitle, Text } from '../component/Text'
 
@@ -10,7 +10,7 @@ const Shipping = () => {
   // 배송 중인 정보 카드 위치 (진행 상태)
 
   return (
-    <div>
+    <ComponentContainer>
       <SubTitle>배송 중</SubTitle>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
@@ -62,7 +62,7 @@ const Shipping = () => {
           </Flex>
         </ShipHistoryContainer>
       </Flex>
-    </div>
+    </ComponentContainer>
   )
 }
 
