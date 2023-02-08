@@ -1,14 +1,19 @@
-import styled from '@emotion/styled'
 import { memo } from 'react'
 import Card from '../component/Card'
 import { ComponentContainer, Flex, Spacer } from '../component/Layout'
-import Progress from '../component/ProgressBar'
-import { SubTitle, Text } from '../component/Text'
+import ShipHistory from '../component/ShipHistory'
+import { SubTitle } from '../component/Text'
+import { ShipHistoryType } from '../Model/ship'
+
+const MOCK_HISTORY: ShipHistoryType[] = [
+  { state: '수거 완료', date: '23-02-03', done: true },
+  { state: '옥천 HUB', date: '23-02-03', done: true },
+  { state: '상도 지점', date: '23-02-03', done: true },
+  { state: '배달 출발', date: '23-02-03', done: false },
+  { state: '배달 완료', date: '23-02-03', done: false },
+]
 
 const Shipping = () => {
-  // 배송 중인 정보 카드 스택
-  // 배송 중인 정보 카드 위치 (진행 상태)
-
   return (
     <ComponentContainer>
       <SubTitle>배송 중</SubTitle>
@@ -18,60 +23,10 @@ const Shipping = () => {
           <Card />
         </div>
 
-        {/* 컴포넌트 분리 예정 */}
-        <ShipHistoryContainer>
-          <div style={{ position: 'sticky', top: 0 }}>
-            <Progress progress="80%" orient="vertical" />
-          </div>
-
-          <Flex
-            flexDirection={'column'}
-            gap={'1rem'}
-            style={{ marginLeft: '1rem' }}
-          >
-            <Flex flexDirection={'column'} gap={'0.25rem'}>
-              <Text>수거완료</Text>
-              <Text size="sm" gray>
-                2023-02-08
-              </Text>
-            </Flex>
-            <Flex flexDirection={'column'} gap={'0.25rem'}>
-              <Text>옥천 HUB</Text>
-              <Text size="sm" gray>
-                2023-02-08
-              </Text>
-            </Flex>
-            <Flex flexDirection={'column'} gap={'0.25rem'}>
-              <Text>옥천 HUB</Text>
-              <Text size="sm" gray>
-                2023-02-08
-              </Text>
-            </Flex>
-            <Flex flexDirection={'column'} gap={'0.25rem'}>
-              <Text>옥천 HUB</Text>
-              <Text size="sm" gray>
-                2023-02-08
-              </Text>
-            </Flex>
-            <Flex flexDirection={'column'} gap={'0.25rem'}>
-              <Text>옥천 HUB</Text>
-              <Text size="sm" gray>
-                2023-02-08
-              </Text>
-            </Flex>
-          </Flex>
-        </ShipHistoryContainer>
+        <ShipHistory history={MOCK_HISTORY} />
       </Flex>
     </ComponentContainer>
   )
 }
 
 export default memo(Shipping)
-
-const ShipHistoryContainer = styled.div`
-  padding: 14px;
-  width: 140px;
-  height: 140px;
-  overflow: scroll;
-  position: relative;
-`
