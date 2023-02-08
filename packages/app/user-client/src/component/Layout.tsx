@@ -9,6 +9,7 @@ import {
 } from 'styled-system'
 
 const BodyContainer = styled.div`
+  padding: 1rem;
   margin: 0 auto;
   max-width: 640px;
   min-width: 320px;

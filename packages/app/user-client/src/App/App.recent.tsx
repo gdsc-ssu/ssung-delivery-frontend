@@ -1,5 +1,6 @@
 import { memo } from 'react'
-import { Spacer } from '../component/Layout'
+import Card from '../component/Card'
+import { Flex, Spacer } from '../component/Layout'
 import { SubTitle } from '../component/Text'
 
 const Recent = () => {
@@ -9,7 +10,13 @@ const Recent = () => {
     <div>
       <SubTitle>최근 배송</SubTitle>
       <Spacer height="1rem" />
-      <div>카드 캐로셀</div>
+      <Flex gap="1rem" style={{ overflowX: 'scroll' }}>
+        <Card icon="/profile.svg" />
+        <Card icon="/profile.svg" />
+        <Card icon="/profile.svg" />
+        <Card icon="/profile.svg" />
+        <Card icon="/profile.svg" />
+      </Flex>
     </div>
   )
 }
