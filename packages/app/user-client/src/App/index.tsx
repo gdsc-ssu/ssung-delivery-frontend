@@ -13,13 +13,10 @@ function App() {
   return (
     <BodyContainer>
       <Spacer height="3rem" />
-      {/* 몇 건이 배송 중인지 */}
-      {/* 프로필 이미지 경로 */}
+
       <Header count={2} profileThumb={'./profile.svg'} />
       <Spacer height="3rem" />
 
-      {/* 검색 키워드 value */}
-      {/* 검색 트리거 함수 */}
       <SearchBar
         searchID={searchID}
         setSearchID={setSearchID}
