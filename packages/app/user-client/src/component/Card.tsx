@@ -2,27 +2,26 @@ import styled from '@emotion/styled'
 import { Flex, Spacer } from './Layout'
 import { Text } from './Text'
 import ProgressBar from './ProgressBar'
+import { ShipData, ShipHistoryType } from '../Model/ship'
 
-interface ShipData {
-  id: string
-  keywords: string[]
-  product: string
-  status: string
-  progress: string
-}
 interface CardProps {
   expand?: boolean
   expandalble?: boolean
   icon?: string
-  shipInfo?: ShipData
+  shipInfo: ShipData
 }
 
 const Card = (props: CardProps) => {
+  const getLastShipState = (history: ShipHistoryType[]) => {
+    const lastState = history.filter((hist) => hist.done === true)
+    return lastState[lastState.length - 1]
+  }
+
   return (
     <Container>
       <Flex justifyContent={'space-between'}>
         <div>
-          {props.shipInfo!.keywords.map((word) => (
+          {props.shipInfo.keywords.map((word) => (
             <>
               <Text lineHeight={'1.15rem'}>{word}</Text>
               <br />
@@ -35,31 +34,19 @@ const Card = (props: CardProps) => {
       <Spacer height="1rem" />
 
       <Text gray size="sm">
-        {props.shipInfo!.product}
+        {props.shipInfo.product}
       </Text>
       <br />
       <Text gray size="sm">
-        {props.shipInfo!.status}
+        {getLastShipState(props.shipInfo.history)?.state || ''}
       </Text>
-      <ProgressBar progress={props.shipInfo!.progress} />
+      <ProgressBar progress={props.shipInfo.progress} />
 
       {props.expandalble && <ExpandArrow>{'>'}</ExpandArrow>}
     </Container>
   )
 }
 export default Card
-
-Card.defaultProps = {
-  expand: false,
-  expandalble: false,
-  shipInfo: {
-    id: '1',
-    product: '구글 픽셀 7',
-    status: '도착 예정',
-    progress: '80%',
-    keywords: ['기분이', '슝슝한', '서울대'],
-  },
-}
 
 const Container = styled.div`
   display: flex;

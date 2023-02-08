@@ -3,15 +3,7 @@ import Card from '../component/Card'
 import { ComponentContainer, Flex, Spacer } from '../component/Layout'
 import ShipHistory from '../component/ShipHistory'
 import { SubTitle } from '../component/Text'
-import { ShipHistoryType } from '../Model/ship'
-
-const MOCK_HISTORY: ShipHistoryType[] = [
-  { state: '수거 완료', date: '23-02-03', done: true },
-  { state: '옥천 HUB', date: '23-02-03', done: true },
-  { state: '상도 지점', date: '23-02-03', done: true },
-  { state: '배달 출발', date: '23-02-03', done: false },
-  { state: '배달 완료', date: '23-02-03', done: false },
-]
+import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 
 const Shipping = () => {
   return (
@@ -20,10 +12,13 @@ const Shipping = () => {
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
         <div>
-          <Card />
+          <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble />
         </div>
 
-        <ShipHistory history={MOCK_HISTORY} />
+        <ShipHistory
+          progress={SHIP_MOCK_DATA[0].progress}
+          history={SHIP_MOCK_DATA[0].history}
+        />
       </Flex>
     </ComponentContainer>
   )

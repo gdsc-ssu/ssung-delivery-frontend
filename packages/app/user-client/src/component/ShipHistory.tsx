@@ -6,13 +6,14 @@ import { ShipHistoryType } from '../Model/ship'
 
 interface ShipHistoryProps {
   history: ShipHistoryType[]
+  progress: string
 }
 
 const ShipHistory = (props: ShipHistoryProps) => {
   return (
     <ShipHistoryContainer>
       <div style={{ position: 'sticky', top: 0 }}>
-        <Progress progress="80%" orient="vertical" />
+        <Progress progress={props.progress} orient="vertical" />
       </div>
 
       <Flex

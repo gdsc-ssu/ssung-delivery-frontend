@@ -2,9 +2,9 @@ import { memo } from 'react'
 import Card from '../component/Card'
 import { ComponentContainer, Flex } from '../component/Layout'
 import { SubTitle } from '../component/Text'
+import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 
 const Recent = () => {
-  // 배송 중인 정보 카드 캐로셀
   return (
     <div>
       <ComponentContainer>
@@ -18,11 +18,9 @@ const Recent = () => {
           padding: '1rem',
         }}
       >
-        <Card icon="/profile.svg" />
-        <Card icon="/profile.svg" />
-        <Card icon="/profile.svg" />
-        <Card icon="/profile.svg" />
-        <Card icon="/profile.svg" />
+        {SHIP_MOCK_DATA.map((info) => (
+          <Card icon="/profile.svg" shipInfo={info} />
+        ))}
       </Flex>
     </div>
   )
