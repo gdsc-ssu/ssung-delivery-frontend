@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./index.tsx",
   "dependencies": {
+    "@common/utils": "workspace:^1.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "react": "^18.2.0",
