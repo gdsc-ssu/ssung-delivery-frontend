@@ -3,8 +3,8 @@ import Recent from './App.recent'
 import SearchBar from './App.searchBar'
 import Shipping from './App.shipping'
 import '../styles/global.css'
-import { BodyContainer, Spacer } from '../component/Layout'
 import { useCallback, useState } from 'react'
+import { BodyContainer, Spacer } from '@common/ssung-ui/components/Layout'
 
 function App() {
   const [searchID, setSearchID] = useState<string>()

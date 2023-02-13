@@ -1,7 +1,10 @@
+import {
+  Card,
+  ComponentContainer,
+  Flex,
+  SubTitle,
+} from '@common/ssung-ui/components'
 import { memo } from 'react'
-import Card from '../component/Card'
-import { ComponentContainer, Flex } from '../component/Layout'
-import { SubTitle } from '../component/Text'
 import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 
 const Recent = () => {

@@ -1,7 +1,5 @@
-import styled from '@emotion/styled'
+import { ComponentContainer, Flex, Title } from '@common/ssung-ui/components'
 import { memo } from 'react'
-import { ComponentContainer, Flex } from '../component/Layout'
-import { Text, Title } from '../component/Text'
 interface HeaderProps {
   count: number
   profileThumb: string

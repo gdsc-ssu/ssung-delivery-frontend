@@ -1,9 +1,13 @@
+import {
+  Card,
+  CardStack,
+  ComponentContainer,
+  Flex,
+  ShipHistory,
+  Spacer,
+  SubTitle,
+} from '@common/ssung-ui/components'
 import { memo } from 'react'
-import Card from '../component/Card'
-import CardStack from '../component/CardStack'
-import { ComponentContainer, Flex, Spacer } from '../component/Layout'
-import ShipHistory from '../component/ShipHistory'
-import { SubTitle } from '../component/Text'
 import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 
 const Shipping = () => {

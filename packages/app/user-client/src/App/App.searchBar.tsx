@@ -1,7 +1,6 @@
+import { Camera, ComponentContainer, Flex } from '@common/ssung-ui/components'
 import styled from '@emotion/styled'
 import { Dispatch, memo, SetStateAction, useState } from 'react'
-import Camera from '../component/Camera'
-import { ComponentContainer, Flex } from '../component/Layout'
 
 interface SearchBarProps {
   searchID?: string
