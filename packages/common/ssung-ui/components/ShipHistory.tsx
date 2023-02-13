@@ -1,14 +1,17 @@
 import styled from '@emotion/styled'
 import { Flex } from './Layout'
-import Progress from '../component/ProgressBar'
+import Progress from './ProgressBar'
 import { Text } from './Text'
-import { ShipHistoryType } from '../Model/ship'
 
+interface ShipHistoryType {
+  done: boolean
+  state: string
+  date: string
+}
 interface ShipHistoryProps {
   history: ShipHistoryType[]
   progress: string
 }
-
 const ShipHistory = (props: ShipHistoryProps) => {
   return (
     <ShipHistoryContainer>
