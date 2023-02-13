@@ -1,0 +1,18 @@
+{
+  "name": "@common/ssung-ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./index.tsx",
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "react": "^18.2.0",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/styled-system": "5.1.16",
+    "typescript": "^4.9.3"
+  }
+}
