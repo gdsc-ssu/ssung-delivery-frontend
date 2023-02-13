@@ -14,6 +14,10 @@ const BodyContainer = styled.div`
   min-width: 320px;
 `
 
+const ComponentContainer = styled.div`
+  padding: 0 1rem;
+`
+
 const Spacer = styled.div(({ height }: { height?: string }) => [
   `height: ${height}; width: 100%;`,
 ])
@@ -28,4 +32,4 @@ const Flex = styled.div<FlexProps>`
   cursor: pointer;
 `
 
-export { BodyContainer, Spacer, Flex }
+export { BodyContainer, ComponentContainer, Spacer, Flex }

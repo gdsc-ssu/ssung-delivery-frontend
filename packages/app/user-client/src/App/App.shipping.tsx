@@ -1,19 +1,34 @@
+import {
+  Card,
+  CardStack,
+  ComponentContainer,
+  Flex,
+  ShipHistory,
+  Spacer,
+  SubTitle,
+} from '@common/ssung-ui/components'
 import { memo } from 'react'
-import { Flex, Spacer } from '../component/Layout'
-import { SubTitle } from '../component/Text'
+import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 
 const Shipping = () => {
-  // 배송 중인 정보 카드 스택
-  // 배송 중인 정보 카드 위치 (진행 상태)
   return (
-    <div>
+    <ComponentContainer>
       <SubTitle>배송 중</SubTitle>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
-        <div>카드 스택</div>
-        <div>배송 현재 진행 바</div>
+        <CardStack
+          elements={[
+            <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble />,
+            <Card shipInfo={SHIP_MOCK_DATA[1]} expandalble />,
+            <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble />,
+          ]}
+        />
+        <ShipHistory
+          progress={SHIP_MOCK_DATA[0].progress}
+          history={SHIP_MOCK_DATA[0].history}
+        />
       </Flex>
-    </div>
+    </ComponentContainer>
   )
 }
 
