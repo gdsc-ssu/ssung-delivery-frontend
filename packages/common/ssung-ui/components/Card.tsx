@@ -2,17 +2,27 @@ import styled from '@emotion/styled'
 import { Flex, Spacer } from './Layout'
 import { Text } from './Text'
 import ProgressBar from './ProgressBar'
-import { ShipData, ShipHistoryType } from '../Model/ship'
 
+interface HistoryType {
+  state: string
+  date: string
+  done: boolean
+}
+interface InfoType {
+  id: string
+  keywords: string[]
+  product: string
+  progress: string
+  history: HistoryType[]
+}
 interface CardProps {
-  expand?: boolean
   expandalble?: boolean
   icon?: string
-  shipInfo: ShipData
+  shipInfo: InfoType
 }
 
 const Card = (props: CardProps) => {
-  const getLastShipState = (history: ShipHistoryType[]) => {
+  const getLastShipState = (history: HistoryType[]) => {
     const lastState = history.filter((hist) => hist.done === true)
     return lastState[lastState.length - 1]
   }
@@ -21,7 +31,7 @@ const Card = (props: CardProps) => {
     <Container>
       <Flex justifyContent={'space-between'}>
         <div>
-          {props.shipInfo.keywords.map((word) => (
+          {props.shipInfo.keywords.map((word: string) => (
             <>
               <Text lineHeight={'1.15rem'}>{word}</Text>
               <br />
