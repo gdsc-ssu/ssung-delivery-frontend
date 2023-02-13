@@ -34,7 +34,10 @@ const CardStack = (props: CardStackProps) => {
       if (deltaX > 50) {
         if (showedCardFloor < props.elements.length) {
           showedCardFloor++
-          $topCard.setAttribute('style', 'transform: translate3d(-400px, 0, 0)')
+          $topCard.setAttribute(
+            'style',
+            'transform: translate3d(-1200px, 0, 0)'
+          )
         }
       } else if (deltaX < 0) {
         if (deltaX < -50) {
@@ -43,7 +46,7 @@ const CardStack = (props: CardStackProps) => {
         } else {
           $prevTopCard?.setAttribute(
             'style',
-            'transform: translate3d(-400px, 0, 0)'
+            'transform: translate3d(-1200px, 0, 0)'
           )
         }
       } else {
@@ -72,7 +75,7 @@ const CardStack = (props: CardStackProps) => {
         if (showedCardFloor === props.elements.length) return
         $topCard.setAttribute(
           'style',
-          `transform: translate3d(${-1 * deltaX}px, 0, 0)`
+          `transform: translate3d(${-1 * deltaX}px, 0, 0); z-index: 2`
         )
       }
     }
