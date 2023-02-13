@@ -1,12 +1,5 @@
 import styled from '@emotion/styled'
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 
 interface CardStackProps {
   elements: ReactNode[]
@@ -44,8 +37,15 @@ const CardStack = (props: CardStackProps) => {
           $topCard.setAttribute('style', 'transform: translate3d(-400px, 0, 0)')
         }
       } else if (deltaX < 0) {
-        $prevTopCard?.setAttribute('style', 'transform: ')
-        if (showedCardFloor > 1) showedCardFloor--
+        if (deltaX < -50) {
+          $prevTopCard?.setAttribute('style', 'transform: ')
+          if (showedCardFloor > 1) showedCardFloor--
+        } else {
+          $prevTopCard?.setAttribute(
+            'style',
+            'transform: translate3d(-400px, 0, 0)'
+          )
+        }
       } else {
         $topCard.setAttribute('style', 'transform: ')
       }
