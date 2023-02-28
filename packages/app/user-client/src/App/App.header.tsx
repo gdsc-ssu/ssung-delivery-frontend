@@ -1,7 +1,5 @@
-import styled from '@emotion/styled'
+import { ComponentContainer, Flex, Title } from '@common/ssung-ui/components'
 import { memo } from 'react'
-import { Flex } from '../component/Layout'
-import { Text, Title } from '../component/Text'
 interface HeaderProps {
   count: number
   profileThumb: string
@@ -9,11 +7,11 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   return (
-    <div>
+    <ComponentContainer>
       <Flex flexDirection={'row'} justifyContent={'space-between'}>
         <div>
           <Title>
-            <Text color={'var(--primary)'}>{props.count}건</Text>이
+            <Title color={'var(--primary)'}>{props.count}건</Title>이
           </Title>
           <br />
           <Title>배송 중이에요.</Title>
@@ -22,7 +20,7 @@ const Header = (props: HeaderProps) => {
           <img src={props.profileThumb} alt="프로필 사진" />
         </div>
       </Flex>
-    </div>
+    </ComponentContainer>
   )
 }
 
