@@ -4,6 +4,7 @@ import '../styles/global.css'
 import { BodyContainer, Spacer } from '../component/Layout'
 import { useCallback, useState } from 'react'
 import styled from '@emotion/styled';
+import Form from './App.form'
 
 function App() {
     const [searchID, setSearchID] = useState<string>()
@@ -14,7 +15,10 @@ function App() {
             <Spacer height="2rem" />
 
             <Header logo={'../logo.svg'} username={'카리나'} profileThumb={'../profile.svg'} />
-            <Spacer height="3rem" />
+            <Spacer height="2rem" />
+            <SenderWrapper>
+                <Form />
+            </SenderWrapper>
         </Container>
     )
 }
@@ -22,6 +26,16 @@ function App() {
 const Container = styled.div`
     width: 100%;
     height: 100vh;
+`;
+
+const SenderWrapper = styled.div`
+    width: 88%;
+    height: 87vh;
+    padding: 2rem;
+    background-color: #ffffff;
+    margin: 0 0 0 12%;
+    box-shadow: -2px -2px 15px lightgray;
+    border-radius: 3rem 0 0 0;
 `;
 
 export default App

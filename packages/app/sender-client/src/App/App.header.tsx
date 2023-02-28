@@ -23,7 +23,7 @@ const Header = (props: SenderHeaderProps) => {
                             "height":"40px",
                             "border":"none",
                             "borderRadius":"0.3rem",
-                            "boxShadow":"3px 3px 3px lightgray",
+                            "boxShadow":"3px 3px 10px lightgray",
                         }}
                     />
                     <button type="button"
@@ -33,7 +33,7 @@ const Header = (props: SenderHeaderProps) => {
                             "backgroundColor":"#ffffff",
                             "border":"none",
                             "borderRadius":"0.3rem",
-                            "boxShadow":"3px 3px 3px lightgray",
+                            "boxShadow":"3px 3px 10px lightgray",
                             "margin":"0 0.5rem"
                         }}
                     >검색</button>
@@ -55,7 +55,7 @@ const ProfileBox = styled.div`
     height: 50px;
     background-color: #ffffff;
     border-radius: 0.3rem;
-    box-shadow: 3px 3px 3px lightgray;
+    box-shadow: 3px 3px 10px lightgray;
 `;
 
 export default Header;
