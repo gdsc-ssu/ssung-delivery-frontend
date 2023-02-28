@@ -29,13 +29,13 @@ const Container = styled.div`
 `;
 
 const SenderWrapper = styled.div`
-    width: 88%;
+    width: 87%;
     height: 87vh;
-    padding: 2rem;
+    padding: 1.5rem 0.5rem;
     background-color: #ffffff;
     margin: 0 0 0 12%;
     box-shadow: -2px -2px 15px lightgray;
-    border-radius: 3rem 0 0 0;
+    border-radius: 1.5rem 0 0 0;
 `;
 
 export default App
