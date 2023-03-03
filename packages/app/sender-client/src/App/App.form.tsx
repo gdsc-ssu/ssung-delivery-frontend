@@ -2,8 +2,6 @@ import { useState, memo } from 'react';
 import { ComponentContainer, Flex, SubTitle} from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 
-const [selected, setSeleceted] = useState('');
-
 interface ShipState {
     value: string,
     disabled?: boolean,
@@ -14,7 +12,7 @@ interface ShipState {
  * SelectBox options
  */
 const OPTIONS: ShipState[] = [
-    {value: "default", name:"배송 상태를 선택해주세요.", disabled:true},
+    {value: "default", name:"배송 상태를 선택해주세요."},
     {value: "sending", name:"발송"},
     {value: "collecting", name:"집하"},
     {value: "shipping", name:"배송 중"},
@@ -131,7 +129,7 @@ const Select = styled.select`
         color: #bababa;
     }
 
-    &::focus {
+    &:focus {
         outline: none;
     }
 `;
