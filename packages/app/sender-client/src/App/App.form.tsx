@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import { ComponentContainer, Flex, SubTitle} from '@common/ssung-ui/components';
+import { Button, ComponentContainer, Flex, SubTitle} from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 
 interface ShipState {
@@ -65,7 +65,12 @@ const Form = () => {
                     <SelectBox options={OPTIONS} defaultValue="default"></SelectBox>
                 </FlexForm>
             </Flex>
-
+            <ButtonBox>
+                <Flex flexDirection={'column'} justifyContent={'space-between'}>
+                    <Button text={'초기화'} color={'#7b7b7b'} bgcolor={'#ffffff'} />
+                    <Button text={'검색'} color={'#ffffff'} bgcolor={'#07d39f'} />
+                </Flex>
+            </ButtonBox>
         </FormContainer>
     )
 }
@@ -133,5 +138,12 @@ const Select = styled.select`
         outline: none;
     }
 `;
+
+const ButtonBox = styled.div`
+    position: absolute;
+    top: 10.5rem;
+    right: 10rem;
+`;
+
 
 export default Form;
