@@ -25,10 +25,10 @@ const ButtonStyled = styled.button`
     padding: 5px 10px;
     font-size: 1rem;
     line-height: 1.5;
-
+    margin: 15px;
     border-radius: 5px;
     border: none;
-    box-shadow: 3px 3px 10px lightgray;
+    box-shadow: 3px 10px 10px lightgray;
 `;
 
 export default Button;
