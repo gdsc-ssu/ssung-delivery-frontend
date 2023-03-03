@@ -2,6 +2,25 @@ import { useState, memo } from 'react';
 import { ComponentContainer, Flex, SubTitle} from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 
+const [selected, setSeleceted] = useState('');
+
+interface ShipState {
+    value: string,
+    disabled?: boolean,
+    name: string
+}
+
+/**
+ * SelectBox options
+ */
+const OPTIONS: ShipState[] = [
+    {value: "default", name:"배송 상태를 선택해주세요.", disabled:true},
+    {value: "sending", name:"발송"},
+    {value: "collecting", name:"집하"},
+    {value: "shipping", name:"배송 중"},
+    {value: "arrival", name:"배송 완료"},
+];
+
 const Form = () => {
     return (
         <FormContainer>
@@ -43,15 +62,30 @@ const Form = () => {
                         aria-required="true"
                         style={{"width":"250px"}} />
                 </FlexForm>
-                <FlexForm style={{"marginRight":"50px"}}>
+                <FlexForm style={{"marginLeft":"-20px"}}>
                     <label style={{"marginTop":"10px"}}>배송 상태</label>
-                    <InputForm type="text" placeholder='' />
+                    <SelectBox options={OPTIONS} defaultValue="default"></SelectBox>
                 </FlexForm>
             </Flex>
 
         </FormContainer>
     )
 }
+
+const SelectBox = (props: ShipState) => {
+    return (
+        <Select>
+            {props.options.map((option) => (
+                <option
+                    value={option.value}
+                    defaultValue={props.defaultValue === option.value}
+                >
+                    {option.name}
+                </option>
+            ))}
+        </Select>
+    );
+};
 
 const FormContainer = styled.div`
     width: 1500px;
@@ -82,6 +116,23 @@ const InputForm = styled.input`
 
     &::placeholder {
         color: #bababa;
+    }
+`;
+
+const Select = styled.select`
+    width: 200px;
+    height: 30px;
+    border: none;
+    color: #bababa;
+    border-radius: 0.25rem;
+    box-shadow: 3px 3px 10px lightgray;
+
+    &::placeholder {
+        color: #bababa;
+    }
+
+    &::focus {
+        outline: none;
     }
 `;
 
