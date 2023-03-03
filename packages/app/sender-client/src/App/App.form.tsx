@@ -8,22 +8,40 @@ const Form = () => {
             <Flex>
                 <FlexForm>
                     <label style={{"marginTop":"10px"}}>이름</label>
-                    <InputForm type="text" placeholder='이름' />
+                    <InputForm type="text" 
+                        id='name'
+                        name='name'
+                        placeholder='이름' 
+                    />
                 </FlexForm>
                 <FlexForm>
                     <label style={{"marginTop":"10px"}}>전화번호</label>
-                    <InputForm type="tel" placeholder='전화번호' />
+                    <InputForm type="tel" 
+                        id='tel'
+                        name='tel'
+                    placeholder='전화번호' />
                 </FlexForm>
                 <FlexForm>
                     <label style={{"marginTop":"10px"}}>라벨지</label>
-                    <InputForm type="text" placeholder='식별자를 입력해주세요' />
+                    <InputForm type="text" 
+                        id='identifier'
+                        name='identifier'
+                    placeholder='식별자를 입력해주세요' />
                 </FlexForm>
             </Flex>
             <Flex>
-                <FlexForm style={{"width":"560px"}}>
-                    <label style={{"marginTop":"10px"}}>날짜</label>
-                    <InputForm type="date" placeholder='' style={{"width":"250px"}} />
-                    <InputForm type="date" placeholder='' style={{"width":"250px"}} />
+                <FlexForm style={{"width":"710px"}}>
+                    <label style={{"marginTop":"10px", "marginRight":"-10px"}}>날짜</label>
+                    <InputForm type="date" 
+                        name='start_data'
+                        required
+                        aria-required="true"
+                        style={{"width":"250px"}} />
+                    <InputForm type="date" 
+                        name='end_data'
+                        required
+                        aria-required="true"
+                        style={{"width":"250px"}} />
                 </FlexForm>
                 <FlexForm style={{"marginRight":"50px"}}>
                     <label style={{"marginTop":"10px"}}>배송 상태</label>
@@ -36,8 +54,8 @@ const Form = () => {
 }
 
 const FormContainer = styled.div`
-    width: 1400px;
-    height: 130px;
+    width: 1500px;
+    height: 110px;
     padding: 10px;
     margin: 0 auto;
     background-color: #f3f3f3;
@@ -48,9 +66,9 @@ const FlexForm = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 280px;
+    width: 350px;
     height: 50px;
-    margin: 0.25rem 0;
+    margin: 0.375rem 0;
     font-size: 1rem;
     font-weight: 500;
 `;
@@ -61,6 +79,10 @@ const InputForm = styled.input`
     border: none;
     border-radius: 0.25rem;
     box-shadow: 3px 3px 10px lightgray;
+
+    &::placeholder {
+        color: #bababa;
+    }
 `;
 
 export default Form;
