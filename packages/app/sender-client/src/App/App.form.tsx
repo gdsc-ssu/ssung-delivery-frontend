@@ -146,4 +146,4 @@ const ButtonBox = styled.div`
 `;
 
 
-export default Form;
+export default memo(Form);
