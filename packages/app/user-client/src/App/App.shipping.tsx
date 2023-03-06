@@ -9,6 +9,7 @@ import {
 } from '@common/ssung-ui/components'
 import { memo } from 'react'
 import { SHIP_MOCK_DATA } from '../Model/ship.mock'
+import { Map } from '@common/ssung-ui'
 
 const Shipping = () => {
   return (
@@ -28,6 +29,9 @@ const Shipping = () => {
           history={SHIP_MOCK_DATA[0].history}
         />
       </Flex>
+
+      <Spacer height="1rem" />
+      <Map />
     </ComponentContainer>
   )
 }

@@ -28,6 +28,8 @@ function App() {
       <Spacer height="3rem" />
 
       <Recent />
+
+      <Spacer height="3rem" />
     </BodyContainer>
   )
 }
