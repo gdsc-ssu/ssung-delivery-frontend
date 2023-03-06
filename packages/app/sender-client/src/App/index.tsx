@@ -20,7 +20,9 @@ function App() {
             <Spacer height="2rem" />
             <SenderWrapper>
                 <Form />
+                <Spacer height="2rem" />
                 <Upload></Upload>
+                <Spacer height="2rem" />
                 <ShipTable></ShipTable>
             </SenderWrapper>
         </Container>
