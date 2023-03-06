@@ -10,12 +10,13 @@ interface SearchBarProps {
 
 const SearchBar = (props: SearchBarProps) => {
   const [cam, setCam] = useState<boolean>(false)
+  const [qrCodeResult, setQrCodeResult] = useState<string>('')
   // 검색 창 + 버튼
   return (
     <ComponentContainer>
       <Flex alignItems={'center'} justifyContent={'center'} gap={'1rem'}>
-        <input />
-        {cam && <Camera onClose={setCam} />}
+        <input value={qrCodeResult} />
+        {cam && <Camera open={setCam} setResult={setQrCodeResult} />}
         <CameraButton onClick={() => setCam(!cam)}>카메라</CameraButton>
       </Flex>
     </ComponentContainer>
