@@ -15,7 +15,8 @@ const BorderButton = (props: ButtonProps) => {
 }
 
 const ButtonStyled = styled.button`
-    padding: 5px 10px;
+    height: 2.5rem;
+    padding: 0 10px;
     font-size: 0.9rem;
     font-weight: 600;
     line-height: 1.5;
