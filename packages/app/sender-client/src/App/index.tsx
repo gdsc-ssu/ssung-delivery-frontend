@@ -5,6 +5,8 @@ import { BodyContainer, Spacer } from '../component/Layout'
 import { useCallback, useState } from 'react'
 import styled from '@emotion/styled';
 import Form from './App.form'
+import Upload from './App.upload'
+import ShipTable from './App.shipTable'
 
 function App() {
     const [searchID, setSearchID] = useState<string>()
@@ -18,6 +20,8 @@ function App() {
             <Spacer height="2rem" />
             <SenderWrapper>
                 <Form />
+                <Upload></Upload>
+                <ShipTable></ShipTable>
             </SenderWrapper>
         </Container>
     )
@@ -29,11 +33,11 @@ const Container = styled.div`
 `;
 
 const SenderWrapper = styled.div`
-    width: 87%;
+    width: 85%;
     height: 87vh;
     padding: 1.5rem 0.5rem;
     background-color: #ffffff;
-    margin: 0 0 0 12%;
+    margin: 0 0 0 15%;
     box-shadow: -2px -2px 15px lightgray;
     border-radius: 1.5rem 0 0 0;
 `;
