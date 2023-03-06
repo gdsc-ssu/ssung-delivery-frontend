@@ -9,6 +9,7 @@ export interface ShipTableHistoryType {
 export interface ShipTableData {
     id: string
     keywords: string[]
+    receiver: string
     product: string
     progress: string
     history: ShipTableHistoryType[]
