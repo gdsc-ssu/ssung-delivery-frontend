@@ -6,6 +6,7 @@ import Progress from './ProgressBar'
 import ShipHistory from './ShipHistory'
 import { Text, Title, SubTitle } from './Text'
 import Button from './Button'
+import Table from './Table'
 
 export {
   Camera,
@@ -21,4 +22,5 @@ export {
   Title,
   SubTitle,
   Button,
+  Table,
 }
