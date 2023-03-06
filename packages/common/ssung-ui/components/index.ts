@@ -8,6 +8,7 @@ import { Text, Title, SubTitle } from './Text'
 import Button from './Button'
 import BorderButton from './BorderButton'
 import Table from './Table'
+import PrintLabelCard from './PrintLabelCard'
 
 export {
   Camera,
@@ -25,4 +26,5 @@ export {
   Button,
   BorderButton,
   Table,
+  PrintLabelCard
 }
