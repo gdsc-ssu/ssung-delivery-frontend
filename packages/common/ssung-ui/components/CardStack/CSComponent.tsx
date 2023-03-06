@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
+import React from 'react'
 import { ReactNode, useEffect, useRef } from 'react'
 
 interface CardStackProps {
   elements: ReactNode[]
 }
 
-const CardStack = (props: CardStackProps) => {
+const CSComponent = (props: CardStackProps) => {
   const cardStackRef = useRef<HTMLDivElement>(null)
   const cardKey = useRef<number>(0)
 
@@ -16,6 +17,7 @@ const CardStack = (props: CardStackProps) => {
     let startPoint: number
     let lastPoint: number
     let showedCardFloor: number = 1
+
     const onTouchStart = (e: TouchEvent) => {
       startPoint = e.touches[0].screenX
     }
@@ -34,6 +36,7 @@ const CardStack = (props: CardStackProps) => {
       if (deltaX > 50) {
         if (showedCardFloor < props.elements.length) {
           showedCardFloor++
+
           $topCard.setAttribute(
             'style',
             'transform: translate3d(-1200px, 0, 0)'
@@ -42,7 +45,9 @@ const CardStack = (props: CardStackProps) => {
       } else if (deltaX < 0) {
         if (deltaX < -50) {
           $prevTopCard?.setAttribute('style', 'transform: ')
-          if (showedCardFloor > 1) showedCardFloor--
+          if (showedCardFloor > 1) {
+            showedCardFloor--
+          }
         } else {
           $prevTopCard?.setAttribute(
             'style',
@@ -79,6 +84,7 @@ const CardStack = (props: CardStackProps) => {
         )
       }
     }
+
     $.addEventListener('touchstart', onTouchStart)
     $.addEventListener('touchend', onTouchFinish)
     $.addEventListener('touchmove', onTouchMove)
@@ -101,7 +107,7 @@ const CardStack = (props: CardStackProps) => {
   )
 }
 
-export default CardStack
+export default React.memo(CSComponent)
 
 interface CardManagerProps {
   floor: number

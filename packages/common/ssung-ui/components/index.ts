@@ -1,6 +1,6 @@
 import Camera from './Camera'
-import Card from './Card'
-import CardStack from './CardStack'
+import Card from './CardStack/CardComponent'
+import { CSComponent, CSProvider } from './CardStack/index'
 import { BodyContainer, ComponentContainer, Spacer, Flex } from './Layout'
 import Progress from './ProgressBar'
 import ShipHistory from './ShipHistory'
@@ -10,7 +10,8 @@ import Map from './Map'
 export {
   Camera,
   Card,
-  CardStack,
+  CSComponent,
+  CSProvider,
   BodyContainer,
   ComponentContainer,
   Spacer,

@@ -1,13 +1,13 @@
 import {
   Card,
-  CardStack,
+  CSComponent,
   ComponentContainer,
   Flex,
   ShipHistory,
   Spacer,
   SubTitle,
 } from '@common/ssung-ui/components'
-import { memo } from 'react'
+import { memo, useContext } from 'react'
 import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 import { Map } from '@common/ssung-ui'
 
@@ -17,11 +17,11 @@ const Shipping = () => {
       <SubTitle>배송 중</SubTitle>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
-        <CardStack
+        <CSComponent
           elements={[
-            <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble />,
-            <Card shipInfo={SHIP_MOCK_DATA[1]} expandalble />,
-            <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble />,
+            <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble idx={0} />,
+            <Card shipInfo={SHIP_MOCK_DATA[1]} expandalble idx={1} />,
+            <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble idx={2} />,
           ]}
         />
         <ShipHistory
