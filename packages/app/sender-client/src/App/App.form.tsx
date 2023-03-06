@@ -47,20 +47,20 @@ const Form = () => {
                 </FlexForm>
             </Flex>
             <Flex>
-                <FlexForm style={{"width":"710px"}}>
-                    <label style={{"marginTop":"10px", "marginRight":"-10px"}}>날짜</label>
+                <FlexForm style={{"width":"40rem"}}>
+                    <label style={{"marginTop":"0.7rem", "marginRight":"1.3rem", "marginLeft":"0.5rem"}}>날짜</label>
                     <InputForm type="date" 
                         name='start_data'
                         required
                         aria-required="true"
-                        style={{"width":"250px"}} />
+                        style={{"width":"15.5rem"}} />
                     <InputForm type="date" 
                         name='end_data'
                         required
                         aria-required="true"
-                        style={{"width":"250px"}} />
+                        style={{"width":"15.5rem"}} />
                 </FlexForm>
-                <FlexForm style={{"marginLeft":"-20px"}}>
+                <FlexForm>
                     <label style={{"marginTop":"10px"}}>배송 상태</label>
                     <SelectBox options={OPTIONS} defaultValue="default"></SelectBox>
                 </FlexForm>
@@ -91,8 +91,8 @@ const SelectBox = (props: ShipState) => {
 };
 
 const FormContainer = styled.div`
-    width: 1500px;
-    height: 110px;
+    width: 70rem;
+    height: 7rem;
     padding: 10px;
     margin: 0 auto;
     background-color: #f3f3f3;
@@ -103,16 +103,16 @@ const FlexForm = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 350px;
-    height: 50px;
+    width: 20rem;
+    height: 3rem;
     margin: 0.375rem 0;
     font-size: 1rem;
     font-weight: 500;
 `;
 
 const InputForm = styled.input`
-    width: 200px;
-    height: 30px;
+    width: 12rem;
+    height: 2rem;
     border: none;
     border-radius: 0.25rem;
     box-shadow: 3px 3px 10px lightgray;
@@ -123,8 +123,8 @@ const InputForm = styled.input`
 `;
 
 const Select = styled.select`
-    width: 200px;
-    height: 30px;
+    width: 12rem;
+    height: 2rem;
     border: none;
     color: #bababa;
     border-radius: 0.25rem;
@@ -141,8 +141,8 @@ const Select = styled.select`
 
 const ButtonBox = styled.div`
     position: absolute;
-    top: 10.5rem;
-    right: 10rem;
+    top: 20vh;
+    right: 6vw;
 `;
 
 
