@@ -7,7 +7,7 @@ interface CSProviderProps {
 }
 
 const CSProvider = (props: CSProviderProps) => {
-  const [state, dispatch] = useReducer(reducer, { dom: null })
+  const [state, dispatch] = useReducer(reducer, { domIdx: 2 })
   return (
     <CardContext.Provider value={state}>
       <CardDispatchContext.Provider value={dispatch}>
