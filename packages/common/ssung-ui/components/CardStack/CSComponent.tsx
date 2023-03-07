@@ -12,13 +12,22 @@ const CSComponent = (props: CardStackProps) => {
   const cardKey = useRef<number>(0)
 
   const cardStackDispatch = useContext(CardDispatchContext)
-  const dispatchCardStack = (dom: HTMLDivElement) =>
-    cardStackDispatch({ type: 'CS_DOM', dom })
+  const dispatchCardStack = (domIdx: number) =>
+    cardStackDispatch({ type: 'NOW_CARD_IDX', domIdx })
+
+  const updateRootCardIdx = (dom: HTMLDivElement) => {
+    if (!dom) return
+    const showedDoms = [...dom.children].filter(
+      // @ts-ignore
+      (dom) => !dom.attributes?.style
+    )
+
+    return showedDoms.length - 1
+  }
 
   useEffect(() => {
     const $ = cardStackRef.current
     if (!$) return
-    dispatchCardStack($)
 
     let startPoint: number
     let lastPoint: number
@@ -63,6 +72,9 @@ const CSComponent = (props: CardStackProps) => {
       } else {
         $topCard.removeAttribute('style')
       }
+
+      const rootIdx = updateRootCardIdx($)
+      dispatchCardStack(rootIdx || 2)
     }
     const onTouchMove = (e: TouchEvent) => {
       const $topCard =
