@@ -28,8 +28,8 @@ const MapComponent = ({ center, zoom }: MapComponentProps) => {
       style={{
         borderRadius: '0.5rem',
         maxWidth: '600px',
-        width: `${width - 30}px`,
-        height: '300px',
+        width: `100%`,
+        height: '100%',
         overflow: 'hidden',
       }}
     />
