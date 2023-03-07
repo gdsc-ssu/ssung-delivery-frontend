@@ -7,7 +7,7 @@ import {
   Spacer,
   SubTitle,
 } from '@common/ssung-ui/components'
-import { memo, useContext } from 'react'
+import { memo } from 'react'
 import { SHIP_MOCK_DATA } from '../Model/ship.mock'
 import { Map } from '@common/ssung-ui'
 
@@ -24,10 +24,7 @@ const Shipping = () => {
             <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble idx={2} />,
           ]}
         />
-        <ShipHistory
-          progress={SHIP_MOCK_DATA[0].progress}
-          history={SHIP_MOCK_DATA[0].history}
-        />
+        <ShipHistory shipInfo={SHIP_MOCK_DATA} />
       </Flex>
 
       <Spacer height="1rem" />

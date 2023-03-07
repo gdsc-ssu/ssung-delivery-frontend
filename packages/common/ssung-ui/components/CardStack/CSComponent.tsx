@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useContext } from 'react'
 import { ReactNode, useEffect, useRef } from 'react'
+import { CardDispatchContext } from './CSContext'
 
 interface CardStackProps {
   elements: ReactNode[]
@@ -10,9 +11,14 @@ const CSComponent = (props: CardStackProps) => {
   const cardStackRef = useRef<HTMLDivElement>(null)
   const cardKey = useRef<number>(0)
 
+  const cardStackDispatch = useContext(CardDispatchContext)
+  const dispatchCardStack = (dom: HTMLDivElement) =>
+    cardStackDispatch({ type: 'CS_DOM', dom })
+
   useEffect(() => {
     const $ = cardStackRef.current
     if (!$) return
+    dispatchCardStack($)
 
     let startPoint: number
     let lastPoint: number
@@ -44,7 +50,7 @@ const CSComponent = (props: CardStackProps) => {
         }
       } else if (deltaX < 0) {
         if (deltaX < -50) {
-          $prevTopCard?.setAttribute('style', 'transform: ')
+          $prevTopCard?.removeAttribute('style')
           if (showedCardFloor > 1) {
             showedCardFloor--
           }
@@ -55,7 +61,7 @@ const CSComponent = (props: CardStackProps) => {
           )
         }
       } else {
-        $topCard.setAttribute('style', 'transform: ')
+        $topCard.removeAttribute('style')
       }
     }
     const onTouchMove = (e: TouchEvent) => {

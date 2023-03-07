@@ -1,22 +1,48 @@
 import styled from '@emotion/styled'
+import { useContext, useState } from 'react'
+import { CardContext } from './CardStack/CSContext'
 import { Flex } from './Layout'
 import Progress from './ProgressBar'
 import { Text } from './Text'
 
-interface ShipHistoryType {
-  done: boolean
+export interface ShipHistoryType {
   state: string
   date: string
+  done: boolean
+}
+
+export interface ShipData {
+  id: string
+  keywords: string[]
+  product: string
+  progress: string
+  history: ShipHistoryType[]
 }
 interface ShipHistoryProps {
-  history: ShipHistoryType[]
-  progress: string
+  shipInfo: ShipData[]
 }
 const ShipHistory = (props: ShipHistoryProps) => {
+  const cardStackState = useContext(CardContext)
+  const [rootCardIdx, setRootCardIdx] = useState<number>(2)
+
+  const updateRootCardIdx = () => {
+    const csDom = cardStackState.dom
+    if (!csDom) return
+    const showedDoms = [...csDom.children].filter(
+      // @ts-ignore
+      (dom) => !dom.attributes?.style
+    )
+
+    setRootCardIdx(showedDoms.length - 1)
+  }
+
   return (
     <ShipHistoryContainer>
       <div style={{ position: 'sticky', top: 0 }}>
-        <Progress progress={props.progress} orient="vertical" />
+        <Progress
+          progress={props.shipInfo[rootCardIdx].progress}
+          orient="vertical"
+        />
       </div>
 
       <Flex
@@ -24,7 +50,7 @@ const ShipHistory = (props: ShipHistoryProps) => {
         gap={'1rem'}
         style={{ marginLeft: '1rem' }}
       >
-        {props.history.map((item) => (
+        {props.shipInfo[rootCardIdx].history.map((item) => (
           <Flex flexDirection={'column'} gap={'0.25rem'}>
             <Text gray={!item.done}>{item.state}</Text>
             <Text size="sm" gray={!item.done}>

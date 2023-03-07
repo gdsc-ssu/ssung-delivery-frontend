@@ -1,7 +1,7 @@
 // 배송 관련 데이터  interface, type 정의
 // 서버에서 내려오는 타입들 정의
 
-import { ShipData } from './ship'
+import type { ShipData } from './ship'
 
 export const SHIP_MOCK_DATA: ShipData[] = [
   {
