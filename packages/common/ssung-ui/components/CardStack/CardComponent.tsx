@@ -2,22 +2,29 @@ import styled from '@emotion/styled'
 import { Flex, Spacer } from '../Layout'
 import { Text } from '../Text'
 import ProgressBar from '../ProgressBar'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useScreen } from '@common/utils'
 import React from 'react'
 import CardExpand from './CardExpand'
+import { CardContext, CardDispatchContext } from './CSContext'
 
 interface HistoryType {
   state: string
   date: string
   done: boolean
 }
+interface SenderType {
+  name: string
+  phone: string
+}
+
 interface InfoType {
   id: string
   keywords: string[]
   product: string
   progress: string
   history: HistoryType[]
+  sender: SenderType
 }
 interface CardProps {
   expandalble?: boolean
@@ -30,6 +37,11 @@ interface CardProps {
 const Card = (props: CardProps) => {
   const [isExpand, setIsExpand] = useState<boolean>(false)
   const { width } = useScreen()
+  const { domIdx } = useContext(CardContext)
+
+  useEffect(() => {
+    setIsExpand(false)
+  }, [domIdx])
 
   const getLastShipState = (history: HistoryType[]) => {
     const lastState = history.filter((hist) => hist.done === true)
@@ -66,8 +78,8 @@ const Card = (props: CardProps) => {
         <CardExpandedBox>
           <CardExpand
             product={props.shipInfo.product}
-            shipper={'구글'}
-            phone={'02-820-1243'}
+            shipper={props.shipInfo.sender.name}
+            phone={props.shipInfo.sender.phone}
           />
         </CardExpandedBox>
       </Flex>
