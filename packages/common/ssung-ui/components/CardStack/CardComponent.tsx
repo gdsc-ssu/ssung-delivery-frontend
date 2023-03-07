@@ -6,7 +6,8 @@ import { useContext, useEffect, useState } from 'react'
 import { useScreen } from '@common/utils'
 import React from 'react'
 import CardExpand from './CardExpand'
-import { CardContext, CardDispatchContext } from './CSContext'
+import { CardContext } from './CSContext'
+import Map from '../Map'
 
 interface HistoryType {
   state: string
@@ -84,6 +85,12 @@ const Card = (props: CardProps) => {
         </CardExpandedBox>
       </Flex>
 
+      <MapContainer show={isExpand}>
+        <Spacer height="12px" />
+        <Map />
+        <Spacer height="12px" />
+      </MapContainer>
+
       <ProgressBar progress={props.shipInfo.progress} />
 
       {props.expandalble && (
@@ -112,6 +119,13 @@ const CardExpandedBox = styled.div(() => ({
   margin: '0 1rem',
 }))
 
+const MapContainer = styled.div(({ show = false }: { show: boolean }) => ({
+  height: show ? '200px' : '0px',
+  position: 'relative',
+  margin: '1rem',
+  visibility: show ? 'visible' : 'hidden',
+}))
+
 const Container = styled.div(
   ({
     expand = false,
@@ -126,7 +140,7 @@ const Container = styled.div(
     justifyContent: 'space-between',
     position: 'relative',
     width: expand ? expandWidth - 60 : '140px',
-    height: '140px',
+    height: expand ? '364px' : '140px',
     backgroundColor: 'white',
     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
