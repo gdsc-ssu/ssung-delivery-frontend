@@ -6,6 +6,7 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { useScreen } from '@common/utils'
 import { CardContext, CardDispatchContext } from './CSContext'
 import React from 'react'
+import CardExpand from './CardExpand'
 
 interface HistoryType {
   state: string
@@ -23,6 +24,7 @@ interface CardProps {
   expandalble?: boolean
   icon?: string
   idx?: number
+  expandComponent?: React.ReactNode
   shipInfo: InfoType
 }
 
@@ -60,28 +62,41 @@ const Card = (props: CardProps) => {
 
   return (
     <Container expand={isExpand} expandWidth={width} ref={ref}>
-      <Flex justifyContent={'space-between'}>
-        <div>
-          {props.shipInfo.keywords.map((word: string) => (
-            <>
-              <Text lineHeight={'1.15rem'}>{word}</Text>
-              <br />
-            </>
-          ))}
-        </div>
-        {props.icon && <img src={'/profile.svg'} width="32px" />}
+      <Flex>
+        <CardSquareBox>
+          <Flex justifyContent={'space-between'}>
+            <div>
+              {props.shipInfo.keywords.map((word: string) => (
+                <>
+                  <Text lineHeight={'1.15rem'}>{word}</Text>
+                  <br />
+                </>
+              ))}
+            </div>
+            {props.icon && <img src={'/profile.svg'} width="32px" />}
+          </Flex>
+
+          <Spacer height="1rem" />
+
+          <Text gray size="sm">
+            {props.shipInfo.product}
+            || {nowCardIdx}
+          </Text>
+          <br />
+          <Text gray size="sm">
+            {getLastShipState(props.shipInfo.history)?.state || ''}
+          </Text>
+        </CardSquareBox>
+
+        <CardExpandedBox>
+          <CardExpand
+            product={props.shipInfo.product}
+            shipper={'구글'}
+            phone={'02-820-1243'}
+          />
+        </CardExpandedBox>
       </Flex>
 
-      <Spacer height="1rem" />
-
-      <Text gray size="sm">
-        {props.shipInfo.product}
-        || {nowCardIdx}
-      </Text>
-      <br />
-      <Text gray size="sm">
-        {getLastShipState(props.shipInfo.history)?.state || ''}
-      </Text>
       <ProgressBar progress={props.shipInfo.progress} />
 
       {props.expandalble && (
@@ -96,6 +111,19 @@ const Card = (props: CardProps) => {
   )
 }
 export default React.memo(Card)
+
+const CardSquareBox = styled.div`
+  width: 140px;
+  flex-shrink: 0;
+`
+
+const CardExpandedBox = styled.div(() => ({
+  width: '100%',
+  minWidth: '140px',
+  position: 'relative',
+  flexShrink: '1',
+  margin: '0 1rem',
+}))
 
 const Container = styled.div(
   ({
@@ -119,6 +147,7 @@ const Container = styled.div(
     transition: 'all ease 1s',
     zIndex: 1,
     maxWidth: '580px',
+    overflow: 'hidden',
   })
 )
 
