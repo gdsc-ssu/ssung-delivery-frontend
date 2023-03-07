@@ -57,12 +57,16 @@ const CSComponent = (props: CardStackProps) => {
             'transform: translate3d(-1200px, 0, 0)'
           )
         }
+        const rootIdx = updateRootCardIdx($)
+        dispatchCardStack(rootIdx || 2)
       } else if (deltaX < 0) {
         if (deltaX < -50) {
           $prevTopCard?.removeAttribute('style')
           if (showedCardFloor > 1) {
             showedCardFloor--
           }
+          const rootIdx = updateRootCardIdx($)
+          dispatchCardStack(rootIdx || 2)
         } else {
           $prevTopCard?.setAttribute(
             'style',
@@ -72,9 +76,6 @@ const CSComponent = (props: CardStackProps) => {
       } else {
         $topCard.removeAttribute('style')
       }
-
-      const rootIdx = updateRootCardIdx($)
-      dispatchCardStack(rootIdx || 2)
     }
     const onTouchMove = (e: TouchEvent) => {
       const $topCard =
