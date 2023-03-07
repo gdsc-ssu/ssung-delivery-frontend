@@ -2,9 +2,9 @@ import type { CardAction, CardType } from './CSContext'
 
 const reducer = (state: CardType, action: CardAction): CardType => {
   switch (action.type) {
-    case 'SET_NOW_CARD':
+    case 'CS_DOM':
       return {
-        nowCardIdx: action.nowCardIdx,
+        dom: action.dom,
       }
     default:
       throw new Error('Unhandled action')

@@ -1,11 +1,11 @@
 import { createContext, Dispatch, ReactNode } from 'react'
 
 export interface CardType {
-  nowCardIdx: number
+  dom: HTMLDivElement | null
 }
 
-export type CardAction = { type: 'SET_NOW_CARD'; nowCardIdx: number }
+export type CardAction = { type: 'CS_DOM'; dom: HTMLDivElement }
 export type Cardispatch = Dispatch<CardAction>
 
-export const CardContext = createContext<CardType>({ nowCardIdx: 2 })
+export const CardContext = createContext<CardType>({ dom: null })
 export const CardDispatchContext = createContext<Cardispatch>(() => {})
