@@ -2,9 +2,8 @@ import styled from '@emotion/styled'
 import { Flex, Spacer } from '../Layout'
 import { Text } from '../Text'
 import ProgressBar from '../ProgressBar'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useScreen } from '@common/utils'
-import { CardContext, CardDispatchContext } from './CSContext'
 import React from 'react'
 import CardExpand from './CardExpand'
 
@@ -31,29 +30,6 @@ interface CardProps {
 const Card = (props: CardProps) => {
   const [isExpand, setIsExpand] = useState<boolean>(false)
   const { width } = useScreen()
-  const ref = useRef<HTMLDivElement>(null)
-
-  const { nowCardIdx } = useContext(CardContext)!
-  const cardIdDispatch = useContext(CardDispatchContext)
-  const updateCardId = (idx: number) =>
-    cardIdDispatch({ type: 'SET_NOW_CARD', nowCardIdx: idx })
-
-  useEffect(() => {
-    let observer: IntersectionObserver
-    if (ref) {
-      observer = new IntersectionObserver(
-        (dom) => {
-          const isItVisible = dom[0].isIntersecting
-          const index = props.idx || 0
-          console.log(isItVisible, index)
-          updateCardId(isItVisible ? index : index - 1)
-        },
-        { threshold: 1 }
-      )
-      observer.observe(ref.current!)
-    }
-    return () => observer && observer.disconnect()
-  }, [ref])
 
   const getLastShipState = (history: HistoryType[]) => {
     const lastState = history.filter((hist) => hist.done === true)
@@ -61,7 +37,7 @@ const Card = (props: CardProps) => {
   }
 
   return (
-    <Container expand={isExpand} expandWidth={width} ref={ref}>
+    <Container expand={isExpand} expandWidth={width}>
       <Flex>
         <CardSquareBox>
           <Flex justifyContent={'space-between'}>
@@ -80,7 +56,6 @@ const Card = (props: CardProps) => {
 
           <Text gray size="sm">
             {props.shipInfo.product}
-            || {nowCardIdx}
           </Text>
           <br />
           <Text gray size="sm">
