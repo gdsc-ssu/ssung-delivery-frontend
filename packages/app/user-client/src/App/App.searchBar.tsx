@@ -11,13 +11,22 @@ interface SearchBarProps {
 const SearchBar = (props: SearchBarProps) => {
   const [cam, setCam] = useState<boolean>(false)
   const [qrCodeResult, setQrCodeResult] = useState<string>('')
+
+  const fetchShipmentInfo = () => {
+    setQrCodeResult('')
+  }
+
   // 검색 창 + 버튼
   return (
     <ComponentContainer>
       <Flex alignItems={'center'} justifyContent={'center'} gap={'1rem'}>
-        <input value={qrCodeResult} />
+        <input
+          value={qrCodeResult}
+          onChange={(e) => setQrCodeResult(e.target.value)}
+        />
         {cam && <Camera open={setCam} setResult={setQrCodeResult} />}
-        <CameraButton onClick={() => setCam(!cam)}>카메라</CameraButton>
+        <ActionButton onClick={() => setCam(!cam)}>카메라</ActionButton>
+        <ActionButton onClick={fetchShipmentInfo}>검색</ActionButton>
       </Flex>
     </ComponentContainer>
   )
@@ -25,6 +34,6 @@ const SearchBar = (props: SearchBarProps) => {
 
 export default memo(SearchBar)
 
-const CameraButton = styled.button`
+const ActionButton = styled.button`
   z-index: 2;
 `
