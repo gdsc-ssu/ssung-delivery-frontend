@@ -23,7 +23,7 @@ function App() {
                 <Spacer height="2rem" />
                 <Upload></Upload>
                 <Spacer height="2rem" />
-                <ShipTable></ShipTable>
+                <ShipTable />
             </SenderWrapper>
         </Container>
     )
