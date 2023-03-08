@@ -1,3 +1,4 @@
+import { hangul } from '@common/utils'
 import styled from '@emotion/styled'
 import { Flex } from '../Layout'
 import { Text } from '../Text'
@@ -13,10 +14,14 @@ const CardExpand = (props: CardExpand) => {
     <Container>
       <Flex flexDirection={'column'}>
         <Text lineHeight={'1.25rem'}>
-          <Text color={'var(--primary)'}>{props.shipper}</Text> 이 발송한
+          <>
+            <Text color={'var(--primary)'}>{props.shipper}</Text>{' '}
+            {hangul.josa(props.shipper, '이,가')} 발송한
+          </>
         </Text>
         <Text lineHeight={'1.25rem'}>
-          <Text color={'var(--primary)'}>{props.product}</Text> 을
+          <Text color={'var(--primary)'}>{props.product}</Text>{' '}
+          {hangul.josa(props.product, '을,를')}
         </Text>
         <Text lineHeight={'1.25rem'}>배송 중이에요</Text>
       </Flex>
