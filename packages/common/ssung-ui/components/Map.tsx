@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, ReactElement } from 'react'
 import { Wrapper, Status } from '@googlemaps/react-wrapper'
-import { useScreen } from '@common/utils'
 
 interface MapComponentProps {
   center: google.maps.LatLngLiteral
@@ -8,7 +7,6 @@ interface MapComponentProps {
 }
 
 const MapComponent = ({ center, zoom }: MapComponentProps) => {
-  const { width } = useScreen()
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -46,7 +44,7 @@ const MapWrapper = () => {
   const zoom = 4
 
   return (
-    <Wrapper apiKey="AIzaSyAFdBw8peFIfuZx5kmyM8oag_GaPX3tGL4" render={render}>
+    <Wrapper apiKey="AIzaSyBRDbh6p1NrUFglDS0J4sWUOrmam1jr2Tk" render={render}>
       <MapComponent center={center} zoom={zoom} />
     </Wrapper>
   )
