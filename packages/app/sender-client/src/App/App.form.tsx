@@ -62,7 +62,7 @@ const Form = () => {
                 </FlexForm>
                 <FlexForm>
                     <label style={{"marginTop":"10px"}}>배송 상태</label>
-                    <SelectBox options={OPTIONS} defaultValue="default"></SelectBox>
+                    <SelectBox options={OPTIONS} defaultValue="default" />
                 </FlexForm>
             </Flex>
             <ButtonBox>
