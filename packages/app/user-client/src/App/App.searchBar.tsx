@@ -25,8 +25,12 @@ const SearchBar = (props: SearchBarProps) => {
           onChange={(e) => setQrCodeResult(e.target.value)}
         />
         {cam && <Camera open={setCam} setResult={setQrCodeResult} />}
-        <ActionButton onClick={() => setCam(!cam)}>카메라</ActionButton>
-        <ActionButton onClick={fetchShipmentInfo}>검색</ActionButton>
+        <ActionButton onClick={() => setCam(!cam)}>
+          {cam ? 'X' : '카메라'}
+        </ActionButton>
+        <ActionButton style={{ zIndex: 0 }} onClick={fetchShipmentInfo}>
+          검색
+        </ActionButton>
       </Flex>
     </ComponentContainer>
   )
