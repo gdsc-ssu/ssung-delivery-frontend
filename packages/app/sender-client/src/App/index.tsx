@@ -13,7 +13,7 @@ function App() {
     const onSearchShipping = useCallback(() => {}, [])
 
     return (
-        <Container style={{"width":"100%", "backgroundColor":"#f3f3f3"}}>
+        <Container>
             <Spacer height="2rem" />
 
             <Header logo={'../logo.svg'} username={'카리나'} profileThumb={'../profile.svg'} />
@@ -32,6 +32,7 @@ function App() {
 const Container = styled.div`
     width: 100%;
     height: 100vh;
+    "backgroundColor":"#f3f3f3"
 `;
 
 const SenderWrapper = styled.div`
