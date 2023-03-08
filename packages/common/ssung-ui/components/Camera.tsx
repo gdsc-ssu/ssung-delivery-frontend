@@ -25,6 +25,7 @@ const Camera = (props: CameraProps) => {
 
   return (
     <Container>
+      <UnderVideo>로딩 중</UnderVideo>
       <Video autoPlay ref={ref} />
       <ParsedData>
         <Flex style={{ padding: '1rem' }}>
@@ -52,6 +53,24 @@ const Container = styled.div`
   left: 0;
   background-color: var(--bg-transparent);
   z-index: 2;
+`
+
+const UnderVideo = styled.div`
+  border-radius: 1rem;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Video = styled.video`
