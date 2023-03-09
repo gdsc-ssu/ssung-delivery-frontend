@@ -9,6 +9,7 @@ import Button from './Button'
 import BorderButton from './BorderButton'
 import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
+import CustomForm from './CustomForm'
 
 export {
   Camera,
@@ -26,5 +27,6 @@ export {
   Button,
   BorderButton,
   Table,
-  PrintLabelCard
+  PrintLabelCard,
+  CustomForm,
 }
