@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import { Button, ComponentContainer, Flex, SubTitle} from '@common/ssung-ui/components';
+import { Button, ComponentContainer, Flex, SubTitle, CustomForm } from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 
 interface ShipState {
@@ -21,57 +21,7 @@ const OPTIONS: ShipState[] = [
 
 const Form = () => {
     return (
-        <FormContainer>
-            <Flex>
-                <FlexForm>
-                    <label style={{"marginTop":"10px"}}>이름</label>
-                    <InputForm type="text" 
-                        id='name'
-                        name='name'
-                        placeholder='이름' 
-                    />
-                </FlexForm>
-                <FlexForm>
-                    <label style={{"marginTop":"10px"}}>전화번호</label>
-                    <InputForm type="tel" 
-                        id='tel'
-                        name='tel'
-                    placeholder='전화번호' />
-                </FlexForm>
-                <FlexForm>
-                    <label style={{"marginTop":"10px"}}>라벨지</label>
-                    <InputForm type="text" 
-                        id='identifier'
-                        name='identifier'
-                    placeholder='식별자를 입력해주세요' />
-                </FlexForm>
-            </Flex>
-            <Flex>
-                <FlexForm style={{"width":"40rem"}}>
-                    <label style={{"marginTop":"0.7rem", "marginRight":"1.3rem", "marginLeft":"0.5rem"}}>날짜</label>
-                    <InputForm type="date" 
-                        name='start_data'
-                        required
-                        aria-required="true"
-                        style={{"width":"15.5rem"}} />
-                    <InputForm type="date" 
-                        name='end_data'
-                        required
-                        aria-required="true"
-                        style={{"width":"15.5rem"}} />
-                </FlexForm>
-                <FlexForm>
-                    <label style={{"marginTop":"10px"}}>배송 상태</label>
-                    <SelectBox options={OPTIONS} defaultValue="default" />
-                </FlexForm>
-            </Flex>
-            <ButtonBox>
-                <Flex flexDirection={'column'} justifyContent={'space-between'}>
-                    <Button text={'초기화'} color={'#7b7b7b'} bgcolor={'#ffffff'} />
-                    <Button text={'검색'} color={'#ffffff'} bgcolor={'#07d39f'} />
-                </Flex>
-            </ButtonBox>
-        </FormContainer>
+        <CustomForm />
     )
 }
 
@@ -140,10 +90,9 @@ const Select = styled.select`
 `;
 
 const ButtonBox = styled.div`
-    position: absolute;
-    top: 20vh;
-    right: 6vw;
+    position: relative;
+    top: -130px;
+    right: -62rem;
 `;
-
 
 export default memo(Form);
