@@ -1,6 +1,6 @@
 import {
   Card,
-  CardStack,
+  CSComponent,
   ComponentContainer,
   Flex,
   ShipHistory,
@@ -16,18 +16,17 @@ const Shipping = () => {
       <SubTitle>배송 중</SubTitle>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
-        <CardStack
+        <CSComponent
           elements={[
-            <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble />,
-            <Card shipInfo={SHIP_MOCK_DATA[1]} expandalble />,
-            <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble />,
+            <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble idx={0} />,
+            <Card shipInfo={SHIP_MOCK_DATA[1]} expandalble idx={1} />,
+            <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble idx={2} />,
           ]}
         />
-        <ShipHistory
-          progress={SHIP_MOCK_DATA[0].progress}
-          history={SHIP_MOCK_DATA[0].history}
-        />
+        <ShipHistory shipInfo={SHIP_MOCK_DATA} />
       </Flex>
+
+      <Spacer height="1rem" />
     </ComponentContainer>
   )
 }
