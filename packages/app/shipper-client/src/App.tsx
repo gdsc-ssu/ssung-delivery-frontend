@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 function App() {
-  return <div className="App">shipper-client</div>;
+  return <div className="App">shipper-client</div>
 }
 
-export default App;
+export default App
