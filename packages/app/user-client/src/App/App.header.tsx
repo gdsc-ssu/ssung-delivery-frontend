@@ -1,6 +1,6 @@
 import { ComponentContainer, Flex, Title } from '@common/ssung-ui/components'
 import { memo } from 'react'
-import CONFIG from 'site.config'
+// import CONFIG from 'site.config'
 
 const Header = () => {
   return (
@@ -14,7 +14,7 @@ const Header = () => {
           <Title>배송 중이에요.</Title>
         </div>
         <div>
-          <img src={CONFIG.profileThumbUrl} alt="프로필 사진" />
+          <img src={'./profile.svg'} alt="프로필 사진" />
         </div>
       </Flex>
     </ComponentContainer>
