@@ -15,7 +15,7 @@ function App() {
       <BodyContainer>
         <Spacer height="3rem" />
 
-        <Header count={2} profileThumb={'./profile.svg'} />
+        <Header />
         <Spacer height="3rem" />
 
         <SearchBar
