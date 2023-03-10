@@ -16,7 +16,7 @@ const BodyContainer = styled.div`
 `
 
 const ComponentContainer = styled.div`
-  padding: 0 1rem;
+  margin: 0 1rem;
 `
 
 const Spacer = styled.div(({ height }: { height?: string }) => [
