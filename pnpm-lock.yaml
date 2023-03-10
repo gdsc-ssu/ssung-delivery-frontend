@@ -10,6 +10,7 @@ importers:
 
   packages/app/sender-client:
     specifiers:
+      '@common/ssung-ui': workspace:^1.0.0
       '@emotion/react': ^11.10.5
       '@emotion/styled': ^11.10.5
       '@types/react': ^18.0.26
@@ -22,6 +23,7 @@ importers:
       typescript: ^4.9.3
       vite: ^4.0.0
     dependencies:
+      '@common/ssung-ui': link:../../common/ssung-ui
       '@emotion/react': 11.10.5_3stiutgnnbnfnf3uowm5cip22i
       '@emotion/styled': 11.10.5_jrh5enlbqfbnumycmktdqgd6se
       axios: 1.3.2
