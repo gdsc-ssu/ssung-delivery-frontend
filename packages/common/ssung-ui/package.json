@@ -5,10 +5,15 @@
   "type": "module",
   "main": "./index.tsx",
   "dependencies": {
+    "@common/utils": "workspace:^1.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@googlemaps/js-api-loader": "^1.15.1",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@types/googlemaps": "^3.43.3",
     "@mui/x-data-grid": "^6.0.0",
     "react": "^18.2.0",
+    "react-zxing": "^1.1.3",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {

@@ -2,7 +2,8 @@ import { NotFoundPage, Error } from './pages'
 import {
   Camera,
   Card,
-  CardStack,
+  CSComponent,
+  CSProvider,
   BodyContainer,
   ComponentContainer,
   Spacer,
@@ -10,6 +11,7 @@ import {
   Progress,
   ShipHistory,
   Text,
+  Map,
 } from './components'
 
 // 페이지와 컴포넌트를 따로 export 하는 방법은 없을까
@@ -18,7 +20,8 @@ export {
   Error,
   Camera,
   Card,
-  CardStack,
+  CSComponent,
+  CSProvider,
   BodyContainer,
   ComponentContainer,
   Spacer,
@@ -26,4 +29,5 @@ export {
   Progress,
   ShipHistory,
   Text,
+  Map,
 }
