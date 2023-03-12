@@ -14,11 +14,6 @@ import CustomForm from './CustomForm'
 import Modal from './Modal'
 
 export {
-  Button,
-  BorderButton,
-  PrintLabelCard,
-  Map,
-  Table,
   Camera,
   Card,
   CSComponent,
