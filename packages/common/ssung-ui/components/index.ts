@@ -10,6 +10,8 @@ import Button from './Button'
 import BorderButton from './BorderButton'
 import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
+import CustomForm from './CustomForm'
+import Modal from './Modal'
 
 export {
   Button,
@@ -35,4 +37,6 @@ export {
   BorderButton,
   Table,
   PrintLabelCard,
+  CustomForm,
+  Modal,
 }
