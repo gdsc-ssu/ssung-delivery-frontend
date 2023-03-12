@@ -12,6 +12,11 @@ import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
 
 export {
+  Button,
+  BorderButton,
+  PrintLabelCard,
+  Map,
+  Table,
   Camera,
   Card,
   CSComponent,

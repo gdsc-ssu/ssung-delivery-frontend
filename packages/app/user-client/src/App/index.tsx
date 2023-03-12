@@ -2,8 +2,7 @@ import Header from './App.header'
 import Recent from './App.recent'
 import SearchBar from './App.searchBar'
 import Shipping from './App.shipping'
-import '../styles/global.css'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { BodyContainer, Spacer } from '@common/ssung-ui/components/Layout'
 import { CSProvider } from '@common/ssung-ui'
 
@@ -16,7 +15,7 @@ function App() {
       <BodyContainer>
         <Spacer height="3rem" />
 
-        <Header count={2} profileThumb={'./profile.svg'} />
+        <Header />
         <Spacer height="3rem" />
 
         <SearchBar

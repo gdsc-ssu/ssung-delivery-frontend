@@ -11,6 +11,7 @@ import {
   Progress,
   ShipHistory,
   Text,
+  Title,
   Map,
 } from './components'
 
@@ -29,5 +30,6 @@ export {
   Progress,
   ShipHistory,
   Text,
+  Title,
   Map,
 }
