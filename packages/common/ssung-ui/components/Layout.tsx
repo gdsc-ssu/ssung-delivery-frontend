@@ -12,10 +12,11 @@ const BodyContainer = styled.div`
   margin: 0 auto;
   max-width: 640px;
   min-width: 320px;
+  overflow-x: hidden;
 `
 
 const ComponentContainer = styled.div`
-  padding: 0 1rem;
+  margin: 0 1rem;
 `
 
 const Spacer = styled.div(({ height }: { height?: string }) => [

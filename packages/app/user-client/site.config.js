@@ -7,4 +7,6 @@ const CONFIG = {
   profile: {
     url: '',
   },
-};
+  profileThumbUrl: './profile.svg',
+}
+module.exports = CONFIG
