@@ -5,11 +5,11 @@ import { BodyContainer, ComponentContainer, Spacer, Flex } from './Layout'
 import Progress from './ProgressBar'
 import ShipHistory from './ShipHistory'
 import { Text, Title, SubTitle } from './Text'
+import Map from './Map'
 import Button from './Button'
 import BorderButton from './BorderButton'
 import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
-import Map from './Map'
 
 export {
   Camera,
@@ -25,4 +25,9 @@ export {
   Text,
   Title,
   SubTitle,
+  Map,
+  Button,
+  BorderButton,
+  Table,
+  PrintLabelCard,
 }
