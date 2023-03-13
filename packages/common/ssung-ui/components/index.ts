@@ -30,9 +30,4 @@ export {
   Text,
   Title,
   SubTitle,
-  Map,
-  Button,
-  BorderButton,
-  Table,
-  PrintLabelCard,
 }
