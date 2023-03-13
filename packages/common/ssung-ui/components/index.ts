@@ -12,6 +12,8 @@ import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
 import CustomForm from './CustomForm'
 import Modal from './Modal'
+import NotFound from './NotFound'
+import Error from './Error'
 
 export {
   Camera,
@@ -34,4 +36,6 @@ export {
   PrintLabelCard,
   CustomForm,
   Modal,
+  Error,
+  NotFound,
 }
