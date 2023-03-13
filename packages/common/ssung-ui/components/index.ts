@@ -10,13 +10,10 @@ import Button from './Button'
 import BorderButton from './BorderButton'
 import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
+import CustomForm from './CustomForm'
+import Modal from './Modal'
 
 export {
-  Button,
-  BorderButton,
-  PrintLabelCard,
-  Map,
-  Table,
   Camera,
   Card,
   CSComponent,
@@ -30,4 +27,7 @@ export {
   Text,
   Title,
   SubTitle,
+  PrintLabelCard,
+  CustomForm,
+  Modal,
 }

@@ -4,6 +4,7 @@ import { color, ColorProps, typography, TypographyProps } from 'styled-system'
 
 interface ButtonProps {
     text: string
+    onClick?: () => void;
 }
 
 const BorderButton = (props: ButtonProps) => {
@@ -26,6 +27,10 @@ const ButtonStyled = styled.button`
     border-radius: 5px;
     border: 1px solid #07D39F;
     box-shadow: 1px 1px 5px lightgray;
+
+    &:hover {
+        box-shadow: 3px 3px 5px lightgray;
+    }
 `;
 
 export default BorderButton;
