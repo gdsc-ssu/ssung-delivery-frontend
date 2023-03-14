@@ -69,8 +69,8 @@ const CustomForm = () => {
                     <SelectBox options={OPTIONS} defaultValue="default"/>
                 </StatusInput>
                 <BtnBox>
-                    <Button text="초기화" color="#7b7b7b" bgcolor="#ffffff" />
-                    <Button text="검색" color="#ffffff" bgcolor='#07d39f' />
+                    <Button color="#7b7b7b" bgcolor="#ffffff">초기화</Button>
+                    <Button color="#ffffff" bgcolor='#07d39f'>검색</Button>
                 </BtnBox>
             </GridForm>
         </FormContainer>
