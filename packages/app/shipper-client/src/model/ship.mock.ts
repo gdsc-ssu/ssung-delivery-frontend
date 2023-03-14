@@ -36,6 +36,10 @@ export const SHIP_MOCK_DATA: ShipData[] = [
       name: '구글',
       phone: '010-1234-5678',
     },
+    addressee: {
+      name: '네이버',
+      phone: '010-1234-5678',
+    },
   },
   {
     id: '2',
@@ -69,6 +73,10 @@ export const SHIP_MOCK_DATA: ShipData[] = [
       name: '애플',
       phone: '02-820-1234',
     },
+    addressee: {
+      name: '네이버',
+      phone: '010-1234-5678',
+    },
   },
   {
     id: '3',
@@ -100,6 +108,10 @@ export const SHIP_MOCK_DATA: ShipData[] = [
     ],
     sender: {
       name: '프리스비',
+      phone: '010-1234-5678',
+    },
+    addressee: {
+      name: '네이버',
       phone: '010-1234-5678',
     },
   },
@@ -135,6 +147,10 @@ export const SHIP_MOCK_DATA: ShipData[] = [
       name: '서울대',
       phone: '010-1234-5678',
     },
+    addressee: {
+      name: '네이버',
+      phone: '010-1234-5678',
+    },
   },
   {
     id: '5',
@@ -165,6 +181,10 @@ export const SHIP_MOCK_DATA: ShipData[] = [
       },
     ],
     sender: {
+      name: '네이버',
+      phone: '010-1234-5678',
+    },
+    addressee: {
       name: '네이버',
       phone: '010-1234-5678',
     },

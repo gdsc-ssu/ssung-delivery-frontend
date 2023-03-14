@@ -6,6 +6,11 @@ export interface SenderType {
   phone: string
 }
 
+export interface AddresseeType {
+  name: string
+  phone: string
+}
+
 export interface ShipHistoryType {
   state: string
   date: string
@@ -20,4 +25,5 @@ export interface ShipData {
   destination: string
   history: ShipHistoryType[]
   sender: SenderType
+  addressee: AddresseeType
 }
