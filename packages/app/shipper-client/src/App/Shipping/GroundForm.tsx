@@ -2,9 +2,19 @@ import styled from '@emotion/styled'
 import { Flex, Text } from '@common/ssung-ui'
 import WAREHOUSE_LOCATION from '../../model/location'
 
-const ShippingBox = () => {
+interface ShippingBoxType {
+  id: string
+  state: string
+  updateState: (id: string, toState: string) => void
+}
+
+const ShippingBox = (props: ShippingBoxType) => {
+  const updateState = () => {
+    props.updateState(props.id, '')
+  }
+
   return (
-    <Container>
+    <Container isFinish={props.state === '배송완료'}>
       <SafeArea>
         <FormConainer>
           <Row>
@@ -26,7 +36,7 @@ const ShippingBox = () => {
           </Row>
 
           <Row>
-            <button>UPDATE</button>
+            <button onClick={updateState}>UPDATE</button>
           </Row>
         </FormConainer>
       </SafeArea>
@@ -59,9 +69,11 @@ const SafeArea = styled.div`
   border-radius: 1rem;
 `
 
-const Container = styled.div`
-  background-color: var(--negative);
+const Container = styled.div(
+  ({ isFinish }: { isFinish: boolean }) => `
+  background-color: ${isFinish ? 'var(--primary)' : 'var(--negative)'};
   height: 100%;
   width: 100%;
   border-radius: 1rem;
 `
+)

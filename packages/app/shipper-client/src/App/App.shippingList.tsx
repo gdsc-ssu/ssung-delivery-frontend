@@ -5,8 +5,18 @@ import GroundForm from './Shipping/GroundForm'
 import Stack from './Shipping/Stack'
 import { Text } from '@common/ssung-ui'
 import { SHIP_MOCK_DATA } from '../model/ship.mock'
+import { ShipData } from '../model/ship'
 
 const ShippingList = () => {
+  const updateState = (id: string, toState: string) => {
+    alert()
+  }
+
+  const getFinalState = (ship: ShipData) => {
+    const filteredDoneHistory = ship.history.filter((hist) => hist.done)
+    return filteredDoneHistory[filteredDoneHistory.length - 1]
+  }
+
   return (
     <ComponentContainer>
       <Flex justifyContent={'space-between'}>
@@ -26,7 +36,16 @@ const ShippingList = () => {
 
       {SHIP_MOCK_DATA.map((ship) => (
         <>
-          <Stack Top={<InfoCard ship={ship} />} Ground={<GroundForm />} />
+          <Stack
+            Top={<InfoCard ship={ship} />}
+            Ground={
+              <GroundForm
+                id={ship.id}
+                state={getFinalState(ship).state}
+                updateState={updateState}
+              />
+            }
+          />
           <Spacer height="1rem" />
         </>
       ))}

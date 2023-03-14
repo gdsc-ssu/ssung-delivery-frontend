@@ -24,12 +24,12 @@ export const SHIP_MOCK_DATA: ShipData[] = [
       {
         state: '배송 출발',
         date: '2020-01-02',
-        done: false,
+        done: true,
       },
       {
-        state: '배송 도착',
+        state: '배송완료',
         date: '2020-01-03',
-        done: false,
+        done: true,
       },
     ],
     sender: {
@@ -64,7 +64,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
         done: false,
       },
       {
-        state: '배송 도착',
+        state: '배송완료',
         date: '2020-01-03',
         done: false,
       },
@@ -101,7 +101,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
         done: true,
       },
       {
-        state: '배송 도착',
+        state: '배송완료',
         date: '2020-01-03',
         done: false,
       },
@@ -138,7 +138,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
         done: true,
       },
       {
-        state: '배송 도착',
+        state: '배송완료',
         date: '2020-01-03',
         done: true,
       },
