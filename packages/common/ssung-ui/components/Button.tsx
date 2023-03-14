@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from 'react'
 import { color, ColorProps, typography, TypographyProps } from 'styled-system'
 
 interface ButtonProps {
-    text: string
+    children: React.ReactNode
     color: string
     bgcolor: string
 }
@@ -14,7 +14,7 @@ const Button = (props: ButtonProps) => {
             "color": `${props.color}`,
             "backgroundColor":`${props.bgcolor}`}}
         >
-            {props.text}
+            {props.children}
         </ButtonStyled>
     )
 }

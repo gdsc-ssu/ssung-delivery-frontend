@@ -23,11 +23,9 @@ const Upload = () => {
                     <PrintLabelCard labelInfo={info} key={info.id} />
                 ))}
                 <Flex style={{"marginRight":"2.5rem", "marginTop":"2.5rem"}}>
-                    <BorderButton text={"운송정보 업로드"} />
-                    <BorderButton text={"운송정보 엑셀 업로드"} />
-                    <BorderButton text={"라벨지 출력"} 
-                        onClick={openModal}
-                    />
+                    <BorderButton>운송정보 업로드</BorderButton>
+                    <BorderButton>운송정보 엑셀 업로드</BorderButton>
+                    <BorderButton onClick={openModal}>라벨지 출력</BorderButton>
                     <Modal showModal={showModal} closeModal={closeModal} />
                 </Flex>
             </Flex>
