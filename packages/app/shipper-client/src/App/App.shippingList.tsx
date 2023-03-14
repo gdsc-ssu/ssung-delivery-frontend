@@ -4,6 +4,7 @@ import InfoCard from './Shipping/InfoCard'
 import GroundForm from './Shipping/GroundForm'
 import Stack from './Shipping/Stack'
 import { Text } from '@common/ssung-ui'
+import { SHIP_MOCK_DATA } from '../model/ship.mock'
 
 const ShippingList = () => {
   return (
@@ -23,10 +24,12 @@ const ShippingList = () => {
       </Flex>
       <Spacer height="2rem" />
 
-      <Stack Top={InfoCard} Ground={GroundForm} />
-      <Spacer height="1rem" />
-      <Stack Top={InfoCard} Ground={GroundForm} />
-      <Spacer height="3rem" />
+      {SHIP_MOCK_DATA.map((ship) => (
+        <>
+          <Stack Top={<InfoCard ship={ship} />} Ground={<GroundForm />} />
+          <Spacer height="1rem" />
+        </>
+      ))}
     </ComponentContainer>
   )
 }
