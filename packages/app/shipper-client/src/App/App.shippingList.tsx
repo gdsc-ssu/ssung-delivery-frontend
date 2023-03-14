@@ -24,7 +24,9 @@ const ShippingList = () => {
       <Spacer height="2rem" />
 
       <Stack Top={InfoCard} Ground={GroundForm} />
+      <Spacer height="1rem" />
       <Stack Top={InfoCard} Ground={GroundForm} />
+      <Spacer height="3rem" />
     </ComponentContainer>
   )
 }
