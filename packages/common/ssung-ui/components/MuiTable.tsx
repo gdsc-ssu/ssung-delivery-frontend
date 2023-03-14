@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import TableContainer from '@mui/material/TableContainer'
 import { useState, Fragment } from 'react'
+import ProgressBar from "./ProgressBar";
 
 const createData = (product: string, 
                     name: string, 
@@ -36,13 +37,6 @@ const createData = (product: string,
                 process4: '상도 배송',
                 process5: '배송 완료',
             },
-            {
-                process1: '수거 완료',
-                process2: '인천 LM 직영',
-                process3: '옥천 HUB',
-                process4: '대전 배송',
-                process5: '배송 완료',
-            },
         ]
     };
 }
@@ -55,7 +49,9 @@ const Row = (props: {row: ReturnType<typeof createData> }) => {
         <Fragment>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
             <TableCell>
-                <IconButton aria-label='expand row' size='medium' style={{"color":"var(--primary)"}} onClick={() => setOpen(!open)}>
+                <IconButton aria-label='expand row' size='medium' 
+                    style={{"color":"var(--primary)"}} 
+                    onClick={() => setOpen(!open)}>
                     {open ? `⌃` : `⌵`}
                 </IconButton>
             </TableCell>
@@ -67,30 +63,32 @@ const Row = (props: {row: ReturnType<typeof createData> }) => {
             <TableCell align='center' style={{"color":"var(--form-text)"}}>{row.registerdate}</TableCell>
         </TableRow>
         <TableRow>
-            <TableCell colSpan={6} sx={{ py: '0 !important' }}>
+            <TableCell colSpan={6} sx={{ py: '0 !important' }} style={{"border":"none"}}>
                 <Collapse in={open} timeout='auto' unmountOnExit>
-                    <Box sx={{ m: 2 }}>
-                        <Typography variant='h6' gutterBottom component='div'>
-                        History
-                        </Typography>
-                        <Table size='small' aria-label='purchases'>
+                    <Box sx={{ m: 1 }}>
+                        <Typography variant='h6' gutterBottom component='div'>History</Typography>
+                        <Table size='medium' aria-label='purchases'>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>process1</TableCell>
-                                    <TableCell>process2</TableCell>
-                                    <TableCell>process3</TableCell>
-                                    <TableCell>process4</TableCell>
-                                    <TableCell>process5</TableCell>
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}}><ProgressBar progress={'60%'} /></TableCell>
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}} />
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {row.history.map(historyRow => (
-                                <TableRow key={historyRow.process1}>
-                                    <TableCell component='th' scope='row'>{historyRow.process1}</TableCell>
-                                    <TableCell>{historyRow.process2}</TableCell>
-                                    <TableCell>{historyRow.process3}</TableCell>
-                                    <TableCell>{historyRow.process4}</TableCell>
-                                    <TableCell>{historyRow.process5}</TableCell>
+                                <TableRow>
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none"}}>{historyRow.process1}</TableCell>
+                                    <TableCell style={{"border":"none"}}>{historyRow.process2}</TableCell>
+                                    <TableCell style={{"border":"none"}}>{historyRow.process3}</TableCell>
+                                    <TableCell style={{"border":"none"}}>{historyRow.process4}</TableCell>
+                                    <TableCell style={{"border":"none"}}>{historyRow.process5}</TableCell>
                                 </TableRow>
                                 ))}
                             </TableBody>
