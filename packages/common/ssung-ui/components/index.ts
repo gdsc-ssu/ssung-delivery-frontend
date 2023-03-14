@@ -16,6 +16,10 @@ import NotFound from './NotFound'
 import Error from './Error'
 
 export {
+  Map,
+  Button,
+  BorderButton,
+  Table,
   Camera,
   Card,
   CSComponent,
