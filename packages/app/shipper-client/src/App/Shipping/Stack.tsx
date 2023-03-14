@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 interface StackProps {
-  Top: () => JSX.Element
-  Ground: () => JSX.Element
+  Top: ReactNode
+  Ground: ReactNode
 }
 
 const Stack = ({ Top, Ground }: StackProps) => {
@@ -10,12 +10,8 @@ const Stack = ({ Top, Ground }: StackProps) => {
 
   return (
     <Container>
-      <StackTop open={open}>
-        <Top />
-      </StackTop>
-      <StackGround>
-        <Ground />
-      </StackGround>
+      <StackTop open={open}>{Top}</StackTop>
+      <StackGround>{Ground}</StackGround>
       <Arrow
         open={open}
         onClick={() => {
