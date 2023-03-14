@@ -1,12 +1,12 @@
 import { useState, memo } from 'react';
-import {ComponentContainer, Flex, SubTitle, Table, Title} from '@common/ssung-ui/components';
+import {ComponentContainer, Flex, MuiTable, SubTitle, Table, Title} from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 import { SHIP_TABLE_MOCK_DATA } from '../Model/shiptable.mock'
 
 const ShipTable = () => {
     return (
         <ComponentContainer>
-            <TableIndex>
+            {/* <TableIndex>
                 <IndexTitle style={{"width":"7rem"}}></IndexTitle>
                 <IndexTitle>운송장 명</IndexTitle>
                 <IndexTitle>수신자 정보</IndexTitle>
@@ -22,7 +22,8 @@ const ShipTable = () => {
             </Flex>
             {SHIP_TABLE_MOCK_DATA.map((info) => (
                 <Table tableInfo={info} expandable={true} key={info.id} />
-            ))}
+            ))} */}
+            <MuiTable></MuiTable>
         </ComponentContainer>
     )
 }
