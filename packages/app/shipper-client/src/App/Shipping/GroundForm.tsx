@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Flex, Text } from '@common/ssung-ui'
+import WAREHOUSE_LOCATION from '../../model/location'
 
 const ShippingBox = () => {
   return (
@@ -18,9 +19,9 @@ const ShippingBox = () => {
           <Row>
             <Text>물품위치</Text>
             <FormSelect>
-              <option>서울</option>
-              <option>경기도</option>
-              <option>제주도</option>
+              {WAREHOUSE_LOCATION.map((loc) => (
+                <option>{loc.name}</option>
+              ))}
             </FormSelect>
           </Row>
 
