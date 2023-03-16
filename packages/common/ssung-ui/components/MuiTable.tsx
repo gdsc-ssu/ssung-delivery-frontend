@@ -31,11 +31,10 @@ const createData = (product: string,
         registerdate,
         history: [
             {
-                process1: '수거 완료',
-                process2: '용인 LM 직영',
-                process3: '곤지암 HUB',
-                process4: '상도 배송',
-                process5: '배송 완료',
+                process1: 'Ordered',
+                process2: 'Shipping',
+                process3: 'Out For Delivery',
+                process4: 'Shipped',
             },
         ]
     };
@@ -69,21 +68,18 @@ const Row = (props: {row: ReturnType<typeof createData> }) => {
                         <Typography variant='h6' gutterBottom component='div'
                             style={{"position":"relative", "top":"2.5rem", "left":'2rem'}}
                         >History</Typography>
-                        <Table size='medium' aria-label='purchases' style={{"marginLeft":"8rem"}}>
+                        <Table size='medium' aria-label='purchases' style={{"margin":"0 20rem"}}>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell style={{"border":"none", "width":"60%"}}>
-                                        <Flex flexDirection={"column"}>
-                                            <ProgressBar progress={'60%'} />
+                                    <TableCell style={{"border":"none"}}>
+                                        <Flex flexDirection={"column"} style={{"width":"60%"}}>
+                                            <ProgressBar progress={'50%'} />
                                             {row.history.map(historyRow => (
                                             <TableRow>
-                                                <TableCell style={{"border":"none"}} />
-                                                <TableCell style={{"border":"none"}} />
-                                                <TableCell style={{"border":"none"}}>{historyRow.process1}</TableCell>
-                                                <TableCell style={{"border":"none"}}>{historyRow.process2}</TableCell>
-                                                <TableCell style={{"border":"none"}}>{historyRow.process3}</TableCell>
-                                                <TableCell style={{"border":"none"}}>{historyRow.process4}</TableCell>
-                                                <TableCell style={{"border":"none"}}>{historyRow.process5}</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process1}</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process2}</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process3}</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process4}</TableCell>
                                             </TableRow>
                                             ))}
                                         </Flex>
