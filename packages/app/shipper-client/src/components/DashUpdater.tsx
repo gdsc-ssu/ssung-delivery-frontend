@@ -30,6 +30,7 @@ const CamContainer = styled.div`
   width: 320px;
   height: 320px;
   position: relative;
+  margin: 0 auto;
 `
 
 const Container = styled.div`

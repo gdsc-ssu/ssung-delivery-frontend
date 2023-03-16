@@ -26,8 +26,11 @@ const CameraOnly = (props: CameraProps) => {
 export default CameraOnly
 
 const Container = styled.div`
-  background-color: var(--bg-transparent);
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
 `
 
 const UnderVideo = styled.div`
@@ -38,7 +41,6 @@ const UnderVideo = styled.div`
   height: 100%;
   object-fit: cover;
   background-color: white;
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,5 +53,5 @@ const Video = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
+  transform: translateY(-100%);
 `
