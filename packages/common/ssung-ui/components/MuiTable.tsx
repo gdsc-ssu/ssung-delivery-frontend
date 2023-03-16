@@ -66,32 +66,30 @@ const Row = (props: {row: ReturnType<typeof createData> }) => {
             <TableCell colSpan={6} sx={{ py: '0 !important' }} style={{"border":"none"}}>
                 <Collapse in={open} timeout='auto' unmountOnExit>
                     <Box sx={{ m: 1 }}>
-                        <Typography variant='h6' gutterBottom component='div'>History</Typography>
-                        <Table size='medium' aria-label='purchases'>
+                        <Typography variant='h6' gutterBottom component='div'
+                            style={{"position":"relative", "top":"2.5rem", "left":'2rem'}}
+                        >History</Typography>
+                        <Table size='medium' aria-label='purchases' style={{"marginLeft":"8rem"}}>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}}><ProgressBar progress={'60%'} /></TableCell>
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}} />
+                                    <TableCell style={{"border":"none", "width":"60%"}}>
+                                        <Flex flexDirection={"column"}>
+                                            <ProgressBar progress={'60%'} />
+                                            {row.history.map(historyRow => (
+                                            <TableRow>
+                                                <TableCell style={{"border":"none"}} />
+                                                <TableCell style={{"border":"none"}} />
+                                                <TableCell style={{"border":"none"}}>{historyRow.process1}</TableCell>
+                                                <TableCell style={{"border":"none"}}>{historyRow.process2}</TableCell>
+                                                <TableCell style={{"border":"none"}}>{historyRow.process3}</TableCell>
+                                                <TableCell style={{"border":"none"}}>{historyRow.process4}</TableCell>
+                                                <TableCell style={{"border":"none"}}>{historyRow.process5}</TableCell>
+                                            </TableRow>
+                                            ))}
+                                        </Flex>
+                                    </TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
-                                {row.history.map(historyRow => (
-                                <TableRow>
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}} />
-                                    <TableCell style={{"border":"none"}}>{historyRow.process1}</TableCell>
-                                    <TableCell style={{"border":"none"}}>{historyRow.process2}</TableCell>
-                                    <TableCell style={{"border":"none"}}>{historyRow.process3}</TableCell>
-                                    <TableCell style={{"border":"none"}}>{historyRow.process4}</TableCell>
-                                    <TableCell style={{"border":"none"}}>{historyRow.process5}</TableCell>
-                                </TableRow>
-                                ))}
-                            </TableBody>
                         </Table>
                     </Box>
                 </Collapse>
