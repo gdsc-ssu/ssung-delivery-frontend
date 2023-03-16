@@ -4,8 +4,8 @@ import { Button, Card, ComponentContainer, Flex, SubTitle, PrintLabelCard } from
 import styled from '@emotion/styled';
 import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
 import { PrintLabelData } from "../Model/printlabel"
-import Modal from "./Modal/Modal";
-import ExcelUploadComponent from "./Modal/ExcelProvider";
+import Modal from "../component/Modal/Modal";
+import ExcelUploadComponent from "../component/Modal/ExcelProvider";
 
 const Upload = () => {
     /** 모달창 노출 여부 state */
