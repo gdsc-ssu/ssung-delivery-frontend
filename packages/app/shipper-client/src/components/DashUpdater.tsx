@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { CameraOnly, Flex, Spacer, Text, Title } from '@common/ssung-ui'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { WAREHOUSE_LOCATION, SHIPPING_STEP } from '../model/location'
 
 const DashUpdater = () => {
