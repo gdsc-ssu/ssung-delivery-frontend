@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
 import { PrintLabelData } from "../Model/printlabel"
 import Modal from "./Modal/Modal";
+import ExcelUploadComponent from "./Modal/ExcelProvider";
 
 const Upload = () => {
     /** 모달창 노출 여부 state */
@@ -23,17 +24,12 @@ const Upload = () => {
                 ))}
                 <Flex style={{"marginRight":"2.5rem", "marginTop":"2.5rem"}}>
                     <BorderButton>운송정보 업로드</BorderButton>
-                    <BorderButton>운송정보 엑셀 업로드</BorderButton>
-                    <div>
-                        <BorderButton onClick={showModal}>라벨지 출력</BorderButton>
-                            {modalOpen && <Modal setModalOpen={setModalOpen}
-                                content={
-                                    <div>
-                                        모달 내용
-                                    </div>
-                                }
-                            />}
-                    </div>
+                    <BorderButton onClick={showModal}>운송정보 엑셀 업로드</BorderButton>
+                        {modalOpen && <Modal 
+                            setModalOpen={setModalOpen}
+                            content={<ExcelUploadComponent />}
+                        />}
+                    <BorderButton>라벨지 출력</BorderButton>
                 </Flex>
             </Flex>
         </ComponentContainer>
@@ -58,4 +54,4 @@ const BorderButton = styled.button`
     }
 `;
 
-export default memo(Upload)
+export default memo(Upload);
