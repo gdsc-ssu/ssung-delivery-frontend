@@ -10,4 +10,14 @@ const WAREHOUSE_LOCATION: warehouseLocType[] = [
   { name: '부산', loc: '' },
 ]
 
-export default WAREHOUSE_LOCATION
+type shippingStepType = string
+
+const SHIPPING_STEP: shippingStepType[] = [
+  '배송준비중',
+  '수거완료',
+  '배송 중',
+  '배달 중',
+  '배송 완료',
+]
+
+export { WAREHOUSE_LOCATION, SHIPPING_STEP }
