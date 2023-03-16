@@ -21,10 +21,16 @@ const useModal = () => {
   const onModalOpen = () => {
     rootRef.current!.style.overflow = 'hidden'
     setOpen(true)
+    setTimeout(() => {
+      bgRef.current!.style.cssText = 'opacity: 1; backdrop-filter: blur(5px);'
+    }, 0)
   }
   const onModalClose = () => {
     rootRef.current!.style.overflow = 'unset'
-    setOpen(false)
+    bgRef.current!.style.cssText = ''
+    setTimeout(() => {
+      setOpen(false)
+    }, 500)
   }
   const onTouchBg = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === bgRef.current) {
@@ -84,14 +90,14 @@ const Contents = styled.div`
 `
 
 const Container = styled.div`
+  opacity: 0;
   width: 100vw;
   height: 100vh;
-  backdrop-filter: blur(5px);
   position: fixed;
   top: 0;
   z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all ease 1s;
+  transition: all ease 0.5s;
 `
