@@ -37,11 +37,11 @@ const Controller = styled.div(
   font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
-  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all ease 1s;
+  height: ${open ? '2rem' : '0.25rem'};
   color: ${open ? 'white' : 'var(--primary)'};
   visibility: ${open ? 'visible' : 'hidden'};
   transform: rotate(270deg);`

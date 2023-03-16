@@ -35,6 +35,6 @@ const CamContainer = styled.div`
 
 const Container = styled.div`
   background-color: white;
-  padding: 0.25rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
 `
