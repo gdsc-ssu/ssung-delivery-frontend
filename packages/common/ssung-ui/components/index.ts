@@ -1,4 +1,5 @@
 import Camera from './Camera'
+import CameraOnly from './CameraOnly'
 import Card from './CardStack/CardComponent'
 import { CSComponent, CSProvider } from './CardStack/index'
 import { BodyContainer, ComponentContainer, Spacer, Flex } from './Layout'
@@ -38,4 +39,5 @@ export {
   Modal,
   Error,
   NotFound,
+  CameraOnly,
 }
