@@ -3,6 +3,18 @@ import { ChangeEvent, useState } from 'react';
 import styled from '@emotion/styled'
 import { ComponentContainer } from '@common/ssung-ui';
 
+interface ExcelData {
+  [key: string]: unknown;
+}
+
+interface JSONData {
+  [key: string]: unknown;
+}
+
+
+/** 1. Read input Excel File
+ *  2. convert Excel to Table
+ */
 const ExcelUploadComponent = () => {
   const [excelData, setExcelData] = useState<any[][]>([]);
 
@@ -24,7 +36,6 @@ const ExcelUploadComponent = () => {
       setExcelData(newData);
     };
 
-    // FileReader 객체에 파일을 전달하여 읽어옵니다.
     reader.readAsBinaryString(file);
   }
 
@@ -42,10 +53,31 @@ const ExcelUploadComponent = () => {
             </tr>
           ))}
         </tbody>
+        {/* {console.log(convertToJSON(excelData))} */}
       </CustomTable>
     </ComponentContainer>
   );
 }
+
+/**
+ * convert Excel to JSON data
+ */
+const convertToJSON = (excelData: ExcelData[]): JSONData[] => {
+  const jsonData: JSONData[] = excelData.map((data) => {
+    const jsonData: JSONData = {};
+    Object.keys(data).forEach((key) => {
+      const value = data[key];
+      if (typeof value === 'string') {
+        jsonData[key] = value.trim();
+      } else {
+        jsonData[key] = value;
+      }
+    });
+    return jsonData;
+  });
+  console.log(jsonData)
+  return jsonData;
+};
 
 const FileInputBtn = styled.label`
   width: 150px;

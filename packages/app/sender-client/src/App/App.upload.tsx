@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
 import { PrintLabelData } from "../Model/printlabel"
 import Modal from "../component/Modal/Modal";
-import ExcelUploadComponent from "../component/Modal/ExcelProvider";
+import ExcelUploadComponent from "../component/Modal/ExcelUpload";
 
 const Upload = () => {
     /** 모달창 노출 여부 state */
