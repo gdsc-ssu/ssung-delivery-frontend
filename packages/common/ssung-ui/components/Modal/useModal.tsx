@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styled from '@emotion/styled'
 import ReactDOM from 'react-dom'
-import { Flex, Spacer } from '@common/ssung-ui'
+import { Flex, Spacer } from '../Layout'
 
 const useModal = () => {
   const [open, setOpen] = useState<boolean>(false)

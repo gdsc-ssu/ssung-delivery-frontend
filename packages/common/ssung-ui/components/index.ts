@@ -15,8 +15,10 @@ import CustomForm from './CustomForm'
 import Modal from './Modal'
 import NotFound from './NotFound'
 import Error from './Error'
+import useModal from './Modal/useModal'
 
 export {
+  useModal,
   Map,
   Button,
   BorderButton,

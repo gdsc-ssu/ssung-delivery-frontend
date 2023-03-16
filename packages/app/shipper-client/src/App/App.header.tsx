@@ -1,5 +1,5 @@
 import { ComponentContainer, Flex, Text, Title } from '@common/ssung-ui'
-import useModal from '../components/Modal'
+import { useModal } from '@common/ssung-ui'
 // import CONFIG from 'site.config'
 
 const Header = () => {
