@@ -6,14 +6,22 @@ import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
 import { PrintLabelData } from "../Model/printlabel"
 import Modal from "../component/Modal/Modal";
 import ExcelUploadComponent from "../component/Modal/ExcelUpload";
+import ShippingInfoForm from "../component/Modal/ShippingInfoForm";
 
 const Upload = () => {
-    /** 모달창 노출 여부 state */
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
+    /** 운송정보 업로드 모달 */
+    const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
+    /** 운송정보 엑셀 업로드 모달 */
+    const [xlsxModalOpen, setXlsxModalOpen] = useState<boolean>(false);
 
-    /** 모달창 노출 함수 */
-    const showModal = () => {
-        setModalOpen(true);
+    /** 운송정보 업로드 모달창 노출 함수 */
+    const showInfoModal = () => {
+        setInfoModalOpen(true);
+    }
+
+    /** 엑셀 업로드 모달창 노출 함수 */
+    const showXlsxModal = () => {
+        setXlsxModalOpen(true);
     };
 
     return (
@@ -23,10 +31,15 @@ const Upload = () => {
                     <PrintLabelCard labelInfo={info} key={info.id} />
                 ))}
                 <Flex style={{"marginRight":"2.5rem", "marginTop":"2.5rem"}}>
-                    <BorderButton>운송정보 업로드</BorderButton>
-                    <BorderButton onClick={showModal}>운송정보 엑셀 업로드</BorderButton>
-                        {modalOpen && <Modal 
-                            setModalOpen={setModalOpen}
+                    <BorderButton onClick={showInfoModal}>운송정보 업로드</BorderButton>
+                    {infoModalOpen && <Modal
+                        setModalOpen={setInfoModalOpen}
+                        content={<ShippingInfoForm />}
+                    />}
+
+                    <BorderButton onClick={showXlsxModal}>운송정보 엑셀 업로드</BorderButton>
+                        {xlsxModalOpen && <Modal 
+                            setModalOpen={setXlsxModalOpen}
                             content={<ExcelUploadComponent />}
                         />}
                     <BorderButton onClick={() => alert("Label paper is ready to print.")}>라벨지 출력</BorderButton>
