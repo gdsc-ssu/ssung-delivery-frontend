@@ -14,7 +14,6 @@ import CustomForm from './CustomForm'
 import Modal from './Modal'
 import NotFound from './NotFound'
 import Error from './Error'
-import MuiTable from './MuiTable'
 
 export {
   Map,
@@ -39,5 +38,4 @@ export {
   Modal,
   Error,
   NotFound,
-  MuiTable,
 }
