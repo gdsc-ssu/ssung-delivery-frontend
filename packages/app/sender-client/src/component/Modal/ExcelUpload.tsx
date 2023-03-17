@@ -1,7 +1,7 @@
 import * as XLSX from 'xlsx';
 import { ChangeEvent, useState } from 'react';
 import styled from '@emotion/styled'
-import { ComponentContainer } from '@common/ssung-ui';
+import { ComponentContainer, Flex, Title } from '@common/ssung-ui';
 
 interface ExcelData {
   [key: string]: unknown;
@@ -41,20 +41,26 @@ const ExcelUploadComponent = () => {
 
   return (
     <ComponentContainer>
-      <FileInputBtn htmlFor="file">엑셀 파일 업로드</FileInputBtn>
+      <Flex style={{"marginTop":"2rem"}}>
+        <Title style={{"marginRight":"23rem"}}>운송정보 엑셀 업로드</Title>
+        <CustomBtn htmlFor="file">엑셀 파일 열기</CustomBtn>
+        <CustomBtn onClick={() => convertToJSON(excelData)}>업로드</CustomBtn>
+      </Flex>
       <Input type="file" name="file" id="file" onChange={handleFileUpload} />
-      <CustomTable>
-        <tbody>
-          {excelData.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cellData, cellIndex) => (
-                <td key={cellIndex}>{cellData}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-        {/* {console.log(convertToJSON(excelData))} */}
-      </CustomTable>
+      <TableContainer>
+        <CustomTable>
+          <CustomTbody>
+            {excelData.map((row, rowIndex) => (
+              <CustomTr key={rowIndex}>
+                {row.map((cellData, cellIndex) => (
+                  <CustomTd key={cellIndex}>{cellData}</CustomTd>
+                ))}
+              </CustomTr>
+            ))}
+          </CustomTbody>
+          {/* {console.log(convertToJSON(excelData))} */}
+        </CustomTable>
+      </TableContainer>
     </ComponentContainer>
   );
 }
@@ -79,20 +85,23 @@ const convertToJSON = (excelData: ExcelData[]): JSONData[] => {
   return jsonData;
 };
 
-const FileInputBtn = styled.label`
-  width: 150px;
-  height: 30px;
+const CustomBtn = styled.label`
+  width: 10rem;
+  height: 2rem;
+  margin: auto 0.2rem;
   background: #fff;
-  position: relative;
-  border: 1px solid rgb(77,77,77);
-  border-radius: 10px;
+  color: var(--sub-text);
+  border: 0.1rem solid lightgray;
+  box-shadow: 3px 3px 3px lightgray;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   &:hover {
-    background: rgb(77,77,77);
+    background: var(--primary);
     color: #fff;
   }
 `;
@@ -101,15 +110,38 @@ const Input = styled.input`
   display: none;
 `;
 
-const CustomTable = styled.table`
-  width: 40rem;
-  height: 10rem;
-  max-height: 25rem;
-  border: 1px solid var(--primary);
+const TableContainer = styled.div`
+  width: 50rem;
+  height: 20rem;
+  max-width: 50rem;
+  max-height: 20rem;
+  padding: 1rem;
+  overflow: auto;
+  margin: 1rem auto;
   text-align: center;
-  margin: 5rem auto;
-  border-radius: 5rem;
 `;
 
+const CustomTable = styled.table`
+  width: 50rem;
+  min-width: 50rem;
+  height: 20rem;
+  max-height: 20rem;
+  font-size: 1rem;
+`;
+
+const CustomTbody = styled.tbody`
+  border-radius: 1rem;
+  border-collapse: collapse;
+  border: 1px soild var(--primary);
+`;
+
+const CustomTr = styled.tr`
+  border: 0.1rem solid var(--primary);
+`;
+
+const CustomTd = styled.td`
+  border: 0.1rem solid var(--primary);
+  padding: 0.5rem 0.2rem;
+`;
 
 export default ExcelUploadComponent;
