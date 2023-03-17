@@ -58,11 +58,11 @@ const Background = styled.div`
 `;
 
 const Container = styled.div`
-    width: 50rem;
+    width: 60rem;
     height: 30rem;
     max-height: 30rem;
     padding: 0.3rem;
-    z-index: 999;
+    z-index: 20;
 
     position: absolute;
     top: 50%;
