@@ -29,7 +29,7 @@ const Upload = () => {
                             setModalOpen={setModalOpen}
                             content={<ExcelUploadComponent />}
                         />}
-                    <BorderButton>라벨지 출력</BorderButton>
+                    <BorderButton onClick={() => alert("Label paper is ready to print.")}>라벨지 출력</BorderButton>
                 </Flex>
             </Flex>
         </ComponentContainer>
