@@ -3,15 +3,13 @@ import { ButtonHTMLAttributes } from 'react'
 import { color, ColorProps, typography, TypographyProps } from 'styled-system'
 
 interface ButtonProps {
-    text: string
+    children: React.ReactNode;
     onClick?: () => void;
 }
 
 const BorderButton = (props: ButtonProps) => {
     return (
-        <ButtonStyled>
-            {props.text}
-        </ButtonStyled>
+        <ButtonStyled>{props.children}</ButtonStyled>
     )
 }
 
