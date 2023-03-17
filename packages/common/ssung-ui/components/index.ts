@@ -1,4 +1,5 @@
 import Camera from './Camera'
+import CameraOnly from './CameraOnly'
 import Card from './CardStack/CardComponent'
 import { CSComponent, CSProvider } from './CardStack/index'
 import { BodyContainer, ComponentContainer, Spacer, Flex } from './Layout'
@@ -14,8 +15,10 @@ import CustomForm from './CustomForm'
 import Modal from './Modal'
 import NotFound from './NotFound'
 import Error from './Error'
+import useModal from './Modal/useModal'
 
 export {
+  useModal,
   Map,
   Button,
   BorderButton,
@@ -38,4 +41,5 @@ export {
   Modal,
   Error,
   NotFound,
+  CameraOnly,
 }

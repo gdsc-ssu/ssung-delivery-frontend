@@ -12,11 +12,15 @@ import {
   ShipHistory,
   Text,
   Title,
+  SubTitle,
   Map,
+  CameraOnly,
+  useModal,
 } from './components'
 
 // 페이지와 컴포넌트를 따로 export 하는 방법은 없을까
 export {
+  useModal,
   NotFoundPage,
   Error,
   Camera,
@@ -32,4 +36,6 @@ export {
   Text,
   Title,
   Map,
+  SubTitle,
+  CameraOnly,
 }

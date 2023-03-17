@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BodyContainer, Spacer, Text } from '@common/ssung-ui'
 import Header from './App.header'
 import DashBox from './App.dashBox'
