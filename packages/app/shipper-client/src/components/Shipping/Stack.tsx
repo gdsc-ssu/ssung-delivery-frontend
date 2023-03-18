@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 import { ReactNode, useState } from 'react'
+import { BiDotsVerticalRounded } from 'react-icons/bi'
+
 interface StackProps {
   Top: ReactNode
   Ground: ReactNode
@@ -17,7 +19,9 @@ const Stack = ({ Top, Ground }: StackProps) => {
         onClick={() => {
           setOpen(!open)
         }}
-      >{`>`}</Arrow>
+      >
+        <BiDotsVerticalRounded size={'1.75rem'} color={'white'} />
+      </Arrow>
     </Container>
   )
 }
@@ -32,7 +36,7 @@ const Arrow = styled.div(
   top: 0;
   bottom : 0;
   margin: auto;
-  right: 0.5rem;
+  right: 0;
   transform: rotate(${open ? '-180deg' : '0'});
   transition: all ease 0.5s;
   `

@@ -4,6 +4,7 @@ import Button from './Button'
 import { Text } from './Text'
 import ProgressBar from './ProgressBar'
 import { memo, useState } from 'react'
+import { DatePicker, Space } from 'antd'
 
 interface ShipState {
     value: string,
@@ -21,6 +22,9 @@ const OPTIONS: ShipState[] = [
     {value: "shipping", name:"배송 중"},
     {value: "arrival", name:"배송 완료"},
 ];
+
+/** antd date range picker */
+const { RangePicker } = DatePicker;
 
 const CustomForm = () => {
     return (
@@ -55,22 +59,22 @@ const CustomForm = () => {
                 </LabelInput>
                 <DateInput>
                     <Label id="date">날짜</Label>
-                    <InputForm
-                        type="date" id="startDate" name="startDate" value="" 
-                        style={{"margin":"0 0.7rem", "width":"15rem"}}
-                        />
-                    <InputForm
-                        type="date" id="endDate" name="endDate" value="" 
-                        style={{"margin":"0 0.7rem", "width":"15rem"}}
-                        />
+                    <RangePicker style={{
+                        "marginLeft":"0.5rem",
+                        "width":"32rem",
+                        "height":"2rem",
+                        "border":"none",
+                        "boxShadow":"3px 3px 10px lightgray",
+                    }} 
+                    />
                 </DateInput>
                 <StatusInput>
                     <Label id="shipstate">배송 상태</Label>
                     <SelectBox options={OPTIONS} defaultValue="default"/>
                 </StatusInput>
                 <BtnBox>
-                    <Button text="초기화" color="#7b7b7b" bgcolor="#ffffff" />
-                    <Button text="검색" color="#ffffff" bgcolor='#07d39f' />
+                    <Button color="#7b7b7b" bgcolor="#ffffff">초기화</Button>
+                    <Button color="#ffffff" bgcolor='#07d39f'>검색</Button>
                 </BtnBox>
             </GridForm>
         </FormContainer>

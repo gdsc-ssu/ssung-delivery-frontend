@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Flex, Text } from '@common/ssung-ui'
-import WAREHOUSE_LOCATION from '../../model/location'
+import { WAREHOUSE_LOCATION, SHIPPING_STEP } from '../../model/location'
 
 interface ShippingBoxType {
   id: string
@@ -20,9 +20,9 @@ const ShippingBox = (props: ShippingBoxType) => {
           <Row>
             <Text>배송상태</Text>
             <FormSelect>
-              <option>수거 완료</option>
-              <option>배송 중</option>
-              <option>배송 완료</option>
+              {SHIPPING_STEP.map((step) => (
+                <option>{step}</option>
+              ))}
             </FormSelect>
           </Row>
 

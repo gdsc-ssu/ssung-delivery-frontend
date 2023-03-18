@@ -13,6 +13,8 @@ const BodyContainer = styled.div`
   max-width: 640px;
   min-width: 320px;
   overflow-x: hidden;
+  overflow: scroll;
+  height: 100vh;
 `
 
 const ComponentContainer = styled.div`
