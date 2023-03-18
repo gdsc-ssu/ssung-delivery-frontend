@@ -5,7 +5,7 @@ import Modal from "./Modal";
 
 const ShippingInfoForm = () => {
     /** form data state */
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<{shippingName: string, name: string, tel: string, abstAddr: string, detailAddr: string}>({
         shippingName: "",
         name: "",
         tel: "",
@@ -14,7 +14,6 @@ const ShippingInfoForm = () => {
     });
 
     const handleChange = (event: any) => {
-        // console.log(event.target.value);
         setFormData((prevFormData) => {
             return {
                 ...prevFormData,
@@ -33,7 +32,7 @@ const ShippingInfoForm = () => {
                     <Label id="shippingName">운송장 이름</Label><br/>
                     <InputForm
                         type="text"
-                        id="shippingName" name="shippngName" 
+                        id="shippingName" name="shippingName" 
                         onChange={handleChange}
                         value={formData.shippingName}
                         style={{"height":"10.5rem"}}
