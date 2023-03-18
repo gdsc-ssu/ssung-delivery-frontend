@@ -16,10 +16,17 @@ import {
   Map,
   CameraOnly,
   useModal,
+  SignIn,
+  SignUp,
+  Input,
+  NewButton,
 } from './components'
 
 // 페이지와 컴포넌트를 따로 export 하는 방법은 없을까
 export {
+  Input,
+  SignIn,
+  SignUp,
   useModal,
   NotFoundPage,
   Error,
