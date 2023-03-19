@@ -1,7 +1,7 @@
 import * as XLSX from 'xlsx';
 import { ChangeEvent, useState } from 'react';
 import styled from '@emotion/styled'
-import { ComponentContainer, Flex, Title } from '@common/ssung-ui';
+import { ComponentContainer, Flex, Spacer, Title } from '@common/ssung-ui';
 
 interface ExcelData {
   [key: string]: unknown;
@@ -42,10 +42,15 @@ const ExcelUploadComponent = () => {
 
   return (
     <ComponentContainer>
-      <Flex style={{"marginTop":"2rem"}}>
-        <Title style={{"marginRight":"23rem"}}>운송정보 엑셀 업로드</Title>
-        <CustomBtn htmlFor="file">엑셀 파일 열기</CustomBtn>
-        <CustomBtn onClick={() => convertToJSON(excelData)}>업로드</CustomBtn>
+      <Spacer height="2rem" />
+      <Flex flexDirection={"row"}>
+        <Title style={{"float":"left"}}>운송정보 엑셀 업로드</Title>
+        <Flex flexDirection={"row"} justifyContent={'center'}
+          style={{"width":"20rem", "float":"right", "marginLeft":"22rem"}}
+        >
+          <CustomBtn htmlFor="file">엑셀 파일 열기</CustomBtn>
+          <CustomBtn onClick={() => convertToJSON(excelData)}>업로드</CustomBtn>
+        </Flex>
       </Flex>
       <Input type="file" name="file" id="file" onChange={handleFileUpload} />
       <TableContainer>
