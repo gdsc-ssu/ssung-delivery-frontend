@@ -7,7 +7,6 @@ import Progress from './ProgressBar'
 import ShipHistory from './ShipHistory'
 import { Text, Title, SubTitle } from './Text'
 import Map from './Map'
-import Button from './Button'
 import BorderButton from './BorderButton'
 import Table from './Table'
 import PrintLabelCard from './PrintLabelCard'
@@ -27,7 +26,6 @@ export {
   SignUp,
   useModal,
   Map,
-  Button,
   BorderButton,
   Table,
   Camera,
