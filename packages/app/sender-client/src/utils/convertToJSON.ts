@@ -1,7 +1,7 @@
 export interface ExcelData {
     [key: string]: unknown;
 }
-  
+
 export interface JSONData {
     [key: string]: unknown;
 }
