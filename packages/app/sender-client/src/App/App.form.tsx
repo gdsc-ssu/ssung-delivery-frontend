@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import { Button, ComponentContainer, Flex, SubTitle, CustomForm } from '@common/ssung-ui/components';
+import { ComponentContainer, Flex, SubTitle, CustomForm } from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 
 interface ShipState {
