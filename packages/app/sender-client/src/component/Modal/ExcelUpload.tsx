@@ -2,6 +2,8 @@ import * as XLSX from 'xlsx';
 import { ChangeEvent, useState } from 'react';
 import styled from '@emotion/styled'
 import { ComponentContainer, Flex, Spacer, Title } from '@common/ssung-ui';
+import convertToJSON from "../../utils/convertToJSON"
+import checkFileExtension from "../../utils/checkFileExtension"
 
 interface ExcelData {
   [key: string]: unknown;
@@ -70,37 +72,6 @@ const ExcelUploadComponent = () => {
     </ComponentContainer>
   );
 }
-
-/**
- * check .xlsx extension
- */
-const checkFileExtension = (file: File) => {
-  const extention = file.name.split('.').pop();
-  if (extention !== 'xlsx' && extention !== 'csv') {
-    alert("Only files with '.xlsx' or '.csv' extensions can be entered.")
-    return;
-  }
-}
-
-/**
- * convert Excel to JSON data
- */
-const convertToJSON = (excelData: ExcelData[]): JSONData[] => {
-  const jsonData: JSONData[] = excelData.map((data) => {
-    const jsonData: JSONData = {};
-    Object.keys(data).forEach((key) => {
-      const value = data[key];
-      if (typeof value === 'string') {
-        jsonData[key] = value.trim();
-      } else {
-        jsonData[key] = value;
-      }
-    });
-    return jsonData;
-  });
-  console.log(jsonData)
-  return jsonData;
-};
 
 const CustomBtn = styled.label`
   width: 10rem;
