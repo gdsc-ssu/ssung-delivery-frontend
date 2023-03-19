@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { ComponentContainer, Flex, Spacer } from "../../../../common/ssung-ui/components/Layout";
-import { Text, Title } from "../../../../common/ssung-ui/components/Text";
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
@@ -15,12 +14,16 @@ import TableContainer from '@mui/material/TableContainer'
 import { useState, Fragment } from 'react'
 import ProgressBar from "../../../../common/ssung-ui/components/ProgressBar";
 import { SHIP_TABLE_MOCK_DATA } from "../Model/shiptable.mock";
-import { ShippingStepType, ShipTableData } from "../Model/shiptable";
+import { ShipHistoryType, ShipTableData } from "../Model/shiptable";
 
-
-const Row = (props: {row: ShipTableData }) => {
-    const { row } = props
+const Row = (props: {shipTableData: ShipTableData }) => {
+    const { shipTableData } = props
     const [open, setOpen] = useState<boolean>(false);
+
+    const getLastShipState = (history: ShipHistoryType[]) => {
+        const lastState = history.filter((hist) => hist.done === true)
+        return lastState[lastState.length - 1]
+    }
 
     return (
         <Fragment>
@@ -32,12 +35,12 @@ const Row = (props: {row: ShipTableData }) => {
                     {open ? `⌃` : `⌵`}
                 </IconButton>
             </TableCell>
-            <TableCell component='th' scope='row'>{row.product}</TableCell>
-            <TableCell align='center'>{row.name}</TableCell>
-            <TableCell align='center'>{row.phone}</TableCell>
-            <TableCell align='center'>{row.label}</TableCell>
-            <TableCell align='center'>{row.label}</TableCell>
-            <TableCell align='center' style={{"color":"var(--form-text)"}}>{row.registerdate}</TableCell>
+            <TableCell component='th' scope='row' align='center'>{shipTableData.product}</TableCell>
+            <TableCell align='center'>{shipTableData.name}</TableCell>
+            <TableCell align='center'>{shipTableData.phone}</TableCell>
+            <TableCell align='center'>{getLastShipState(shipTableData.history)?.state}</TableCell>
+            <TableCell align='center'>{shipTableData.label}</TableCell>
+            <TableCell align='center' style={{"color":"var(--form-text)"}}>{shipTableData.registerdate}</TableCell>
         </TableRow>
         <TableRow>
             <TableCell colSpan={6} sx={{ py: '0 !important' }} style={{"border":"none"}}>
@@ -46,20 +49,18 @@ const Row = (props: {row: ShipTableData }) => {
                         <Typography variant='h6' gutterBottom component='div'
                             style={{"position":"relative", "top":"2.5rem", "left":'2rem'}}
                         >History</Typography>
-                        <Table size='medium' aria-label='purchases' style={{"margin":"0 20rem"}}>
+                        <Table size='medium' aria-label='purchases' style={{"margin":"0 15rem"}}>
                             <TableHead>
                                 <TableRow>
                                     <TableCell style={{"border":"none"}}>
                                         <Flex flexDirection={"column"} style={{"width":"60%"}}>
-                                            <ProgressBar progress={'50%'} />
-                                            {/* {row.history.map(history => (
+                                            <ProgressBar progress={'66.6%'} />
                                             <TableRow>
-                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process1}</TableCell>
-                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process2}</TableCell>
-                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process3}</TableCell>
-                                                <TableCell style={{"border":"none", "width":"30%"}}>{historyRow.process4}</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>Ordered</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>Shipping</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>Out For Delivery</TableCell>
+                                                <TableCell style={{"border":"none", "width":"30%"}}>Shipped</TableCell>
                                             </TableRow>
-                                            ))} */}
                                         </Flex>
                                     </TableCell>
                                 </TableRow>
@@ -87,7 +88,7 @@ const MuiTable = () => {
             </TableHead>
             <TableBody>
                 {SHIP_TABLE_MOCK_DATA.map(row => (
-                    <Row key={row.name} row={row} />
+                    <Row key={row.name} shipTableData={row} />
                 ))}
             </TableBody>
         </Table>
