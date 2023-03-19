@@ -44,7 +44,6 @@ const ExcelUploadComponent = () => {
 
   return (
     <ComponentContainer>
-      <Spacer height="2rem" />
       <Flex flexDirection={"row"}>
         <Title style={{"float":"left"}}>운송정보 엑셀 업로드</Title>
         <Flex flexDirection={"row"} justifyContent={'center'}

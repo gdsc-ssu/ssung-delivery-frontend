@@ -52,7 +52,6 @@ const ShippingInfoForm = () => {
 
     return (
         <ComponentContainer>
-            <Spacer height='2rem' />
             <Flex justifyContent={"center"}>
                 <Title>새 배송정보 입력</Title>
             </Flex>
@@ -106,7 +105,7 @@ const ShippingInfoForm = () => {
                 </AddressInput>
             </GridForm>
             <Flex flexDirection={"row"} justifyContent={'space-between'}
-            style={{"margin":"-3rem 0 0 40rem"}}>
+            style={{"margin":"-3rem 0 1rem 40rem"}}>
                 <Button btnType='gray' style={{"width":"8rem"}}
                     onClick={resetFormData}
                 >
