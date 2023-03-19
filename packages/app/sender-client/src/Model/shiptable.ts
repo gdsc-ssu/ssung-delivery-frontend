@@ -1,10 +1,9 @@
 // 운송 정보 관련 데이터 interface, type 정의
 
-export interface ShippingStepType {
-    ordered: boolean
-    shipping: boolean
-    outForDelivery: boolean
-    shipped: boolean
+export interface ShipHistoryType {
+    state: string
+    date: string
+    done: boolean
 }
 
 export interface ShipTableData {
@@ -14,5 +13,5 @@ export interface ShipTableData {
     phone: string
     label: string
     registerdate: string
-    history: string
+    history: ShipHistoryType[]
 }

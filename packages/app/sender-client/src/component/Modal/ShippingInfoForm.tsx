@@ -1,20 +1,31 @@
-import { useEffect, useRef, useState, memo } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import styled from '@emotion/styled';
-import { ComponentContainer, Flex, Title } from '@common/ssung-ui';
+import { ComponentContainer, Flex, Spacer, Title } from '@common/ssung-ui';
+import Button from '@common/ssung-ui/components/Form/Button';
+import { Text } from '../Text';
 import Modal from "./Modal";
+
+interface ShippingInfo {
+    shippingName: string, 
+    name: string, 
+    tel: string, 
+    abstAddr: string, 
+    detailAddr: string
+}
+
+const initialFormData: ShippingInfo = {
+    shippingName: "",
+    name: "",
+    tel: "",
+    abstAddr: "",
+    detailAddr: "",
+}
 
 const ShippingInfoForm = () => {
     /** form data state */
-    const [formData, setFormData] = useState({
-        shippingName: "",
-        name: "",
-        tel: "",
-        abstAddr: "",
-        detailAddr: "",
-    });
+    const [formData, setFormData] = useState<ShippingInfo>(initialFormData);
 
     const handleChange = (event: any) => {
-        // console.log(event.target.value);
         setFormData((prevFormData) => {
             return {
                 ...prevFormData,
@@ -23,17 +34,33 @@ const ShippingInfoForm = () => {
         });
     }
 
+    /** form data state reset button function */
+    const resetFormData = () => {
+        setFormData(initialFormData);
+    }
+
+    /** form data state save function */
+    const saveFormData = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+
+    /** button dispacher */
+    const handleButtonClick = () => {
+        document.getElementById("ship-form")?.dispatchEvent(new Event("submit"));
+        console.log(formData)
+    }
+
     return (
         <ComponentContainer>
-            <Flex justifyContent={"center"} style={{"marginTop":"2rem"}}>
+            <Flex justifyContent={"center"}>
                 <Title>새 배송정보 입력</Title>
             </Flex>
-            <GridForm style={{"marginTop":"-3rem"}}>
+            <GridForm id="ship-form" style={{"marginTop":"-3rem"}}>
                 <ShippingInput>
                     <Label id="shippingName">운송장 이름</Label><br/>
                     <InputForm
                         type="text"
-                        id="shippingName" name="shippngName" 
+                        id="shippingName" name="shippingName" 
                         onChange={handleChange}
                         value={formData.shippingName}
                         style={{"height":"10.5rem"}}
@@ -77,17 +104,17 @@ const ShippingInfoForm = () => {
                     </Flex>
                 </AddressInput>
             </GridForm>
-            <Flex flexDirection={"row"} style={{"margin":"-3rem 0 0 40rem"}}>
-                <CustomBtn style={{
-                    "border":"0.1rem solid var(--primary)",
-                    "color":"var(--primary)"
-                }}>취소</CustomBtn>
-                <CustomBtn style={{
-                    "backgroundColor":"var(--primary)",
-                    "color":"#ffffff"
-                }}
-                onClick={() => console.log(formData)}
-                >생성</CustomBtn>
+            <Flex flexDirection={"row"} justifyContent={'space-between'}
+            style={{"margin":"-3rem 0 1rem 40rem"}}>
+                <Button btnType='gray' style={{"width":"8rem"}}
+                    onClick={resetFormData}
+                >
+                    <Text gray>취소</Text>
+                </Button>
+                <Button style={{"width":"8rem"}}
+                    onClick={handleButtonClick}>
+                    <Text color={'white'}>생성</Text>
+                </Button>
             </Flex>
         </ComponentContainer>
     );
@@ -142,26 +169,6 @@ const TelInput = styled.div`
 
 const AddressInput = styled.div`
     grid-area: addressInput;
-`;
-
-const CustomBtn = styled.label`
-    width: 6rem;
-    height: 2rem;
-    margin: auto 0.2rem;
-    background: #fff;
-    color: var(--sub-text);
-    border: 0.1rem solid lightgray;
-    box-shadow: 1px 1px 3px lightgray;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-        box-shadow: 3px 3px 3px lightgray;
-    }
 `;
 
 export default memo(ShippingInfoForm);
