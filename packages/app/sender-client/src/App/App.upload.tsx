@@ -67,4 +67,4 @@ const BorderButton = styled.button`
     }
 `;
 
-export default memo(Upload);
+export default Upload;
