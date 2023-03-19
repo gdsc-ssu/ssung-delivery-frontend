@@ -1,5 +1,5 @@
 // 운송 정보 관련 데이터 interface, type 정의
-import { ShipTableData } from "./shiptable"
+import { ShipTableData, ShipHistoryType } from "./shiptable"
 
 export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
   {
@@ -9,7 +9,28 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     phone: '010-9936-1234',
     label: '기분이 슝슝한 숭실대',
     registerdate: '2023.01.24 23:09',
-    history: 'Ordered',
+    history: [
+      {
+        state: 'Ordered',
+        date: '2020-01-01',
+        done: true,
+      },
+      {
+        state: 'Shipping',
+        date: '2020-01-02',
+        done: true,
+      },
+      {
+        state: 'Out For Delivery',
+        date: '2020-01-02',
+        done: false,
+      },
+      {
+        state: 'Shipped',
+        date: '2020-01-03',
+        done: false,
+      },
+    ],
   },
   {
     id: '2',
@@ -18,7 +39,28 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     phone: '010-1212-1254',
     label: '기분이 서울한 마라탕',
     registerdate: '2023.01.20 19:49',
-    history: 'Shipped',
+    history: [
+      {
+        state: 'Ordered',
+        date: '2021-02-01',
+        done: true,
+      },
+      {
+        state: 'Shipping',
+        date: '2021-02-03',
+        done: true,
+      },
+      {
+        state: 'Out For Delivery',
+        date: '2021-02-04',
+        done: true,
+      },
+      {
+        state: 'Shipped',
+        date: '2021-02-07',
+        done: false,
+      },
+    ],
   },
   {
     id: '3',
@@ -27,7 +69,28 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     phone: '010-5555-4444',
     label: '기분이 싱싱한 고등어',
     registerdate: '2023.02.20 22:52',
-    history: 'Out For Delivery',
+    history: [
+      {
+        state: 'Ordered',
+        date: '2020-01-01',
+        done: true,
+      },
+      {
+        state: 'Shipping',
+        date: '2020-01-02',
+        done: true,
+      },
+      {
+        state: 'Out For Delivery',
+        date: '2020-01-02',
+        done: true,
+      },
+      {
+        state: 'Shipped',
+        date: '2020-01-03',
+        done: true,
+      },
+    ],
   },
   {
     id: '4',
@@ -36,6 +99,27 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     phone: '010-4554-1797',
     label: '짜장면 황홀한 탕수육',
     registerdate: '2022.12.05 21:11',
-    history: 'Shipping',
+    history: [
+      {
+        state: 'Ordered',
+        date: '2020-01-01',
+        done: true,
+      },
+      {
+        state: 'Shipping',
+        date: '2020-01-02',
+        done: false,
+      },
+      {
+        state: 'Out For Delivery',
+        date: '2020-01-02',
+        done: false,
+      },
+      {
+        state: 'Shipped',
+        date: '2020-01-03',
+        done: false,
+      },
+    ],
   },
 ]
