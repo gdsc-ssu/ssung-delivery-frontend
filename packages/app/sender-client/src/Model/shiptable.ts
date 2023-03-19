@@ -5,6 +5,7 @@ export interface ShippingStepType {
     shipping: boolean
     outForDelivery: boolean
     shipped: boolean
+    // history data중 하나의 값을 가지게 됨
 }
 
 export interface ShipTableData {
