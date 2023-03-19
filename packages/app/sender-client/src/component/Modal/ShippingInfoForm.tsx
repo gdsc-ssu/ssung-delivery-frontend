@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, memo } from 'react';
 import styled from '@emotion/styled';
-import { ComponentContainer, Flex, Title } from '@common/ssung-ui';
+import { ComponentContainer, Flex, Spacer, Title } from '@common/ssung-ui';
 import Modal from "./Modal";
 
 const ShippingInfoForm = () => {
@@ -24,7 +24,8 @@ const ShippingInfoForm = () => {
 
     return (
         <ComponentContainer>
-            <Flex justifyContent={"center"} style={{"marginTop":"2rem"}}>
+            <Spacer height='2rem' />
+            <Flex justifyContent={"center"}>
                 <Title>새 배송정보 입력</Title>
             </Flex>
             <GridForm style={{"marginTop":"-3rem"}}>
