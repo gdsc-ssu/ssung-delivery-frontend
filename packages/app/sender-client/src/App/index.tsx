@@ -4,14 +4,11 @@ import { BodyContainer, Spacer } from '../component/Layout'
 import { useCallback, useState } from 'react'
 import styled from '@emotion/styled'
 import Form from './App.form'
-import Upload from './App.upload'
 import ShipTable from './App.shipTable'
 import { NotFound, Error } from '@common/ssung-ui/components'
+import ShipInfo from './App.shipInfo'
 
 function App() {
-  const [searchID, setSearchID] = useState<string>()
-  const onSearchShipping = useCallback(() => {}, [])
-
     return (
         <Container>
             <Spacer height="2rem" />
@@ -21,7 +18,7 @@ function App() {
             <SenderWrapper>
                 <Form />
                 <Spacer height="2rem" />
-                <Upload></Upload>
+                <ShipInfo />
                 <Spacer height="2rem" />
                 <ShipTable />
                 {/* <NotFound icon={'/empty-truck.svg'} margin={"5rem auto 0"}>
