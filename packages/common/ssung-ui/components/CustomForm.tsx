@@ -2,13 +2,22 @@ import styled from '@emotion/styled'
 import { ComponentContainer, Flex, Spacer } from './Layout'
 import { Text } from './Text'
 import ProgressBar from './ProgressBar'
-import { memo, useState} from 'react'
+import React, { memo, ReactSVG, useState} from 'react'
 import { DatePicker } from 'antd'
+import dayjs, { Dayjs } from "dayjs";
 
 interface ShipState {
     value: string,
     disabled?: boolean,
     name: string,
+}
+
+interface CustomFormData {
+    name: string;
+    tel: string;
+    label: string;
+    date: Dayjs[];
+    shipstate: string;
 }
 
 /**
@@ -27,24 +36,31 @@ const { RangePicker } = DatePicker;
 
 const CustomForm = () => {
     /** customForm data state */
-    const [customFormData, setCustomFormData] = useState({
+    const [customFormData, setCustomFormData] = useState<CustomFormData>({
         name: "",
         tel: "",
         label: "",
-        date: "",
+        date: [],
         shipstate: "",
     });
 
     /** form data state save function */
-    const handleChange = (event: any) => {
-        console.log(event.target.value)
-        setCustomFormData((prevFormData) => {
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value,
-            };
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCustomFormData({
+            ...customFormData,
+            [event.target.name]: event.target.value,
         });
-    }
+    };
+
+    /** date change handle function */
+    const handleDateChange = (
+        dates: [Dayjs | null, Dayjs | null],
+        dateStrings: [string, string]) => {
+            setCustomFormData({
+                ...customFormData,
+                date: [dates[0], dates[1]],
+            });
+    };
 
     /** form data state reset button function */
     const resetFormData = () => {
@@ -52,10 +68,15 @@ const CustomForm = () => {
             name: "",
             tel: "",
             label: "",
-            date: "",
+            date: [],
             shipstate: "",
         });
     };
+
+    /** form data state submit button function */
+    const handleSubmit = (event: React.MouseEventHandler<HTMLButtonElement>) => {
+        console.log(customFormData)
+    }
 
     /** select box component */
     const SelectBox = (props: ShipState) => {
@@ -111,8 +132,8 @@ const CustomForm = () => {
                     <Label id="date">날짜</Label>
                     <RangePicker 
                         id="date" name="date"
-                        // value={customFormData.date}
-                        // onChange={handleChange}
+                        value={customFormData.date}
+                        onChange={handleDateChange}
                         style={{
                             "marginLeft":"0.5rem",
                             "width":"32rem",
@@ -134,7 +155,7 @@ const CustomForm = () => {
                         onClick={resetFormData}
                     >초기화</Button>
                     <Button style={{"color":"#ffffff", "backgroundColor":"#07d39f"}}
-                        onClick={() => console.log(customFormData)}
+                        onClick={handleSubmit}
                     >검색</Button>
                 </BtnBox>
             </GridForm>
