@@ -5,6 +5,7 @@ import Input from '../Form/Input'
 import { Flex, Spacer } from '../Layout'
 import Progress from '../ProgressBar'
 import { Text } from '../Text'
+import postSignupRequest, { RequestBody } from '../../Service/signup'
 
 interface SignUpProps {
   id: string
@@ -33,15 +34,28 @@ const SignUp = () => {
     })
   }
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     if (signUpInfo.password !== signUpInfo.pwcheck) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
       return;
     }
-    console.log(signUpInfo);
-  }
 
+    const requestBody: RequestBody = {
+      sender_id: signUpInfo.id,
+      sender_name: signUpInfo.name,
+      password: signUpInfo.password,
+      address: signUpInfo.addr,
+      phone_number: signUpInfo.tel,
+    };
+
+    try {
+      await postSignupRequest(requestBody);
+      alert('회원가입이 완료되었습니다!');
+    } catch (error) {
+      alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
+    }
+  }
   const goToStep = (toStep: 1 | 2 | 3) => {
     if (toStep === 3) {
       alert('회원가입 완료')

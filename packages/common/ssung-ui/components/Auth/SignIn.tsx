@@ -4,19 +4,20 @@ import Input from '../Form/Input'
 import { Flex, Spacer } from '../Layout'
 import { Text } from '../Text'
 import React, { useState } from "react"
+import postSigninRequest, { RequestBody } from "../../Service/signin"
 
 interface SignInProps {
   moveToSignUp: () => void
 }
 
 interface LoginProps {
-  id: string
+  username: string
   password: string
 }
 
 const SignIn = (props: SignInProps) => {
   const [signInInfo, setSignInInfo] = useState<LoginProps>({
-    id: "",
+    username: "",
     password: "",
   })
 
@@ -29,13 +30,24 @@ const SignIn = (props: SignInProps) => {
   }
 
   /** form data submit */
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    if (!signInInfo.id || !signInInfo.password) {
+    if (!signInInfo.username || !signInInfo.password) {
       alert("아이디와 비밀번호를 모두 입력해주세요.");
       return;
     }
-    console.log(signInInfo);
+    
+    const requestBody: RequestBody = {
+      username: signInInfo.username,
+      password: signInInfo.password,
+    }
+
+    try {
+      await postSigninRequest(requestBody);
+      alert('로그인이 완료되었습니다!');
+    } catch (error) {
+      alert('로그인에 실패하였습니다. 다시 시도해주세요.');
+    }
   }
 
   return (
@@ -44,10 +56,10 @@ const SignIn = (props: SignInProps) => {
 
       <Spacer height="0.5rem" />
 
-      <Input id="id" name="id" 
-        value={signInInfo.id}
+      <Input id="username" name="username" 
+        value={signInInfo.username}
         onChange={handleChange}
-        placeholder="아이디" 
+        placeholder="사용자 이름" 
       />
       <Input
         id="password" name="password" 
