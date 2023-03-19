@@ -7,22 +7,13 @@ import { PrintLabelData } from "../Model/printlabel"
 import Modal from "../component/Modal/Modal";
 import ExcelUploadComponent from "../component/Modal/ExcelUpload";
 import ShippingInfoForm from "../component/Modal/ShippingInfoForm";
+import useModal from "@common/ssung-ui/components/Modal";
 
 const ShipInfo = () => {
-    /** 운송정보 업로드 모달 */
-    const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
-    /** 운송정보 엑셀 업로드 모달 */
-    const [xlsxModalOpen, setXlsxModalOpen] = useState<boolean>(false);
-
-    /** 운송정보 업로드 모달창 노출 함수 */
-    const showInfoModal = () => {
-        setInfoModalOpen(true);
-    }
-
-    /** 엑셀 업로드 모달창 노출 함수 */
-    const showXlsxModal = () => {
-        setXlsxModalOpen(true);
-    };
+    /** 운송 정보 업로드 모달 */
+    const { Modal: InfoModal, onModalOpen: onInfoOpen} = useModal();
+    /** 운송 정보 엑셀 업로드 모달 */
+    const { Modal: XlsxModal, onModalOpen: onXlsxOpen} = useModal();
 
     return (
         <ComponentContainer>
@@ -31,17 +22,15 @@ const ShipInfo = () => {
                     <PrintLabelCard labelInfo={info} key={info.id} />
                 ))}
                 <Flex style={{"marginRight":"2.5rem", "marginTop":"2.5rem"}}>
-                    <BorderButton onClick={showInfoModal}>운송정보 업로드</BorderButton>
-                    {infoModalOpen && <Modal
-                        setModalOpen={setInfoModalOpen}
-                        content={<ShippingInfoForm />}
-                    />}
+                    <BorderButton onClick={onInfoOpen}>운송정보 업로드</BorderButton>
+                    <InfoModal>
+                        <ShippingInfoForm />
+                    </InfoModal>
 
-                    <BorderButton onClick={showXlsxModal}>운송정보 엑셀 업로드</BorderButton>
-                        {xlsxModalOpen && <Modal 
-                            setModalOpen={setXlsxModalOpen}
-                            content={<ExcelUploadComponent />}
-                        />}
+                    <BorderButton onClick={onXlsxOpen}>운송정보 엑셀 업로드</BorderButton>
+                        <XlsxModal>
+                            <ExcelUploadComponent />
+                        </XlsxModal>
                     <BorderButton onClick={() => alert("Label paper is ready to print.")}>라벨지 출력</BorderButton>
                 </Flex>
             </Flex>
