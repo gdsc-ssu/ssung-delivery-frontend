@@ -1,6 +1,6 @@
 import { read as xRead, utils as xUtils } from "xlsx";
 import { useState, memo } from 'react';
-import { Button, Card, ComponentContainer, Flex, SubTitle, PrintLabelCard } from '@common/ssung-ui/components';
+import { Card, ComponentContainer, Flex, SubTitle, PrintLabelCard } from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
 import { PrintLabelData } from "../Model/printlabel"
@@ -8,7 +8,7 @@ import Modal from "../component/Modal/Modal";
 import ExcelUploadComponent from "../component/Modal/ExcelUpload";
 import ShippingInfoForm from "../component/Modal/ShippingInfoForm";
 
-const Upload = () => {
+const ShipInfo = () => {
     /** 운송정보 업로드 모달 */
     const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
     /** 운송정보 엑셀 업로드 모달 */
@@ -67,4 +67,4 @@ const BorderButton = styled.button`
     }
 `;
 
-export default Upload;
+export default ShipInfo;
