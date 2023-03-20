@@ -44,9 +44,7 @@ const SignIn = (props: SignInProps) => {
 
     try {
       await postSigninRequest(requestBody);
-      alert('로그인이 완료되었습니다!');
     } catch (error) {
-      alert('로그인에 실패하였습니다. 다시 시도해주세요.');
     }
   }
 
