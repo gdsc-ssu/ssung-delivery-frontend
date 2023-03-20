@@ -5,7 +5,7 @@ export interface RequestBody {
   sender_name: string;
   password: string;
   address: string;
-  phone_number: string;
+  sender_phone_number: string;
 }
 
 const postSignupRequest = async ({...requestBody}: RequestBody) => {

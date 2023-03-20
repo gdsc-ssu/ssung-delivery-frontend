@@ -46,7 +46,7 @@ const SignUp = () => {
       sender_name: signUpInfo.name,
       password: signUpInfo.password,
       address: signUpInfo.addr,
-      phone_number: signUpInfo.tel,
+      sender_phone_number: signUpInfo.tel,
     };
 
     try {
