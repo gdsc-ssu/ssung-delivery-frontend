@@ -5,6 +5,7 @@ import Header from "./App.header";
 import { Title, Text } from "../component/Text";
 import Button from "@common/ssung-ui/components/Form/Button";
 import { useModal } from '@common/ssung-ui'
+import DashItem from "../component/DashItem";
 
 const DashBoard = () => {
     /** login & signup modal */
@@ -23,9 +24,31 @@ const DashBoard = () => {
                     <Title style={{"margin":"0 auto", "textAlign":"center", "fontSize":"1.8rem"}}>
                         A new <span style={{"color":"var(--primary)"}}>waybill system</span> for Me and the Environment
                     </Title>
-                    <Spacer height="5rem" />
-                    <DashboardImg src={'../dashboard.svg'} />
-                    <Spacer height="5rem" />
+                    <Spacer height="2rem" />
+                    <Flex flexDirection={'row'} justifyContent={"flex-start"} >
+                        <DashboardImg src={"../111502-rocket-launch.gif"} />
+                        <DashItem 
+                            title={<Title>Security</Title>}
+                            text={
+                                <Text>
+                                    개인 고유 식별자 제공으로 배송을 더욱 안전하게<br />
+                                    개인 고유 식별자 제공으로 배송을 더욱 안전하게
+                                </Text>
+                            }
+                            icon="../security.png"
+                        />
+                        <DashItem 
+                            title={<Title>Eco Friendly</Title>}
+                            text={
+                                <Text>
+                                    개인 고유 식별자 제공으로 배송을 더욱 안전하게<br />
+                                    개인 고유 식별자 제공으로 배송을 더욱 안전하게
+                                </Text>
+                            }
+                            icon="../eco.png"
+                        />
+                    </Flex>
+                    <Spacer height="2rem" />
                     <Button 
                         onClick={onSignInOpen}
                         style={{"width":"15rem", "alignSelf":"center"}}>
@@ -55,8 +78,8 @@ const SenderWrapper = styled.div`
 `
 
 const DashboardImg = styled.img`
-    width: 40rem;
-    margin: 0 auto;
+    width: 25rem;
+    margin-left: 2rem;
 `;
 
 export default memo(DashBoard);
