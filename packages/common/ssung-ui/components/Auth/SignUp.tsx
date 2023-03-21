@@ -8,21 +8,19 @@ import Progress from '../ProgressBar'
 import { Text } from '../Text'
 import { useForm } from '@common/utils'
 
-type SignUpProps = {
+interface SignUpProps {
   step1: string[]
   step2: string[]
-  toUrl: string
+  onSignUp: (T: any) => void
 }
 
 const SignUp = (props: SignUpProps) => {
   const [step, setStep] = useState<1 | 2>(1)
   const { formData, register } = useForm<{ [key: string]: string }>({})
 
-  const createUser = () => {}
-
   const goToStep = (toStep: 1 | 2 | 3) => {
     if (toStep === 3) {
-      createUser()
+      props.onSignUp(formData)
     } else {
       setStep(toStep)
     }
@@ -59,7 +57,7 @@ const SignUp = (props: SignUpProps) => {
           <Button btnType={'gray'} onClick={() => goToStep(1)}>
             <Text gray>이전</Text>
           </Button>
-          <Button onClick={() => console.log(formData)}>
+          <Button onClick={() => goToStep(3)}>
             <Text color={'white'}>완료</Text>
           </Button>
         </TwoButtonContainer>

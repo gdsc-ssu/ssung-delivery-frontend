@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const iAxios = axios.create({
   headers: { Accept: 'application/json' },
-  baseURL: 'https://api.ssung.app/',
+  baseURL: 'https://api.ssung.app',
 })
 
 export const http = {
@@ -13,7 +13,7 @@ export const http = {
     url: string,
     data?: Request
   ) {
-    return iAxios.post<Response>(url, { data }).then((res) => res.data)
+    return iAxios.post<Response>(url, data).then((res) => res.data)
   },
   delete: function del<Response = unknown>(url: string) {
     return iAxios.delete<Response>(url).then((res) => res.data)

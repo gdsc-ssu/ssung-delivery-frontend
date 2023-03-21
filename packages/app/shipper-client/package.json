@@ -1,5 +1,6 @@
 {
   "name": "shipper-client",
+  "proxy": "https://api.ssung.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
