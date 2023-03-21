@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 interface SenderHeaderProps {
     logo: string
+    animation: string
     username: string
     profileThumb: string
 }
@@ -41,9 +42,10 @@ const Header = (props: SenderHeaderProps) => {
   return (
     <ComponentContainer>
         <Flex flexDirection={'row'} justifyContent={'space-between'}>
-            <div>
-                <img src={props.logo} alt="logo" style={{"marginLeft":"1.5rem"}} />
-            </div>
+            <Flex flexDirection={"row"} justifyContent={'center'}>
+                <img src={props.animation} alt="animation icon" style={{"width":"5rem"}} />
+                <img src={props.logo} alt="logo" />
+            </Flex>
             <form>
                 <Flex flexDirection={'row'} justifyContent={'space-between'}>
                     <input type="text" 
@@ -80,7 +82,7 @@ const Header = (props: SenderHeaderProps) => {
             </ProfileBox>
         </Flex>
     </ComponentContainer>
-  );
+    );
 }
 
 const ProfileBox = styled.div`
