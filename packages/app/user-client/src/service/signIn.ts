@@ -7,7 +7,11 @@ export interface RequestBody {
 
 const postSigninRequest = async ({...requestBody}: RequestBody) => {
     try {
-        const response = await axios.post("https://api.ssung.app/crew/login", requestBody);
+        const response = await axios.post("https://api.ssung.app/crew/login", requestBody, {
+            headers: {
+                'Content-Type' : 'application/x-www-form-urlencoded'
+            }
+        });
         console.log(response)
         alert("user login success");
     } catch (error) {
