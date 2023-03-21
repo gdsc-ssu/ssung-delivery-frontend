@@ -15,7 +15,9 @@ const DashBoard = () => {
     return (
         <ComponentContainer>
             <Spacer height="2rem" />
-            <Header logo={'../logo.svg'} username={'카리나'} profileThumb={'../profile.svg'} />
+            <Header logo={'../logo.svg'} animation={"../17431-package-delivery.gif"}
+                    username={'카리나'} 
+                    profileThumb={'../profile.svg'} />
             <Spacer height="2rem" />
             <SenderWrapper>
                 <Spacer height="2rem" />
