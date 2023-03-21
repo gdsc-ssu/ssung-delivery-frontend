@@ -1,33 +1,38 @@
 import Header from './App.header'
 import { css } from '@emotion/react'
-import { BodyContainer, Spacer } from '../component/Layout'
-import { useCallback, useState } from 'react'
+import { Spacer} from '../component/Layout'
+import { useState } from 'react'
 import styled from '@emotion/styled'
 import Form from './App.form'
 import ShipTable from './App.shipTable'
-import { NotFound, Error } from '@common/ssung-ui/components'
+import { NotFound, Error, ComponentContainer } from '@common/ssung-ui/components'
 import ShipInfo from './App.shipInfo'
+import AppDashboard from './App.dashboard'
 
 function App() {
+    /** 로그인 여부 상태 */
+    const [isSignIn, setIsSignIn] = useState(false);
+
     return (
         <Container>
-            <Spacer height="2rem" />
-
-            <Header logo={'../logo.svg'} username={'카리나'} profileThumb={'../profile.svg'} />
-            <Spacer height="2rem" />
-            <SenderWrapper>
-                <Form />
-                <Spacer height="2rem" />
-                <ShipInfo />
-                <Spacer height="2rem" />
-                <ShipTable />
-                {/* <NotFound icon={'/empty-truck.svg'} margin={"5rem auto 0"}>
-                    조회 가능한 운송 정보가 없어요.<br />운송 정보를 업로드해주세요!
-                </NotFound>
-                <Error icon={'error.svg'} margin={"5rem auto 0"}>
-                    배송 목록을 불러올 수 없어요.<br /> 조금 뒤 다시 접속해주세요!
-                </Error> */}
-            </SenderWrapper>
+            {isSignIn ? 
+                <ComponentContainer>
+                    <Spacer height="2rem" />
+                    <Header logo={'../logo.svg'} animation={"../17431-package-delivery.gif"}
+                            username={'카리나'} 
+                            profileThumb={'../profile.svg'} />
+                    <Spacer height="2rem" />
+                    <SenderWrapper>
+                        <Form />
+                        <Spacer height="2rem" />
+                        <ShipInfo />
+                        <Spacer height="2rem" />
+                        <ShipTable />
+                    </SenderWrapper>
+                </ComponentContainer>
+            : 
+                <AppDashboard />
+            }
         </Container>
     )
 }
@@ -39,13 +44,13 @@ const Container = styled.div`
 `;
 
 const SenderWrapper = styled.div`
-  width: 85%;
-  height: 100%;
-  padding: 1.5rem 0.5rem;
-  background-color: #ffffff;
-  margin: 0 0 0 15%;
-  box-shadow: -2px -2px 15px lightgray;
-  border-radius: 1.5rem 0 0 0;
+    width: 85%;
+    height: 100%;
+    padding: 1.5rem 0.5rem;
+    background-color: #ffffff;
+    margin: 0 0 0 15%;
+    box-shadow: -2px -2px 15px lightgray;
+    border-radius: 1.5rem 0 0 0;
 `
 
 export default App
