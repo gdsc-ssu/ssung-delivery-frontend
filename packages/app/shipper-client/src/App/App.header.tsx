@@ -3,11 +3,11 @@ import {
   Flex,
   SignIn,
   SignUp,
-  Text,
   Title,
 } from '@common/ssung-ui'
 import { useModal } from '@common/ssung-ui'
-import { useState } from 'react'
+import React from 'react'
+import { initialShipperUser } from '../model/user'
 // import CONFIG from 'site.config'
 
 const Header = () => {
@@ -21,7 +21,11 @@ const Header = () => {
       </SignInModal>
 
       <SignUpModal>
-        <SignUp />
+        <SignUp
+          step1={Object.keys(initialShipperUser).splice(0, 3)}
+          step2={Object.keys(initialShipperUser).splice(3, 6)}
+          toUrl={'/client/create'}
+        />
       </SignUpModal>
 
       <Flex justifyContent={'space-between'} alignItems={'center'}>
@@ -32,4 +36,5 @@ const Header = () => {
   )
 }
 
-export default Header
+export default React.memo(Header)
+// export default Header
