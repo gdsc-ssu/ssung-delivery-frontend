@@ -1,8 +1,18 @@
 import axios from 'axios'
 
-const http = axios.create({
-    headers: { Accept: 'application/json' },
-    baseURL: '',
+const iAxios = axios.create({
+  headers: { Accept: 'application/json' },
+  baseURL: 'https://api.ssung.app/',
 })
 
-export default http
+export const http = {
+  get: function get<Response = unknown>(url: string) {
+    return iAxios.get<Response>(url).then((res) => res.data)
+  },
+  post: function post<Response = unknown>(url: string, data?: any) {
+    return iAxios.post<Response>(url, { data }).then((res) => res.data)
+  },
+  delete: function del<Response = unknown>(url: string) {
+    return iAxios.delete<Response>(url).then((res) => res.data)
+  },
+}
