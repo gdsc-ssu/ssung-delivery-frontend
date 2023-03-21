@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from '@emotion/styled'
 import ReactDOM from 'react-dom'
 import { Flex, Spacer } from '../Layout'
@@ -60,6 +60,7 @@ const useModal = () => {
 }
 
 export default useModal
+
 const Side = styled.div`
   width: 2.5rem;
   height: 2.5rem;

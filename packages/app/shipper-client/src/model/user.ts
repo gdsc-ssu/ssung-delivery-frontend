@@ -8,10 +8,10 @@ export interface ShipperUserType {
 }
 
 export const initialShipperUser: ShipperUserType = {
-  crew_name: '',
   crew_id: '',
   password: '',
   pwcheck: '',
+  crew_name: '',
   area: '',
   crew_phone_number: '',
 }
