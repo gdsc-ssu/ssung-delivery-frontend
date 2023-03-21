@@ -6,10 +6,14 @@ const useFetch = () => {
   const [error, setError] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
-  const post = async <Response>(url: string, payload: any, key: string) => {
+  const post = async <Request = any, Response = any>(
+    url: string,
+    payload: Request,
+    key: string
+  ) => {
     setError(true)
     try {
-      const response = await http.post<Response>(url, payload)
+      const response = await http.post<Request, Response>(url, payload)
       setData((prev) => ({ ...prev.data, [key]: response }))
       return response
     } catch (error) {
