@@ -1,12 +1,11 @@
 import { ShipperUserType } from '../model/user'
 import { http } from './http'
-import useFetch from './useFetch'
 
 const useAuth = () => {
   const signUp = async (payload: ShipperUserType) => {
     try {
       const response = await http.post<ShipperUserType, Response>(
-        '/crew/create/',
+        '/crew/create',
         payload
       )
       return response
