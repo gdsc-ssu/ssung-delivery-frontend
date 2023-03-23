@@ -7,7 +7,11 @@ export interface RequestBody {
 
 const postSigninRequest = async ({...requestBody}: RequestBody) => {
   try {
-    const response = await axios.post('https://api.ssung.app/sender/login', requestBody);
+    const response = await axios.post('https://api.ssung.app/sender/login', requestBody, {
+        headers: {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        }
+    });
     console.log(response);
     alert('로그인이 완료되었습니다!');
   } catch (error) {
@@ -17,9 +21,3 @@ const postSigninRequest = async ({...requestBody}: RequestBody) => {
 };
 
 export default postSigninRequest;
-
-
-
-
-
-
