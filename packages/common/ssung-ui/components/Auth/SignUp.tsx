@@ -1,31 +1,22 @@
 import styled from '@emotion/styled'
+import React from 'react'
 import { useState } from 'react'
 import Button from '../Form/Button'
 import Input from '../Form/Input'
 import { Flex, Spacer } from '../Layout'
 import Progress from '../ProgressBar'
 import { Text } from '../Text'
-import postSignupRequest, { RequestBody } from '../../Service/signup'
+import { useForm } from '@common/utils'
 
 interface SignUpProps {
-  id: string
-  password: string
-  pwcheck: string
-  name: string
-  tel: string
-  addr: string
+  step1: string[]
+  step2: string[]
+  onSignUp: (T: any) => void
 }
 
-const SignUp = () => {
+const SignUp = (props: SignUpProps) => {
   const [step, setStep] = useState<1 | 2>(1)
-  const [signUpInfo, setSignUpInfo] = useState<SignUpProps>({
-    id: "",
-    password: "",
-    pwcheck: "",
-    name: "",
-    tel: "",
-    addr: "",
-  })
+  const { formData, register } = useForm<{ [key: string]: string }>({})
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSignUpInfo({
@@ -57,7 +48,7 @@ const SignUp = () => {
   }
   const goToStep = (toStep: 1 | 2 | 3) => {
     if (toStep === 3) {
-      alert('회원가입 완료')
+      props.onSignUp(formData)
     } else {
       setStep(toStep)
     }
@@ -69,45 +60,15 @@ const SignUp = () => {
       <Spacer height="0.5rem" />
       {step === 1 ? (
         <>
-          <Input 
-            id="id" name='id' 
-            value={signUpInfo.id} 
-            onChange={handleChange}
-            placeholder="아이디" 
-          />
-          <Input 
-            id="password" name='password' 
-            value={signUpInfo.password} 
-            onChange={handleChange}
-            placeholder="비밀번호" 
-          />
-          <Input 
-            id="pwcheck" name='pwcheck' 
-            value={signUpInfo.pwcheck} 
-            onChange={handleChange}
-            placeholder="비밀번호 확인"
-          />
+          {props.step1.map((id) => (
+            <Input {...register(id)} placeholder={id} />
+          ))}
         </>
       ) : (
         <>
-          <Input 
-            id="name" name='name' 
-            value={signUpInfo.name} 
-            onChange={handleChange}
-            placeholder="이름" 
-          />
-          <Input 
-            id="tel" name='tel' 
-            value={signUpInfo.tel} 
-            onChange={handleChange}
-            placeholder="전화번호" 
-          />
-          <Input 
-            id="addr" name='addr' 
-            value={signUpInfo.addr} 
-            onChange={handleChange}
-            placeholder="주소" 
-          />
+          {props.step2.map((id) => (
+            <Input {...register(id)} placeholder={id} />
+          ))}
         </>
       )}
 

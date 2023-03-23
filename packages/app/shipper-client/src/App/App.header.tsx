@@ -3,16 +3,23 @@ import {
   Flex,
   SignIn,
   SignUp,
-  Text,
   Title,
 } from '@common/ssung-ui'
 import { useModal } from '@common/ssung-ui'
-import { useState } from 'react'
+import React from 'react'
+import { initialShipperUser, ShipperUserType } from '../model/user'
+import useAuth from '../service/useAuth'
 // import CONFIG from 'site.config'
 
 const Header = () => {
   const { Modal: SignInModal, onModalOpen: onSignInOpen } = useModal()
   const { Modal: SignUpModal, onModalOpen: onSignUpOpen } = useModal()
+  const { signUp } = useAuth()
+
+  const onSignUp = (data: ShipperUserType) => {
+    console.log(data)
+    signUp(data)
+  }
 
   return (
     <ComponentContainer>
@@ -21,7 +28,11 @@ const Header = () => {
       </SignInModal>
 
       <SignUpModal>
-        <SignUp />
+        <SignUp
+          step1={Object.keys(initialShipperUser).splice(0, 3)}
+          step2={Object.keys(initialShipperUser).splice(3, 6)}
+          onSignUp={(data) => onSignUp(data)}
+        />
       </SignUpModal>
 
       <Flex justifyContent={'space-between'} alignItems={'center'}>
@@ -32,4 +43,5 @@ const Header = () => {
   )
 }
 
-export default Header
+export default React.memo(Header)
+// export default Header

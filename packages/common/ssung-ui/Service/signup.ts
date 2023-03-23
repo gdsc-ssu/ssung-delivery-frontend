@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 export interface RequestBody {
@@ -20,9 +21,3 @@ const postSignupRequest = async ({...requestBody}: RequestBody) => {
 };
 
 export default postSignupRequest;
-
-
-
-
-
-
