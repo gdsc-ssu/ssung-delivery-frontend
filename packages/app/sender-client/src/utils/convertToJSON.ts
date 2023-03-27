@@ -23,6 +23,7 @@ const convertToJSON = (excelData: ExcelData[]): JSONData[] => {
       return jsonData;
     });
     console.log(jsonData)
+    alert("업로드 되었습니다.");
     return jsonData;
 };
 
