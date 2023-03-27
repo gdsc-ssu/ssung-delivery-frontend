@@ -48,6 +48,7 @@ const ShippingInfoForm = () => {
     const handleButtonClick = () => {
         document.getElementById("ship-form")?.dispatchEvent(new Event("submit"));
         console.log(formData)
+        alert("생성 되었습니다.");
     }
 
     return (

@@ -12,7 +12,7 @@ import SideNav from './App.sideNav'
 
 function App() {
     /** 로그인 여부 상태 */
-    const [isSignIn, setIsSignIn] = useState(false);
+    const [isSignIn, setIsSignIn] = useState(true);
 
     return (
         <Container>
