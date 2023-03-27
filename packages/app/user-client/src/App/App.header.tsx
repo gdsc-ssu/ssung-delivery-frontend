@@ -20,7 +20,7 @@ const Header = () => {
       <Flex flexDirection={'row'} justifyContent={'space-between'}>
         <div>
           <Title>
-            <Title color={'var(--primary)'}>{2}건</Title>이
+            <Title color={'var(--primary)'}>{3}건</Title>이
           </Title>
           <br />
           <Title>배송 중이에요.</Title>

@@ -33,6 +33,7 @@ interface CardProps {
   idx?: number
   expandComponent?: React.ReactNode
   shipInfo: InfoType
+  style?: React.CSSProperties;
 }
 
 const Card = (props: CardProps) => {
@@ -57,7 +58,7 @@ const Card = (props: CardProps) => {
             <div>
               {props.shipInfo.keywords.map((word: string) => (
                 <>
-                  <Text lineHeight={'1.15rem'}>{word}</Text>
+                  <Text style={props.style} lineHeight={'1.15rem'}>{word}</Text>
                   <br />
                 </>
               ))}
