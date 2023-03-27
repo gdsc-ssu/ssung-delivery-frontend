@@ -53,13 +53,14 @@ const Row = (props: {shipTableData: ShipTableData }) => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell style={{"border":"none"}}>
-                                        <Flex flexDirection={"column"} style={{"width":"60%"}}>
+                                        <Flex flexDirection={"column"} style={{"width":"60%", "height":"3rem"}}>
                                             <ProgressBar progress={'66.6%'} />
                                             <TableRow>
                                                 <TableCell style={{"border":"none", "width":"30%"}}>Ordered</TableCell>
                                                 <TableCell style={{"border":"none", "width":"30%"}}>Shipping</TableCell>
                                                 <TableCell style={{"border":"none", "width":"30%"}}>Out For Delivery</TableCell>
                                                 <TableCell style={{"border":"none", "width":"30%"}}>Shipped</TableCell>
+                                                <img src={"../history-qr.png"} style={{"width":"8rem", "position":"relative", "top":"-7.5rem", "left":"47rem"}} />
                                             </TableRow>
                                         </Flex>
                                     </TableCell>

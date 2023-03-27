@@ -4,6 +4,6 @@ export const PRINT_LABEL_MOCK_DATA: PrintLabelData[] = [
     {
         id: '1',
         date: '23-01-20',
-        count: 128,
+        count: 4,
     },
 ]

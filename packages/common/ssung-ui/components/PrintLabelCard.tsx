@@ -26,7 +26,7 @@ const PrintLabelCard = (props: LabelProps) => {
             <Text size="sm" style={{
                 "position":"relative", 
                 "top":"1.5rem", 
-                "left":"9.5rem"}}>개</Text>
+                "left":"12.5rem"}}>개</Text>
         </Flex>
       </LabelContainer>
     </ComponentContainer>
@@ -50,5 +50,5 @@ const CountText = styled.div`
     font-weight: 600;
     color: #07D39F;
     top: 0.8rem;
-    left: 9rem;
+    left: 12rem;
 `;

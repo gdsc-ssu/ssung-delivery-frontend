@@ -7,7 +7,7 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     product: '구글 픽셀 7',
     name: '유지민',
     phone: '010-9936-1234',
-    label: '기분이 슝슝한 숭실대',
+    label: '마구간 발대식 줄행랑',
     registerdate: '2023.01.24 23:09',
     history: [
       {
@@ -23,7 +23,7 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
       {
         state: 'Out For Delivery',
         date: '2020-01-02',
-        done: false,
+        done: true,
       },
       {
         state: 'Shipped',
@@ -37,7 +37,7 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     product: '아이폰 13',
     name: '봉승우',
     phone: '010-1212-1254',
-    label: '기분이 서울한 마라탕',
+    label: '기분이 슝슝한 숭실대',
     registerdate: '2023.01.20 19:49',
     history: [
       {
@@ -67,7 +67,7 @@ export const SHIP_TABLE_MOCK_DATA: ShipTableData[] = [
     product: '애플 펜슬 2',
     name: '송지호',
     phone: '010-5555-4444',
-    label: '기분이 싱싱한 고등어',
+    label: '불세출 앙골라 참고인',
     registerdate: '2023.02.20 22:52',
     history: [
       {
