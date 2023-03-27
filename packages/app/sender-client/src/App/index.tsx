@@ -12,15 +12,17 @@ import {
 } from '@common/ssung-ui/components'
 import ShipInfo from './App.shipInfo'
 import AppDashboard from './App.dashboard'
+import SideNav from './App.sideNav'
 
 function App() {
   /** 로그인 여부 상태 */
-  const [isSignIn, setIsSignIn] = useState(false)
+  const [isSignIn, setIsSignIn] = useState(true)
 
   return (
     <Container>
-      {!isSignIn ? (
+      {isSignIn ? (
         <ComponentContainer>
+          <SideNav logined={true} />
           <Spacer height="2rem" />
           <Header
             logo={'../logo.svg'}
@@ -38,16 +40,19 @@ function App() {
           </SenderWrapper>
         </ComponentContainer>
       ) : (
-        <AppDashboard />
+        <ComponentContainer>
+          <SideNav logined={false} />
+          <AppDashboard />
+        </ComponentContainer>
       )}
     </Container>
   )
 }
 
 const Container = styled.div`
-    width: 100%;
-    height: 100vh;
-    "backgroundColor":"#f3f3f3"
+  width: 100%;
+  height: 100vh;
+  background-color: '#f3f3f3';
 `
 
 const SenderWrapper = styled.div`

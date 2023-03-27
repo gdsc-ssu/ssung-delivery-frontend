@@ -6,11 +6,12 @@ interface DashItemProps {
     title: React.ReactNode
     text: React.ReactNode
     icon: string
+    style?: React.CSSProperties; 
 }
 
 const DashItem = ({...props}: DashItemProps) => {
     return (
-        <ComponentContainer>
+        <ComponentContainer style={props.style}>
             <GridBox>
                 <GridTitle>{props.title}</GridTitle>
                 <GridText>{props.text}</GridText>

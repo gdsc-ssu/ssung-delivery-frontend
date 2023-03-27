@@ -3,17 +3,18 @@ import { useState, memo } from 'react';
 import { Card, ComponentContainer, Flex, SubTitle, PrintLabelCard } from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
-import { PrintLabelData } from "../Model/printlabel"
-import Modal from "../component/Modal/Modal";
 import ExcelUploadComponent from "../component/Modal/ExcelUpload";
 import ShippingInfoForm from "../component/Modal/ShippingInfoForm";
 import useModal from "@common/ssung-ui/components/Modal";
+import QrCarousel from "../component/Modal/QRIndex";
 
 const ShipInfo = () => {
     /** 운송 정보 업로드 모달 */
     const { Modal: InfoModal, onModalOpen: onInfoOpen} = useModal();
     /** 운송 정보 엑셀 업로드 모달 */
     const { Modal: XlsxModal, onModalOpen: onXlsxOpen} = useModal();
+    /** 라벨지 출력 업로드 모달 */
+    const { Modal: LabelPrintMidal, onModalOpen:onLabelPrintOpen } = useModal();
 
     return (
         <ComponentContainer>
@@ -31,7 +32,10 @@ const ShipInfo = () => {
                         <XlsxModal>
                             <ExcelUploadComponent />
                         </XlsxModal>
-                    <BorderButton onClick={() => alert("Label paper is ready to print.")}>라벨지 출력</BorderButton>
+                    <BorderButton onClick={onLabelPrintOpen}>라벨지 출력</BorderButton>
+                        <LabelPrintMidal>
+                            <QrCarousel images={["../qr-label-print1.png", "../qr-label-print2.png", "../qr-label-print3.png"]} />
+                        </LabelPrintMidal>
                 </Flex>
             </Flex>
         </ComponentContainer>
