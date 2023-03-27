@@ -75,7 +75,7 @@ const DashBoard = () => {
                     <SignIn moveToSignUp={onSignUpOpen} />
                 </SignInModal>
                 <SignUpModal>
-                    <SignUp />
+                    <SignUp onSignUp={() => alert('준비 중입니다.')} step1={['id', 'pw', 'pw_check']} step2={['name', 'address', 'phone_number']}/>
                 </SignUpModal>
             </SenderWrapper>
         </ComponentContainer>
