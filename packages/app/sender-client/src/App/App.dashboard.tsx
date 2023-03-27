@@ -27,8 +27,10 @@ const DashBoard = () => {
                         A new <span style={{"color":"var(--primary)"}}>waybill system</span> for Me and the Environment
                     </Title>
                     <Spacer height="2rem" />
-                    <Flex flexDirection={'row'} justifyContent={"flex-start"} >
-                        <DashboardImg src={"../111502-rocket-launch.gif"} />
+                    <Flex flexDirection={'row'} justifyContent={"flex-start"}
+                        style={{"flexWrap":"wrap", "width":"90rem", "height":"30rem"}}
+                    >
+                        <DashboardImg src={"../dashboard.png"} />
                         <DashItem 
                             title={<Title>Security</Title>}
                             text={
@@ -49,8 +51,19 @@ const DashBoard = () => {
                             }
                             icon="../eco.png"
                         />
+                        <DashItem 
+                            title={<Title>Convenient Shipment</Title>}
+                            text={
+                                <Text>
+                                    개인 고유 식별자 제공으로 배송을 더욱 안전하게<br />
+                                    개인 고유 식별자 제공으로 배송을 더욱 안전하게
+                                </Text>
+                            }
+                            icon="../shipment.png"
+                            style={{"position":"relative", "top":"-10rem", "left":"40rem"}}
+                        />
                     </Flex>
-                    <Spacer height="2rem" />
+                    <Spacer height="-1rem" />
                     <Button 
                         onClick={onSignInOpen}
                         style={{"width":"15rem", "alignSelf":"center"}}>
