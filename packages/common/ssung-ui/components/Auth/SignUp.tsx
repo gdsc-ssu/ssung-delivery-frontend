@@ -18,34 +18,6 @@ const SignUp = (props: SignUpProps) => {
   const [step, setStep] = useState<1 | 2>(1)
   const { formData, register } = useForm<{ [key: string]: string }>({})
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSignUpInfo({
-      ...signUpInfo,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault();
-    if (signUpInfo.password !== signUpInfo.pwcheck) {
-      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-      return;
-    }
-
-    const requestBody: RequestBody = {
-      sender_id: signUpInfo.id,
-      sender_name: signUpInfo.name,
-      password: signUpInfo.password,
-      address: signUpInfo.addr,
-      sender_phone_number: signUpInfo.tel,
-    };
-
-    try {
-      await postSignupRequest(requestBody);
-    } catch (error) {
-      console.log(error)
-    }
-  }
   const goToStep = (toStep: 1 | 2 | 3) => {
     if (toStep === 3) {
       props.onSignUp(formData)
@@ -85,7 +57,7 @@ const SignUp = (props: SignUpProps) => {
           <Button btnType={'gray'} onClick={() => goToStep(1)}>
             <Text gray>이전</Text>
           </Button>
-          <Button onClick={handleSubmit}>
+          <Button onClick={() => goToStep(3)}>
             <Text color={'white'}>완료</Text>
           </Button>
         </TwoButtonContainer>
