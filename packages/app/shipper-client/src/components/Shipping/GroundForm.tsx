@@ -36,7 +36,7 @@ const ShippingBox = (props: ShippingBoxType) => {
           </Row>
 
           <Row>
-            <button onClick={updateState}>UPDATE</button>
+            <CustomBtn onClick={updateState}>UPDATE</CustomBtn>
           </Row>
         </FormConainer>
       </SafeArea>
@@ -49,6 +49,17 @@ export default ShippingBox
 const FormSelect = styled.select`
   min-width: 8rem;
 `
+
+const CustomBtn = styled.button`
+  width: 10rem;
+  height: 2rem;
+  color: var(--sub-text);
+  background: white;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 5px gray;
+`;
 
 const FormConainer = styled(Flex)`
   flex-direction: column;

@@ -27,7 +27,7 @@ function App() {
           <Header
             logo={'../logo.svg'}
             animation={'../17431-package-delivery.gif'}
-            username={'카리나'}
+            username={'홍길동'}
             profileThumb={'../profile.svg'}
           />
           <Spacer height="2rem" />

@@ -1,11 +1,14 @@
-import { ComponentContainer, Flex, Title, SignUp, SignIn } from '@common/ssung-ui/components'
+import { ComponentContainer, Flex, Title, SignUp, SignIn, Spacer } from '@common/ssung-ui/components'
 import { memo } from 'react'
 import { useModal } from '@common/ssung-ui'
+import { Text } from '@common/ssung-ui/components'
+import styled from "@emotion/styled"
 // import CONFIG from 'site.config'
 
 const Header = () => {
   const { Modal: SignInModal, onModalOpen: onSignInOpen } = useModal()
   const { Modal: SignUpModal, onModalOpen: onSignUpOpen } = useModal()
+  const { Modal: CertifyModal, onModalOpen: onCertifyOpen } = useModal()
 
   return (
     <ComponentContainer>
@@ -20,10 +23,19 @@ const Header = () => {
       <Flex flexDirection={'row'} justifyContent={'space-between'}>
         <div>
           <Title>
-            <Title color={'var(--primary)'}>{2}건</Title>이
+            <Title color={'var(--primary)'}>{3}건</Title>이
           </Title>
           <br />
-          <Title>배송 중이에요.</Title>
+          <Title onClick={onCertifyOpen}>배송 중이에요.</Title>
+          <CertifyModal>
+            <Flex flexDirection={"column"} justifyContent={'center'} style={{"marginLeft":"6rem"}}>
+              <img src={"../warning.jpg"} style={{"width":"10rem"}} />
+              <Spacer height="2rem" />
+              <Text>인증을 실패했습니다.</Text>
+            </Flex>
+            <Spacer height="2rem" />
+            <BorderButton>닫기</BorderButton>
+          </CertifyModal>
         </div>
         <div>
           <img src={'./profile.svg'} alt="프로필 사진" onClick={onSignInOpen} />
@@ -32,5 +44,25 @@ const Header = () => {
     </ComponentContainer>
   )
 }
+
+const BorderButton = styled.button`
+    width: 10rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 1rem 5rem;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #07D39F;
+    box-shadow: 1px 1px 5px lightgray;
+
+    &:hover {
+        box-shadow: 3px 3px 5px lightgray;
+    }
+`;
 
 export default memo(Header)

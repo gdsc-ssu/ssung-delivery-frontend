@@ -24,7 +24,7 @@ const ShippingList = () => {
         <Row>
           <Row>
             <Text>배송 중</Text>
-            <ShippingIng type="primary">1232</ShippingIng>
+            <ShippingIng type="primary">3</ShippingIng>
           </Row>
           <Row>
             <Text>배송완료</Text>

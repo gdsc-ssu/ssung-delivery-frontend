@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { useZxing } from 'react-zxing'
 import { Flex } from './Layout'
 import { Text } from './Text'
+import useModal  from './Modal/useModal'
 
 interface CameraProps {
   open?: Dispatch<SetStateAction<boolean>>

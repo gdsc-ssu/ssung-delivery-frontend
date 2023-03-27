@@ -36,7 +36,7 @@ const Header = () => {
       </SignUpModal>
 
       <Flex justifyContent={'space-between'} alignItems={'center'}>
-        <Title>안녕하세요, 000님</Title>
+        <Title>안녕하세요, 홍길동님</Title>
         <img src={'./profile.svg'} alt="프로필 사진" onClick={onSignInOpen} />
       </Flex>
     </ComponentContainer>
