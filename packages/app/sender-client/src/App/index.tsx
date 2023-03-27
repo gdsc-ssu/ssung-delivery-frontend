@@ -12,13 +12,13 @@ import SideNav from './App.sideNav'
 
 function App() {
     /** 로그인 여부 상태 */
-    const [isSignIn, setIsSignIn] = useState(false);
+    const [isSignIn, setIsSignIn] = useState(true);
 
     return (
         <Container>
-            <SideNav />
             {isSignIn ? 
                 <ComponentContainer>
+                    <SideNav logined={true} />
                     <Spacer height="2rem" />
                     <Header logo={'../logo.svg'} animation={"../17431-package-delivery.gif"}
                             username={'카리나'} 
@@ -33,7 +33,10 @@ function App() {
                     </SenderWrapper>
                 </ComponentContainer>
             : 
-                <AppDashboard />
+                <ComponentContainer>
+                    <SideNav logined={false} />
+                    <AppDashboard />
+                </ComponentContainer>
             }
         </Container>
     )

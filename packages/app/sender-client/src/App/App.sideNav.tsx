@@ -7,12 +7,16 @@ import Button from "@common/ssung-ui/components/Form/Button";
 import { useModal } from '@common/ssung-ui'
 import DashItem from "../component/DashItem";
 
-const SideNav = () => {
+interface SideNavProps {
+    logined: boolean;
+}
+
+const SideNav = ({ logined }: SideNavProps) => {
     return (
         <ComponentContainer>
             <NavContainer>
-                <NavButton>DashBoard</NavButton>
-                <NavButton>Delivery</NavButton>
+                <NavButton logined={false}>DashBoard</NavButton>
+                <NavButton logined={true}>Delivery</NavButton>
             </NavContainer>
         </ComponentContainer>
     );
@@ -29,12 +33,16 @@ const NavContainer = styled.div`
     justify-content: space-between;
 `;
 
-const NavButton = styled.button`
+interface NavButtonProps {
+    logined: boolean;
+}
+
+const NavButton = styled.button<NavButtonProps>`
     width: 14rem;
     height: 4rem;
     padding: 0 2rem;
-    color: white;
-    background-color: var(--primary);
+    color: ${props => props.logined ? "white" : "var(--primary)"};
+    background-color: ${props => props.logined ? "var(--primary)" : "white"};
     border-radius: 0 3rem 3rem 0;
     text-align: left;
     font-size: 1.2rem;
