@@ -10,7 +10,7 @@ const DashBox = () => {
     <ComponentContainer>
       <Container>
         <Spacer height="1rem" />
-        <Title style={{"color":"white", "fontSize":"1.2rem", "marginLeft":"1rem"}}>배송 물품이 5건 남았습니다.</Title>
+        <Title style={{"color":"white", "fontSize":"1.2rem", "marginLeft":"1rem"}}>배송 물품이 3건 남았습니다.</Title>
         <Spacer height="1rem" />
         <DashInfo open={isUpdaterOpen}>
           <CamCover
