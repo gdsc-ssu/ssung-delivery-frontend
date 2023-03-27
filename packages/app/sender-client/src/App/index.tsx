@@ -8,6 +8,7 @@ import ShipTable from './App.shipTable'
 import { NotFound, Error, ComponentContainer } from '@common/ssung-ui/components'
 import ShipInfo from './App.shipInfo'
 import AppDashboard from './App.dashboard'
+import SideNav from './App.sideNav'
 
 function App() {
     /** 로그인 여부 상태 */
@@ -15,6 +16,7 @@ function App() {
 
     return (
         <Container>
+            <SideNav />
             {isSignIn ? 
                 <ComponentContainer>
                     <Spacer height="2rem" />
