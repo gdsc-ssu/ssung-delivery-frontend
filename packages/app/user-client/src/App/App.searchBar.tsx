@@ -1,6 +1,7 @@
 import { Camera, ComponentContainer, Flex, Input } from '@common/ssung-ui/components'
 import styled from '@emotion/styled'
 import { Dispatch, memo, SetStateAction, useState } from 'react'
+import { useModal } from '@common/ssung-ui'
 
 interface SearchBarProps {
   searchID?: string
