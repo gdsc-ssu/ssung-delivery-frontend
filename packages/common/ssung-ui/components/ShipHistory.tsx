@@ -58,5 +58,6 @@ const ShipHistoryContainer = styled.div`
   width: 140px;
   height: 140px;
   overflow: scroll;
-  position: relative;
+  position: absolute;
+  right: 0px;
 `
