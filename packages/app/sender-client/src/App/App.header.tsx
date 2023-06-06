@@ -77,7 +77,7 @@ const Header = (props: SenderHeaderProps) => {
             <ProfileBox>
                 <Flex flexDirection={'row'} justifyContent={'flex-start'} style={{"marginLeft":"0.5rem"}}>
                     <img src={props.profileThumb} alt='profile image' style={{"width":"3rem"}} />
-                    <SubTitle style={{"marginTop":"1rem", "marginLeft":"1rem"}}>{props.username} 님</SubTitle>
+                    <SubTitle style={{"marginTop":"1rem", "marginLeft":"1rem"}}>{props.username}</SubTitle>
                 </Flex>
             </ProfileBox>
         </Flex>

@@ -11,12 +11,12 @@ const DashBoard = () => {
     /** login & signup modal */
     const { Modal: SignInModal, onModalOpen: onSignInOpen } = useModal()
     const { Modal: SignUpModal, onModalOpen: onSignUpOpen } = useModal()
-    
+
     return (
         <ComponentContainer>
             <Spacer height="2rem" />
             <Header logo={'../logo.svg'} animation={"../17431-package-delivery.gif"}
-                    username={'카리나'} 
+                    username={'로그인을 해주세요.'} 
                     profileThumb={'../profile.svg'} />
             <Spacer height="2rem" />
             <SenderWrapper>
@@ -34,7 +34,7 @@ const DashBoard = () => {
                         <DashItem 
                             title={<Title>Security</Title>}
                             text={
-                                <Text>
+                                <Text style={{ lineHeight: "2" }}>
                                     개인 고유 식별자 제공으로 배송을 더욱 안전하게<br />
                                     개인 고유 식별자 제공으로 배송을 더욱 안전하게
                                 </Text>
@@ -44,7 +44,7 @@ const DashBoard = () => {
                         <DashItem 
                             title={<Title>Eco Friendly</Title>}
                             text={
-                                <Text>
+                                <Text style={{ lineHeight: "2" }}>
                                     개인 고유 식별자 제공으로 배송을 더욱 안전하게<br />
                                     개인 고유 식별자 제공으로 배송을 더욱 안전하게
                                 </Text>
@@ -54,7 +54,7 @@ const DashBoard = () => {
                         <DashItem 
                             title={<Title>Convenient Shipment</Title>}
                             text={
-                                <Text>
+                                <Text style={{ lineHeight: "2" }}>
                                     개인 고유 식별자 제공으로 배송을 더욱 안전하게<br />
                                     개인 고유 식별자 제공으로 배송을 더욱 안전하게
                                 </Text>
