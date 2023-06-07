@@ -15,17 +15,12 @@ import {
 
 interface SearchBarProps {
   searchID?: string
-  setSearchID: Dispatch<SetStateAction<string | undefined>>
+  setSearchID: Dispatch<SetStateAction<string>>
   onSearch: () => void
 }
 
 const SearchBar = (props: SearchBarProps) => {
   const [cam, setCam] = useState<boolean>(false)
-  const [qrCodeResult, setQrCodeResult] = useState<string>('')
-
-  const fetchShipmentInfo = () => {
-    setQrCodeResult('')
-  }
 
   // 검색 창 + 버튼
   return (
@@ -33,11 +28,11 @@ const SearchBar = (props: SearchBarProps) => {
       <Flex alignItems={'center'} justifyContent={'center'} gap={'1rem'}>
         <Input
           style={{ width: '100%' }}
-          value={qrCodeResult}
-          onChange={(e) => setQrCodeResult(e.target.value)}
+          value={props.searchID}
+          onChange={(e) => props.setSearchID(e.target.value)}
           placeholder="기분이 슝슝한 숭실대"
         />
-        {cam && <Camera open={setCam} setResult={setQrCodeResult} />}
+        {cam && <Camera open={setCam} setResult={props.setSearchID} />}
         <ActionButton onClick={() => setCam(!cam)}>
           {cam ? (
             <AiOutlineCloseCircle size={24} color={'var(--text-gray)'} />
@@ -45,7 +40,7 @@ const SearchBar = (props: SearchBarProps) => {
             <AiOutlineCamera size={24} color={'var(--text-gray)'} />
           )}
         </ActionButton>
-        <ActionButton style={{ zIndex: 0 }} onClick={fetchShipmentInfo}>
+        <ActionButton style={{ zIndex: 0 }} onClick={props.onSearch}>
           <AiOutlineSearch size={24} color={'var(--text-gray)'} />
         </ActionButton>
       </Flex>
@@ -53,7 +48,7 @@ const SearchBar = (props: SearchBarProps) => {
   )
 }
 
-export default memo(SearchBar)
+export default SearchBar
 
 const ActionButton = styled.button`
   z-index: 2;

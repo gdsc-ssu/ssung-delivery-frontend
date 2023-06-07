@@ -10,11 +10,21 @@ import {
 } from '@common/ssung-ui/components/Layout'
 import { SubTitle } from '@common/ssung-ui'
 import Empty from '../component/Empty'
+import { SHIP_MOCK_DATA } from '../Model/ship.mock'
+import { ShipData } from '../Model/ship'
 
 function App() {
-  const [searchID, setSearchID] = useState<string>()
-  const [shipInfo, setShipInfo] = useState<any>(false)
-  const onSearchShipping = useCallback(() => {}, [])
+  const [searchID, setSearchID] = useState<string>('')
+  const [shipInfo, setShipInfo] = useState<ShipData>()
+
+  const findShippingDataIdx = (key: string) => {
+    return SHIP_MOCK_DATA.findIndex((obj) => obj.keywords === key)
+  }
+  const onSearchShipping = useCallback(() => {
+    const targetIdx = findShippingDataIdx(searchID)
+    if (targetIdx === -1) return alert('조회가능한 배송정보가 없습니다')
+    setShipInfo(SHIP_MOCK_DATA[targetIdx])
+  }, [searchID])
 
   return (
     <>
