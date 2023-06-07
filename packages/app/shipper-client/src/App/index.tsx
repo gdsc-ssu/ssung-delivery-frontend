@@ -1,14 +1,33 @@
-import { BodyContainer, Spacer, Text } from '@common/ssung-ui'
+import { BodyContainer, Spacer } from '@common/ssung-ui'
 import Header from './App.header'
 import DashBox from './App.dashBox'
 import ShippingList from './App.shippingList'
-import { NotFound, Error } from '@/../../common/ssung-ui/components'
+import useUser from '../service/useUser'
+import UserError from '../components/UserError'
+import { BorderButton, Flex } from '@/../../common/ssung-ui/components'
 
 function App() {
+  const { isLoggedIn } = useUser()
+
+  if (!isLoggedIn()) {
+    return (
+      <BodyContainer style={{ padding: '0 1rem' }}>
+        <Spacer height="3rem" />
+        <Header text="숭실숭실한 배송" />
+        <Spacer height="3rem" />
+        <Flex flexDirection="column">
+          <UserError />
+          <Spacer height="3rem" />
+          <BorderButton>로그인하기</BorderButton>
+        </Flex>
+      </BodyContainer>
+    )
+  }
+
   return (
     <BodyContainer>
       <Spacer height="3rem" />
-      <Header />
+      <Header text={`${0}님 반갑습니다.`} />
 
       <Spacer height="1rem" />
       <DashBox />
