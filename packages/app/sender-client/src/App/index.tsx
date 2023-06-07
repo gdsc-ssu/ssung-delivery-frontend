@@ -4,7 +4,6 @@ import { Spacer } from '../component/Layout'
 import { useState } from 'react'
 import styled from '@emotion/styled'
 import Form from './App.form'
-import ShipTable from './App.shipTable'
 import {
   NotFound,
   Error,
@@ -16,7 +15,7 @@ import SideNav from './App.sideNav'
 
 function App() {
   /** 로그인 여부 상태 */
-  const [isSignIn, setIsSignIn] = useState(false)
+  const [isSignIn, setIsSignIn] = useState(true)
 
   return (
     <Container>
@@ -36,7 +35,6 @@ function App() {
             <Spacer height="2rem" />
             <ShipInfo />
             <Spacer height="2rem" />
-            <ShipTable />
           </SenderWrapper>
         </ComponentContainer>
       ) : (
