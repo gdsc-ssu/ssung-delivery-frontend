@@ -84,6 +84,6 @@ const DashInfo = styled.div(
     transition: all 1s ease;
     overflow: hidden;
     position: relative;
-    height: ${open ? '525px' : '0'}
+    height: ${open ? '550px' : '0'}
     `
 )
