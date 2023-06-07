@@ -45,7 +45,7 @@ function App() {
           />
         </SignUpModal>
         <Spacer height="3rem" />
-        <Header text="숭실숭실한 배송" />
+        <Header text="숭실숭실한 쓩딜리버리" />
         <Spacer height="3rem" />
         <Flex flexDirection="column">
           <UserError />

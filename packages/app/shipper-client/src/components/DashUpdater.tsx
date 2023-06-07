@@ -8,13 +8,13 @@ import { shipAtom } from '../atom/ship'
 
 const DashUpdater = () => {
   const [ship, setShip] = useAtom(shipAtom)
-  const [parsedQR, setParsedQR] = useState<string>('기분이 심심한 숭실대')
+  const [parsedQR, setParsedQR] = useState<string>('')
 
   const onUpdateShippingState = () => {
     if (!parsedQR) return alert('인식된 정보가 없습니다.')
 
     const targetIdx = ship.findIndex((s) => s.keywords === parsedQR)
-    if (targetIdx === -1) return
+    if (targetIdx === -1) return alert('권한이 없는 배송 정보입니다')
     ship[targetIdx].progress = '100%'
     setShip([...ship])
     setParsedQR('')
