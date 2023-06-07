@@ -9,7 +9,7 @@ import { ShipData } from '../Model/ship'
 
 const Shipping = ({ shippingData }: { shippingData: ShipData }) => {
   return (
-    <ComponentContainer>
+    <ComponentContainer style={{ minHeight: '200px' }}>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
         <Card shipInfo={shippingData} expandalble idx={0} />

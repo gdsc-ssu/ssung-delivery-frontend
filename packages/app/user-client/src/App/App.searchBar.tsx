@@ -24,7 +24,6 @@ const SearchBar = (props: SearchBarProps) => {
     props.setIsInputFoucs(false)
   }
 
-  // 검색 창 + 버튼
   return (
     <ComponentContainer>
       <Flex alignItems={'center'} justifyContent={'center'} gap={'1rem'}>

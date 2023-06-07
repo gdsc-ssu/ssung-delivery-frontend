@@ -31,7 +31,7 @@ const Container = styled(Flex)`
   flex-direction: column;
   display: flex;
   margin: 0 auto;
-  height: 240px;
+  height: 200px;
   justify-content: center;
   align-items: center;
 `
