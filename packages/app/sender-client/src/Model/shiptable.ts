@@ -14,4 +14,5 @@ export interface ShipTableData {
     label: string
     registerdate: string
     history: ShipHistoryType[]
+    currstate?: string
 }
