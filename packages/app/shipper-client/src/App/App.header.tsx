@@ -8,17 +8,15 @@ import {
 import { useModal } from '@common/ssung-ui'
 import React from 'react'
 import { initialShipperUser, ShipperUserType } from '../model/user'
-import useAuth from '../service/useAuth'
+import useAuth from '../service/useUser'
 // import CONFIG from 'site.config'
 
-const Header = () => {
+const Header = ({ text }: { text: string }) => {
   const { Modal: SignInModal, onModalOpen: onSignInOpen } = useModal()
   const { Modal: SignUpModal, onModalOpen: onSignUpOpen } = useModal()
-  const { signUp } = useAuth()
 
   const onSignUp = (data: ShipperUserType) => {
     console.log(data)
-    signUp(data)
   }
 
   return (
@@ -36,7 +34,7 @@ const Header = () => {
       </SignUpModal>
 
       <Flex justifyContent={'space-between'} alignItems={'center'}>
-        <Title>안녕하세요, 홍길동님</Title>
+        <Title>{text}</Title>
         <img src={'./profile.svg'} alt="프로필 사진" onClick={onSignInOpen} />
       </Flex>
     </ComponentContainer>

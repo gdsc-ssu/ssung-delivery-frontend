@@ -5,23 +5,28 @@ import { BiDotsVerticalRounded } from 'react-icons/bi'
 interface StackProps {
   Top: ReactNode
   Ground: ReactNode
+  openable: boolean
 }
 
-const Stack = ({ Top, Ground }: StackProps) => {
+const Stack = ({ Top, Ground, openable }: StackProps) => {
   const [open, setOpen] = useState<boolean>(false)
 
   return (
     <Container>
       <StackTop open={open}>{Top}</StackTop>
       <StackGround>{Ground}</StackGround>
-      <Arrow
-        open={open}
-        onClick={() => {
-          setOpen(!open)
-        }}
-      >
-        <BiDotsVerticalRounded size={'1.75rem'} color={'white'} />
-      </Arrow>
+      {openable ? (
+        <Arrow
+          open={open}
+          onClick={() => {
+            setOpen(!open)
+          }}
+        >
+          <BiDotsVerticalRounded size={'1.75rem'} color={'white'} />
+        </Arrow>
+      ) : (
+        <SideBar>✔️</SideBar>
+      )}
     </Container>
   )
 }
@@ -41,6 +46,16 @@ const Arrow = styled.div(
   transition: all ease 0.5s;
   `
 )
+
+const SideBar = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 6px;
+`
 
 const Container = styled.div`
   position: relative;

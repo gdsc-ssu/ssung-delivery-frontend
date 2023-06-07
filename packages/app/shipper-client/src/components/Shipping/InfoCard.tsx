@@ -7,7 +7,7 @@ const InfoCard = (props: { ship: ShipData }) => {
     <Container>
       <Right>
         <Keywords>
-          {props.ship.keywords.map((word) => (
+          {props.ship.keywords.split(' ').map((word) => (
             <Text>{word}</Text>
           ))}
         </Keywords>

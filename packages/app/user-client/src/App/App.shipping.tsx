@@ -1,29 +1,19 @@
 import {
   Card,
-  CSComponent,
   ComponentContainer,
   Flex,
   ShipHistory,
   Spacer,
-  SubTitle,
 } from '@common/ssung-ui/components'
-import { memo } from 'react'
-import { SHIP_MOCK_DATA } from '../Model/ship.mock'
+import { ShipData } from '../Model/ship'
 
-const Shipping = () => {
+const Shipping = ({ shippingData }: { shippingData: ShipData }) => {
   return (
-    <ComponentContainer>
-      <SubTitle>배송 중</SubTitle>
+    <ComponentContainer style={{ minHeight: '200px' }}>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
-        <CSComponent
-          elements={[
-            <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble idx={0} />,
-            <Card shipInfo={SHIP_MOCK_DATA[1]} expandalble idx={1} />,
-            <Card shipInfo={SHIP_MOCK_DATA[2]} expandalble idx={2} />,
-          ]}
-        />
-        <ShipHistory shipInfo={SHIP_MOCK_DATA} />
+        <Card shipInfo={shippingData} expandalble idx={0} />
+        <ShipHistory shipInfo={shippingData} />
       </Flex>
 
       <Spacer height="1rem" />
@@ -31,4 +21,4 @@ const Shipping = () => {
   )
 }
 
-export default memo(Shipping)
+export default Shipping

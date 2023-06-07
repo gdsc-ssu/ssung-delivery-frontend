@@ -1,14 +1,65 @@
-import { BodyContainer, Spacer, Text } from '@common/ssung-ui'
+import { BodyContainer, Spacer } from '@common/ssung-ui'
 import Header from './App.header'
 import DashBox from './App.dashBox'
 import ShippingList from './App.shippingList'
-import { NotFound, Error } from '@/../../common/ssung-ui/components'
+import useUser from '../service/useUser'
+import UserError from '../components/UserError'
+import {
+  BorderButton,
+  Flex,
+  SignIn,
+  SignUp,
+  useModal,
+} from '@/../../common/ssung-ui/components'
+import { initialShipperUser } from '../model/user'
+import { useAtom } from 'jotai'
+import { userAtom } from '../atom/user'
 
 function App() {
+  // const { user, login } = useUser()
+  const [user, setUser] = useAtom(userAtom)
+  const { Modal: SignInModal, onModalOpen: onSignInOpen } = useModal()
+  const { Modal: SignUpModal, onModalOpen: onSignUpOpen } = useModal()
+
+  const onSignUp = (data: any) => {
+    // console.log(data)
+    alert('회원가입이 완료되었습니다')
+  }
+
+  const onSignIn = (id: string, pw: string) => {
+    setUser({ name: '쓩딜리버리', id })
+  }
+
+  if (!user.name) {
+    return (
+      <div style={{ padding: '0 1rem' }}>
+        <SignInModal>
+          <SignIn moveToSignUp={onSignUpOpen} onSignIn={onSignIn} />
+        </SignInModal>
+
+        <SignUpModal>
+          <SignUp
+            step1={Object.keys(initialShipperUser).splice(0, 3)}
+            step2={Object.keys(initialShipperUser).splice(3, 6)}
+            onSignUp={(data) => onSignUp(data)}
+          />
+        </SignUpModal>
+        <Spacer height="3rem" />
+        <Header text="숭실숭실한 쓩딜리버리" />
+        <Spacer height="3rem" />
+        <Flex flexDirection="column">
+          <UserError />
+          <Spacer height="3rem" />
+          <BorderButton onClick={onSignInOpen}>로그인하기</BorderButton>
+        </Flex>
+      </div>
+    )
+  }
+
   return (
     <BodyContainer>
       <Spacer height="3rem" />
-      <Header />
+      <Header text={`${user.name}님 반갑습니다.`} />
 
       <Spacer height="1rem" />
       <DashBox />

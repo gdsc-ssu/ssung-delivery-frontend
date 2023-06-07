@@ -4,17 +4,13 @@ import InfoCard from '../components/Shipping/InfoCard'
 import GroundForm from '../components/Shipping/GroundForm'
 import Stack from '../components/Shipping/Stack'
 import { Text } from '@common/ssung-ui'
-import { SHIP_MOCK_DATA } from '../model/ship.mock'
-import { ShipData } from '../model/ship'
+import { useAtom } from 'jotai'
+import { shipAtom } from '../atom/ship'
 
 const ShippingList = () => {
+  const [shipList, setShipList] = useAtom(shipAtom)
   const updateState = (id: string, toState: string) => {
     alert()
-  }
-
-  const getFinalState = (ship: ShipData) => {
-    const filteredDoneHistory = ship.history.filter((hist) => hist.done)
-    return filteredDoneHistory[filteredDoneHistory.length - 1]
   }
 
   return (
@@ -34,14 +30,15 @@ const ShippingList = () => {
       </Flex>
       <Spacer height="2rem" />
 
-      {SHIP_MOCK_DATA.map((ship) => (
+      {shipList.map((ship) => (
         <>
           <Stack
             Top={<InfoCard ship={ship} />}
+            openable={ship.progress !== '100%'}
             Ground={
               <GroundForm
                 id={ship.id}
-                state={getFinalState(ship).state}
+                state={ship.progress !== '100%' ? '배송완료' : ''}
                 updateState={updateState}
               />
             }
