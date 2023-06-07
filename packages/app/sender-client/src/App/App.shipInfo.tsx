@@ -10,6 +10,10 @@ import QrCarousel from "../component/Modal/QRIndex";
 import MuiTable from "../component/MuiTable";
 import { SHIP_TABLE_MOCK_DATA } from "../Model/shiptable.mock";
 import { ShipTableData } from "../Model/shiptable";
+import CustomForm from "../component/CustomForm";
+import { atom, useAtom } from 'jotai';
+
+export const searchClickAtom = atom(false);
 
 const ShipInfo = () => {
     /** 운송 정보 업로드 모달 */
@@ -19,13 +23,54 @@ const ShipInfo = () => {
     /** 라벨지 출력 업로드 모달 */
     const { Modal: LabelPrintMidal, onModalOpen:onLabelPrintOpen } = useModal();
     const [shipTableData, setShipTableData] = useState<ShipTableData[]>(SHIP_TABLE_MOCK_DATA);
+    const [searchClick, setSearchClick] = useAtom(searchClickAtom);
 
     const handleFormSubmit = (formData: ShipTableData) => {
         setShipTableData((prevData) => [formData, ...prevData]);
     }
 
+    const handleSubmit = () => {
+        setSearchClick(true);
+    }
+
+    const filteredData: ShipTableData[] = [
+        {
+        id: '1',
+        product: '애플 펜슬 2',
+        name: '고광서',
+        phone: '010-5555-4444',
+        label: '불세출 앙골라 참고인',
+        registerdate: '2023.02.20 22:52',
+        currstate: '배송 완료',
+        history: [
+          {
+            state: 'Ordered',
+            date: '2020-01-01',
+            done: true,
+          },
+          {
+            state: 'Shipping',
+            date: '2020-01-02',
+            done: true,
+          },
+          {
+            state: 'Out For Delivery',
+            date: '2020-01-02',
+            done: true,
+          },
+          {
+            state: 'Shipped',
+            date: '2020-01-03',
+            done: true,
+          },
+        ],
+        }
+    ];
+
     return (
         <ComponentContainer style={{ overflowY: "scroll" }}>
+            <CustomForm onSubmit={handleSubmit} />
+            <Spacer height="2rem" />
             <Flex justifyContent={'space-between'}>
                 {PRINT_LABEL_MOCK_DATA.map((info) => (
                     <PrintLabelCard labelInfo={info} key={info.id} />
@@ -47,7 +92,7 @@ const ShipInfo = () => {
                 </Flex>
             </Flex>
             <Spacer height="5rem" />
-            <MuiTable mockdata={shipTableData} />
+            <MuiTable mockdata={searchClick ? filteredData : shipTableData} />
         </ComponentContainer>
     )
 }

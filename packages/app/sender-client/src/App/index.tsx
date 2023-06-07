@@ -31,7 +31,7 @@ function App() {
           />
           <Spacer height="2rem" />
           <SenderWrapper>
-            <Form />
+            {/* <Form /> */}
             <Spacer height="2rem" />
             <ShipInfo />
             <Spacer height="2rem" />
