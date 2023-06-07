@@ -72,7 +72,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
     id: '3',
     keywords: '도착한 관악산 스티브',
     product: '아이패드 프로 12',
-    progress: '60%',
+    progress: '100%',
     history: [
       {
         state: '배송중',
