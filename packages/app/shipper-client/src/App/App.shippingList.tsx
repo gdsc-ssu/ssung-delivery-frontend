@@ -34,6 +34,7 @@ const ShippingList = () => {
         <>
           <Stack
             Top={<InfoCard ship={ship} />}
+            openable={ship.progress !== '100%'}
             Ground={
               <GroundForm
                 id={ship.id}
