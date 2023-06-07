@@ -16,13 +16,18 @@ import { ShipData } from '../Model/ship'
 function App() {
   const [searchID, setSearchID] = useState<string>('')
   const [shipInfo, setShipInfo] = useState<ShipData>()
+  const [noData, setNodata] = useState<boolean>(false)
 
   const findShippingDataIdx = (key: string) => {
     return SHIP_MOCK_DATA.findIndex((obj) => obj.keywords === key)
   }
   const onSearchShipping = useCallback(() => {
     const targetIdx = findShippingDataIdx(searchID)
-    if (targetIdx === -1) return alert('조회가능한 배송정보가 없습니다')
+    if (targetIdx === -1) {
+      setNodata(true)
+      return alert('조회가능한 배송정보가 없습니다')
+    }
+    setNodata(false)
     setShipInfo(SHIP_MOCK_DATA[targetIdx])
   }, [searchID])
 
@@ -43,7 +48,17 @@ function App() {
 
         <ComponentContainer>
           <SubTitle>배송 조회</SubTitle>
-          {shipInfo ? <Shipping /> : <Empty />}
+          {shipInfo ? (
+            <Shipping />
+          ) : (
+            <Empty
+              text={
+                noData
+                  ? '검색 가능한 배송 정보가 없습니다.'
+                  : '지금 검색을 해봐요!!!'
+              }
+            />
+          )}
         </ComponentContainer>
         <Spacer height="3rem" />
 
