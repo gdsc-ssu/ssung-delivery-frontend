@@ -20,7 +20,7 @@ const useUser = () => {
     return user
   }
 
-  return { login, logout, isLoggedIn, logInfo }
+  return { login, logout, isLoggedIn, logInfo, user }
 }
 
 export default useUser
