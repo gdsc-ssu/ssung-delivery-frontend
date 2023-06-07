@@ -8,17 +8,17 @@ export const SHIP_MOCK_DATA: ShipData[] = [
     id: '1',
     keywords: '기분이 심심한 숭실대',
     product: '구글 픽셀 7',
-    progress: '80%',
+    progress: '0%',
     history: [
       {
         state: '배송출발',
         date: '2020-01-01',
-        done: true,
+        done: false,
       },
       {
         state: '옥천 HUB123',
         date: '2020-01-02',
-        done: true,
+        done: false,
       },
       {
         state: '배송 출발',
@@ -40,7 +40,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
     id: '2',
     keywords: '슝슝한 서울대 대학생',
     product: '맥북프로 16',
-    progress: '10%',
+    progress: '25%',
     history: [
       {
         state: '배송중',
@@ -50,7 +50,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
       {
         state: '옥천 HUB',
         date: '2020-01-02',
-        done: true,
+        done: false,
       },
       {
         state: '배송 출발',
