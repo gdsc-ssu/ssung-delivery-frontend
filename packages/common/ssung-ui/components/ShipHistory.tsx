@@ -19,7 +19,7 @@ export interface ShipData {
   history: ShipHistoryType[]
 }
 interface ShipHistoryProps {
-  shipInfo: ShipData[]
+  shipInfo: ShipData
 }
 const ShipHistory = (props: ShipHistoryProps) => {
   const { domIdx } = useContext(CardContext)
@@ -27,10 +27,7 @@ const ShipHistory = (props: ShipHistoryProps) => {
   return (
     <ShipHistoryContainer>
       <div style={{ position: 'sticky', top: 0 }}>
-        <Progress
-          progress={props.shipInfo[domIdx].progress}
-          orient="vertical"
-        />
+        <Progress progress={props.shipInfo.progress} orient="vertical" />
       </div>
 
       <Flex
@@ -38,7 +35,7 @@ const ShipHistory = (props: ShipHistoryProps) => {
         gap={'1rem'}
         style={{ marginLeft: '1rem' }}
       >
-        {props.shipInfo[domIdx].history.map((item) => (
+        {props.shipInfo.history.map((item) => (
           <Flex flexDirection={'column'} gap={'0.25rem'}>
             <Text gray={!item.done}>{item.state}</Text>
             <Text size="sm" gray={!item.done}>

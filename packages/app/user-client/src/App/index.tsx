@@ -74,7 +74,7 @@ function App() {
           </Flex>
 
           {shipInfo ? (
-            <Shipping />
+            <Shipping shippingData={shipInfo} />
           ) : (
             <div onClick={() => setIsInputFoucs(true)}>
               <Empty
