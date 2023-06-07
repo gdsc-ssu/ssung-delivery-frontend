@@ -12,9 +12,12 @@
     "@common/ssung-ui": "workspace:^1.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@types/react-lottie": "^1.2.6",
     "axios": "^1.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-lottie": "^1.2.3",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
