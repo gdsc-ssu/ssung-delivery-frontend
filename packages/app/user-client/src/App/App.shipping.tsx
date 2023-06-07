@@ -4,17 +4,16 @@ import {
   Flex,
   ShipHistory,
   Spacer,
-  SubTitle,
 } from '@common/ssung-ui/components'
-import { SHIP_MOCK_DATA } from '../Model/ship.mock'
+import { ShipData } from '../Model/ship'
 
-const Shipping = () => {
+const Shipping = ({ shippingData }: { shippingData: ShipData }) => {
   return (
     <ComponentContainer>
       <Spacer height="1rem" />
       <Flex justifyContent={'space-between'}>
-        <Card shipInfo={SHIP_MOCK_DATA[0]} expandalble idx={0} />
-        <ShipHistory shipInfo={SHIP_MOCK_DATA} />
+        <Card shipInfo={shippingData} expandalble idx={0} />
+        <ShipHistory shipInfo={shippingData} />
       </Flex>
 
       <Spacer height="1rem" />
