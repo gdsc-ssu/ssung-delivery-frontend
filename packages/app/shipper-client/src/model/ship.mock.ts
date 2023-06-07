@@ -6,7 +6,7 @@ import type { ShipData } from './ship'
 export const SHIP_MOCK_DATA: ShipData[] = [
   {
     id: '1',
-    keywords: ['기분이', '심심한', '숭실대'],
+    keywords: '기분이 심심한 숭실대',
     product: '구글 픽셀 7',
     progress: '80%',
     destination: '서울시 동작구 상도로 369 숭실대학교',
@@ -43,7 +43,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
   },
   {
     id: '2',
-    keywords: ['슝슝한', '서울대', '대학생'],
+    keywords: '슝슝한 서울대 대학생',
     product: '맥북프로 16',
     progress: '10%',
     destination: '서울시 동작구 상도로 369 숭실대학교',
@@ -80,7 +80,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
   },
   {
     id: '3',
-    keywords: ['배고픈', '서울대', '지킴이'],
+    keywords: '배고픈 서울대 지킴이',
     product: '아이폰 18',
     progress: '75%',
     destination: '서울시 동작구 상도로 369 숭실대학교',
@@ -117,7 +117,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
   },
   {
     id: '4',
-    keywords: ['배고픈', '관악산', '아이폰'],
+    keywords: '배고픈 관악산 아이폰',
     product: '애플워치',
     progress: '100%',
     destination: '서울시 동작구 상도로 369 숭실대학교',
@@ -154,7 +154,7 @@ export const SHIP_MOCK_DATA: ShipData[] = [
   },
   {
     id: '5',
-    keywords: ['도착한', '관악산', '스티브'],
+    keywords: '도착한 관악산 스티브',
     product: '아이패드 프로 12',
     progress: '100%',
     destination: '서울시 동작구 상도로 369 숭실대학교',
