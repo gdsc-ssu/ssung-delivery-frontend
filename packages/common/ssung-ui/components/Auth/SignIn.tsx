@@ -3,11 +3,12 @@ import Button from '../Form/Button'
 import Input from '../Form/Input'
 import { Flex, Spacer } from '../Layout'
 import { Text } from '../Text'
-import React, { useState } from "react"
-import postSigninRequest, { RequestBody } from "../../Service/signin"
+import React, { useState } from 'react'
+import postSigninRequest, { RequestBody } from '../../Service/signin'
 
 interface SignInProps {
   moveToSignUp: () => void
+  onSignIn?: (id: string, pw: string) => void
 }
 
 interface LoginProps {
@@ -17,8 +18,8 @@ interface LoginProps {
 
 const SignIn = (props: SignInProps) => {
   const [signInInfo, setSignInInfo] = useState<LoginProps>({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   })
 
   /** form data state save */
@@ -30,22 +31,16 @@ const SignIn = (props: SignInProps) => {
   }
 
   /** form data submit */
-  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault();
+  const handleSubmit = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault()
     if (!signInInfo.username || !signInInfo.password) {
-      alert("아이디와 비밀번호를 모두 입력해주세요.");
-      return;
-    }
-    
-    const requestBody: RequestBody = {
-      username: signInInfo.username,
-      password: signInInfo.password,
+      alert('아이디와 비밀번호를 모두 입력해주세요.')
+      return
     }
 
-    try {
-      await postSigninRequest(requestBody);
-    } catch (error) {
-    }
+    props.onSignIn?.(signInInfo.username || '', signInInfo.password || '')
   }
 
   return (
@@ -54,17 +49,20 @@ const SignIn = (props: SignInProps) => {
 
       <Spacer height="0.5rem" />
 
-      <Input id="username" name="username" 
+      <Input
+        id="username"
+        name="username"
         value={signInInfo.username}
         onChange={handleChange}
-        placeholder="사용자 이름" 
+        placeholder="사용자 이름"
       />
       <Input
-        id="password" name="password" 
+        id="password"
+        name="password"
         value={signInInfo.password}
         onChange={handleChange}
-        placeholder="비밀번호" 
-        type="password" 
+        placeholder="비밀번호"
+        type="password"
       />
       <Spacer height="1rem" />
 
