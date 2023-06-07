@@ -21,7 +21,7 @@ interface SenderType {
 
 interface InfoType {
   id: string
-  keywords: string[]
+  keywords: string
   product: string
   progress: string
   history: HistoryType[]
@@ -33,7 +33,7 @@ interface CardProps {
   idx?: number
   expandComponent?: React.ReactNode
   shipInfo: InfoType
-  style?: React.CSSProperties;
+  style?: React.CSSProperties
 }
 
 const Card = (props: CardProps) => {
@@ -56,9 +56,11 @@ const Card = (props: CardProps) => {
         <CardSquareBox>
           <Flex justifyContent={'space-between'}>
             <div>
-              {props.shipInfo.keywords.map((word: string) => (
+              {props.shipInfo.keywords.split(' ').map((word: string) => (
                 <>
-                  <Text style={props.style} lineHeight={'1.15rem'}>{word}</Text>
+                  <Text style={props.style} lineHeight={'1.15rem'}>
+                    {word}
+                  </Text>
                   <br />
                 </>
               ))}
@@ -105,7 +107,7 @@ const Card = (props: CardProps) => {
     </Container>
   )
 }
-export default React.memo(Card)
+export default Card
 
 const CardSquareBox = styled.div`
   width: 140px;
