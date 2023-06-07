@@ -2,13 +2,23 @@ import styled from '@emotion/styled'
 import { CameraOnly, Flex, Spacer, Text, Title } from '@common/ssung-ui'
 import { useState } from 'react'
 import { WAREHOUSE_LOCATION, SHIPPING_STEP } from '../model/location'
+import { BorderButton } from '@/../../common/ssung-ui/components'
+import { useAtom } from 'jotai'
+import { shipAtom } from '../atom/ship'
 
 const DashUpdater = () => {
-  const [parsedQR, setParsedQR] = useState<string>('')
+  const [ship, setShip] = useAtom(shipAtom)
+  const [parsedQR, setParsedQR] = useState<string>('기분이 심심한 숭실대')
 
   const onUpdateShippingState = () => {
     if (!parsedQR) return alert('인식된 정보가 없습니다.')
-    alert(parsedQR)
+
+    const targetIdx = ship.findIndex((s) => s.keywords === parsedQR)
+    if (targetIdx === -1) return
+    ship[targetIdx].progress = '100%'
+    setShip([...ship])
+    setParsedQR('')
+    alert('업데이트가 완료되었습니다')
   }
 
   return (
@@ -20,24 +30,31 @@ const DashUpdater = () => {
       <FormContainer>
         <Title>{parsedQR || 'QR을 인식해보세요!'}</Title>
         <Spacer height="0.5rem" />
-        <FormRow>
-          <LabelForForm>배송상태</LabelForForm>{' '}
-          <Select>
-            {SHIPPING_STEP.map((step) => (
-              <option>{step}</option>
-            ))}
-          </Select>
-        </FormRow>
-        <Flex>
-          <LabelForForm>위치</LabelForForm>
-          <Select>
-            {WAREHOUSE_LOCATION.map((loc) => (
-              <option>{loc.name}</option>
-            ))}
-          </Select>
-        </Flex>
+        {parsedQR ? (
+          <div>
+            <FormRow>
+              <LabelForForm>배송상태</LabelForForm>{' '}
+              <Select>
+                {SHIPPING_STEP.map((step) => (
+                  <option>{step}</option>
+                ))}
+              </Select>
+            </FormRow>
+            <Flex>
+              <LabelForForm>위치</LabelForForm>
+              <Select>
+                {WAREHOUSE_LOCATION.map((loc) => (
+                  <option>{loc.name}</option>
+                ))}
+              </Select>
+            </Flex>
+          </div>
+        ) : (
+          <div></div>
+        )}
+
         <Spacer height="0.5rem" />
-        <button onClick={onUpdateShippingState}>UPDATE</button>
+        <BorderButton onClick={onUpdateShippingState}>UPDATE</BorderButton>
       </FormContainer>
     </Container>
   )
