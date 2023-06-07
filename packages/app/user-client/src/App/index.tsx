@@ -89,7 +89,7 @@ function App() {
         </ComponentContainer>
         <Spacer height="3rem" />
 
-        <Recent />
+        <Recent setShipInfo={setShipInfo} />
 
         <Spacer height="3rem" />
       </BodyContainer>

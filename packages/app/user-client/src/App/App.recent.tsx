@@ -4,10 +4,15 @@ import {
   Flex,
   SubTitle,
 } from '@common/ssung-ui/components'
-import { memo } from 'react'
 import { SHIP_MOCK_DATA } from '../Model/ship.mock'
+import { Dispatch } from 'react'
+import { ShipData } from '../Model/ship'
 
-const Recent = () => {
+const Recent = ({
+  setShipInfo,
+}: {
+  setShipInfo: Dispatch<React.SetStateAction<ShipData | undefined>>
+}) => {
   return (
     <div>
       <ComponentContainer>
@@ -21,12 +26,23 @@ const Recent = () => {
           padding: '1rem',
         }}
       >
-        {SHIP_MOCK_DATA.slice(3,7).map((info) => (
-          <Card icon="/profile.svg" shipInfo={info} key={info.id} style={{"color":"var(--form-text)"}} />
+        {SHIP_MOCK_DATA.slice(2).map((info) => (
+          <div
+            key={info.id}
+            onClick={() => {
+              setShipInfo(info)
+            }}
+          >
+            <Card
+              icon="/profile.svg"
+              shipInfo={info}
+              style={{ color: 'var(--form-text)' }}
+            />
+          </div>
         ))}
       </Flex>
     </div>
   )
 }
 
-export default memo(Recent)
+export default Recent
