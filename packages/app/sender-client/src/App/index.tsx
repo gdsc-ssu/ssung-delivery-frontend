@@ -4,7 +4,6 @@ import { Spacer } from '../component/Layout'
 import { useState } from 'react'
 import styled from '@emotion/styled'
 import Form from './App.form'
-import ShipTable from './App.shipTable'
 import {
   NotFound,
   Error,
@@ -32,11 +31,10 @@ function App() {
           />
           <Spacer height="2rem" />
           <SenderWrapper>
-            <Form />
+            {/* <Form /> */}
             <Spacer height="2rem" />
             <ShipInfo />
             <Spacer height="2rem" />
-            <ShipTable />
           </SenderWrapper>
         </ComponentContainer>
       ) : (

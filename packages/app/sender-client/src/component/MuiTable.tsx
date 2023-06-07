@@ -16,14 +16,21 @@ import ProgressBar from "../../../../common/ssung-ui/components/ProgressBar";
 import { SHIP_TABLE_MOCK_DATA } from "../Model/shiptable.mock";
 import { ShipHistoryType, ShipTableData } from "../Model/shiptable";
 
+interface MuiTableProps {
+    mockdata: ShipTableData[];
+}
+
 const Row = (props: {shipTableData: ShipTableData }) => {
     const { shipTableData } = props
     const [open, setOpen] = useState<boolean>(false);
 
-    const getLastShipState = (history: ShipHistoryType[]) => {
-        const lastState = history.filter((hist) => hist.done === true)
-        return lastState[lastState.length - 1]
-    }
+    const getLastShipState = (history: ShipHistoryType[]): number => {
+        const doneCount = history.filter((hist) => hist.done === true).length;
+        const totalCount = history.length;
+        const progress = doneCount / totalCount;
+    
+        return progress;
+    };
 
     return (
         <Fragment>
@@ -38,7 +45,7 @@ const Row = (props: {shipTableData: ShipTableData }) => {
             <TableCell component='th' scope='row' align='center'>{shipTableData.product}</TableCell>
             <TableCell align='center'>{shipTableData.name}</TableCell>
             <TableCell align='center'>{shipTableData.phone}</TableCell>
-            <TableCell align='center'>{getLastShipState(shipTableData.history)?.state}</TableCell>
+            <TableCell align='center'>{shipTableData.currstate}</TableCell>
             <TableCell align='center'>{shipTableData.label}</TableCell>
             <TableCell align='center' style={{"color":"var(--form-text)"}}>{shipTableData.registerdate}</TableCell>
         </TableRow>
@@ -54,7 +61,7 @@ const Row = (props: {shipTableData: ShipTableData }) => {
                                 <TableRow>
                                     <TableCell style={{"border":"none"}}>
                                         <Flex flexDirection={"column"} style={{"width":"60%", "height":"3rem"}}>
-                                            <ProgressBar progress={'66.6%'} />
+                                            <ProgressBar progress={`${getLastShipState(shipTableData.history) * 100}%`} />
                                             <TableRow>
                                                 <TableCell style={{"border":"none", "width":"30%"}}>Ordered</TableCell>
                                                 <TableCell style={{"border":"none", "width":"30%"}}>Shipping</TableCell>
@@ -75,7 +82,7 @@ const Row = (props: {shipTableData: ShipTableData }) => {
     )
 }
 
-const MuiTable = () => {
+const MuiTable = ({mockdata}: MuiTableProps) => {
     return (
         <TableContainer component={Paper}>
         <Table aria-label='collapsible table'>
@@ -88,7 +95,7 @@ const MuiTable = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {SHIP_TABLE_MOCK_DATA.map(row => (
+                {mockdata.map(row => (
                     <Row key={row.name} shipTableData={row} />
                 ))}
             </TableBody>

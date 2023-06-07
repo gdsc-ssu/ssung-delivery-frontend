@@ -7,6 +7,7 @@ import { Flex, Spacer } from '../Layout'
 import Progress from '../ProgressBar'
 import { Text } from '../Text'
 import { useForm } from '@common/utils'
+import postSignupRequest, { RequestBody } from '../../Service/signup'
 
 interface SignUpProps {
   step1: string[]
@@ -20,7 +21,14 @@ const SignUp = (props: SignUpProps) => {
 
   const goToStep = (toStep: 1 | 2 | 3) => {
     if (toStep === 3) {
-      props.onSignUp(formData)
+      const requestBody: RequestBody = {
+        sender_id: formData.id,
+        sender_name: formData.name,
+        password: formData.pw,
+        address: formData.address,
+        sender_phone_number: formData.phone_number
+      };
+      postSignupRequest(requestBody)
     } else {
       setStep(toStep)
     }

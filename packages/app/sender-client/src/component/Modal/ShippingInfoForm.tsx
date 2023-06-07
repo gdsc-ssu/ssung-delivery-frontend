@@ -3,7 +3,12 @@ import styled from '@emotion/styled';
 import { ComponentContainer, Flex, Spacer, Title } from '@common/ssung-ui';
 import Button from '@common/ssung-ui/components/Form/Button';
 import { Text } from '../Text';
-import Modal from "./Modal";
+import { ShipTableData } from '../../Model/shiptable';
+import { SHIP_TABLE_MOCK_DATA } from '../../Model/shiptable.mock';
+
+interface ShippingInfoFormProps {
+    onFormSubmit: (formData: ShipTableData) => void;
+}
 
 interface ShippingInfo {
     shippingName: string, 
@@ -21,9 +26,11 @@ const initialFormData: ShippingInfo = {
     detailAddr: "",
 }
 
-const ShippingInfoForm = () => {
+const ShippingInfoForm = ({ onFormSubmit}: ShippingInfoFormProps) => {
     /** form data state */
     const [formData, setFormData] = useState<ShippingInfo>(initialFormData);
+    const [shipTableData, setShipTableData] = useState<ShipTableData[]>(SHIP_TABLE_MOCK_DATA);
+
 
     const handleChange = (event: any) => {
         setFormData((prevFormData) => {
@@ -39,15 +46,79 @@ const ShippingInfoForm = () => {
         setFormData(initialFormData);
     }
 
-    /** form data state save function */
-    const saveFormData = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    /** data format function */
+    const getCurrentDateTime = (): string => {
+        const currentDateTime = new Date();
+        const year = currentDateTime.getFullYear();
+        const month = String(currentDateTime.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDateTime.getDate()).padStart(2, '0');
+        const hours = String(currentDateTime.getHours()).padStart(2, '0');
+        const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
+        
+        return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+    };
+
+    /** random label keywords selector */
+    const randomLabelSelector = () => {
+        const words = [
+            "기분이", "숭실실", "고등어", "앙고라", "참고인", "비타민",
+            "짜장면", "바나나", "삼겹살", "강아지", "고양이", "코끼리",
+            "알사탕", "텀블러", "탕수육", "사인펜", "검찰청", "연필심",
+            "불세출", "황홀한", "행복한", "모호한", "미나리", "리모컨"
+        ];
+
+        const selectedWords: string[] = [];
+        while (selectedWords.length < 3) {
+            const randomIndex = Math.floor(Math.random() * words.length);
+            const randomWord = words[randomIndex];
+            if (!selectedWords.includes(randomWord)) {
+                selectedWords.push(randomWord);
+            }
+        }
+        
+        return selectedWords.join(" ");
     }
 
     /** button dispacher */
     const handleButtonClick = () => {
-        document.getElementById("ship-form")?.dispatchEvent(new Event("submit"));
-        console.log(formData)
+        const lastId = parseInt(SHIP_TABLE_MOCK_DATA[SHIP_TABLE_MOCK_DATA.length - 1].id);
+        const newId = (lastId + 1).toString();
+    
+        const newShipTableData: ShipTableData = {
+            id: newId,
+            product: formData.shippingName,
+            name: formData.name,
+            phone: formData.tel,
+            label: randomLabelSelector(),
+            registerdate: getCurrentDateTime(),
+            currstate: "주문 완료",
+            history: [
+                {
+                    state: 'Ordered',
+                    date: '2023-06-07',
+                    done: false,
+                },
+                {
+                    state: 'Shipping',
+                    date: '2023-06-08',
+                    done: false,
+                },
+                {
+                    state: 'Out For Delivery',
+                    date: '2023-06-10',
+                    done: false,
+                },
+                {
+                    state: 'Shipped',
+                    date: '2023-06-11',
+                    done: false,
+                },
+            ],
+        };
+
+        setFormData(initialFormData);
+        onFormSubmit(newShipTableData);
         alert("생성 되었습니다.");
     }
 
@@ -121,13 +192,15 @@ const ShippingInfoForm = () => {
     );
 }
 
+export default memo(ShippingInfoForm);
+
 const GridForm = styled.div`
     display: grid;
     width: 55rem;
     height: 25rem;
     padding: 1rem;
-    grid-templates-rows: repeat(2, 1fr);
-    grid-templates-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
         "shippingInput nameInput telInput"
         "shippingInput addressInput addressInput";
@@ -171,5 +244,3 @@ const TelInput = styled.div`
 const AddressInput = styled.div`
     grid-area: addressInput;
 `;
-
-export default memo(ShippingInfoForm);
