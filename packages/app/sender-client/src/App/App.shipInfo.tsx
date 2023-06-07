@@ -1,12 +1,15 @@
 import { read as xRead, utils as xUtils } from "xlsx";
 import { useState, memo } from 'react';
-import { Card, ComponentContainer, Flex, SubTitle, PrintLabelCard } from '@common/ssung-ui/components';
+import { Card, ComponentContainer, Flex, SubTitle, PrintLabelCard, Spacer } from '@common/ssung-ui/components';
 import styled from '@emotion/styled';
 import { PRINT_LABEL_MOCK_DATA } from "../Model/printlabel.mock"
 import ExcelUploadComponent from "../component/Modal/ExcelUpload";
 import ShippingInfoForm from "../component/Modal/ShippingInfoForm";
 import useModal from "@common/ssung-ui/components/Modal";
 import QrCarousel from "../component/Modal/QRIndex";
+import MuiTable from "../component/MuiTable";
+import { SHIP_TABLE_MOCK_DATA } from "../Model/shiptable.mock";
+import { ShipTableData } from "../Model/shiptable";
 
 const ShipInfo = () => {
     /** 운송 정보 업로드 모달 */
@@ -15,9 +18,14 @@ const ShipInfo = () => {
     const { Modal: XlsxModal, onModalOpen: onXlsxOpen} = useModal();
     /** 라벨지 출력 업로드 모달 */
     const { Modal: LabelPrintMidal, onModalOpen:onLabelPrintOpen } = useModal();
+    const [shipTableData, setShipTableData] = useState<ShipTableData[]>(SHIP_TABLE_MOCK_DATA);
+
+    const handleFormSubmit = (formData: ShipTableData) => {
+        setShipTableData((prevData) => [formData, ...prevData]);
+    }
 
     return (
-        <ComponentContainer>
+        <ComponentContainer style={{ overflowY: "scroll" }}>
             <Flex justifyContent={'space-between'}>
                 {PRINT_LABEL_MOCK_DATA.map((info) => (
                     <PrintLabelCard labelInfo={info} key={info.id} />
@@ -25,7 +33,7 @@ const ShipInfo = () => {
                 <Flex style={{"marginRight":"2.5rem", "marginTop":"2.5rem"}}>
                     <BorderButton onClick={onInfoOpen}>운송정보 업로드</BorderButton>
                     <InfoModal>
-                        <ShippingInfoForm />
+                        <ShippingInfoForm onFormSubmit={handleFormSubmit} />
                     </InfoModal>
 
                     <BorderButton onClick={onXlsxOpen}>운송정보 엑셀 업로드</BorderButton>
@@ -38,6 +46,8 @@ const ShipInfo = () => {
                         </LabelPrintMidal>
                 </Flex>
             </Flex>
+            <Spacer height="5rem" />
+            <MuiTable mockdata={shipTableData} />
         </ComponentContainer>
     )
 }
