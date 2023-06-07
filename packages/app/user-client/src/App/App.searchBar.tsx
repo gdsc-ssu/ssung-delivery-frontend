@@ -1,12 +1,6 @@
-import {
-  Camera,
-  ComponentContainer,
-  Flex,
-  Input,
-} from '@common/ssung-ui/components'
+import { Camera, ComponentContainer, Flex } from '@common/ssung-ui/components'
 import styled from '@emotion/styled'
-import { Dispatch, memo, SetStateAction, useState } from 'react'
-import { useModal } from '@common/ssung-ui'
+import { Dispatch, SetStateAction, useRef, useState } from 'react'
 import {
   AiOutlineCamera,
   AiOutlineCloseCircle,
@@ -16,17 +10,27 @@ import {
 interface SearchBarProps {
   searchID?: string
   setSearchID: Dispatch<SetStateAction<string>>
+  setIsInputFoucs: Dispatch<SetStateAction<boolean>>
   onSearch: () => void
+  isInputFoucs: boolean
 }
 
 const SearchBar = (props: SearchBarProps) => {
   const [cam, setCam] = useState<boolean>(false)
+  const inputRef = useRef<HTMLFormElement>()
+
+  if (props.isInputFoucs) {
+    inputRef.current?.focus()
+    props.setIsInputFoucs(false)
+  }
 
   // 검색 창 + 버튼
   return (
     <ComponentContainer>
       <Flex alignItems={'center'} justifyContent={'center'} gap={'1rem'}>
-        <Input
+        <StyledInput
+          // @ts-ignore
+          ref={inputRef}
           style={{ width: '100%' }}
           value={props.searchID}
           onChange={(e) => props.setSearchID(e.target.value)}
@@ -58,4 +62,21 @@ const ActionButton = styled.button`
   border-radius: 0.25rem;
   padding: 0.5rem 0.5rem;
   outline: inherit;
+`
+
+const StyledInput = styled.input`
+  height: 2rem;
+  background-color: white;
+  border: 2.5px solid var(--bg-gray);
+  border-radius: 0.25rem;
+  outline: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  :focus {
+    border: 2.5px solid var(--primary);
+  }
+  ::placeholder {
+    font-size: 0.875rem;
+  }
 `
